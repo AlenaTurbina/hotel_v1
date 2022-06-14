@@ -1,0 +1,157 @@
+/* ----------------NAVBAR--------------- */
+/* header */
+.navbar .navbar-expand-lg .navbar-light {
+    background-color: #f45216;
+}
+
+.navbar-light  {
+    font-family: arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.top-menu li a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    height: 1px;
+    transition: all .3s;
+    transform: scale(0);
+}
+
+.top-menu li a:hover::after {
+    transform: scale(1);
+}
+/*-------------END NAVBAR-----------*/
+
+/*--------------TABLE--------------*/
+table {
+    font-family: BORUTTA, sans-serif;
+    color:  #441d05;
+    border-collapse: collapse;
+    border: 2px solid #e6ac72;
+    margin-left: 20px;
+}
+
+td, th {
+    border: 1px solid #ddd;;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:hover {background-color: #faf1e9;}
+
+th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    background-color: #e6ac72; /*темнее*/
+    color: #fff;
+    border: 2px solid #e6ac72;
+}
+
+tr:nth-child(even) {
+    background-color: #faf1e9;
+}
+/*--------------TABLE--------------*/
+
+/*------------TEXT WITH DIFFERENT MARGIN --------------*/
+.allPage {
+    font-family:  BORUTTA, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color:  #441d05;
+    background-color: white;
+    padding: 20px;
+}
+
+.marginTop {
+    margin-top: 60px;
+}
+
+.allPageCenter {
+    margin-top: 60px;
+    font-family:  BORUTTA, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color:  #441d05;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.allPageMargin {
+    margin-top: 10px;
+    font-family:  BORUTTA, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color:  #441d05;
+    background-color: white;
+    padding: 20px;
+    margin-left: 150px;
+}
+/*------------END TEXT WITH DIFFERENT MARGIN ----------*/
+
+/*--------------BUTTON--------------*/
+.btnTable {
+    display: inline-block;
+    background: #e6ac72;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 16px;
+    font-family: arial, sans-serif;
+    border: 2px solid #F79361;
+}
+
+.btnRef {
+    display: inline-block;
+    background:  #e6ac72;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 16px;
+    font-family: arial, sans-serif;
+    border: 2px solid  #e6ac72;
+    width: 350px;
+}
+
+.btn .btnRoom {
+    background:  #e6ac72;
+    color: #fff;
+    border: 2px solid  #e6ac72;
+    width: 250px;
+}
+
+.btnReference {
+    display: inline-block;
+    text-align: center;
+    background:  #e6ac72;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: arial, sans-serif;
+    width: 250px;
+}
+
+
+button[type=button] {
+    background:  #e6ac72;
+    color: #fff;
+    border: 2px solid  #e6ac72;
+    width: 250px;
+}
+button[type=button]:hover {
+    background-color:  #f45216;
+    border: 2px solid  #f45216;
+    color: #fff;
+}
+
+
+/*--------------END BUTTON--------------*/

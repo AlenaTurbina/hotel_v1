@@ -1,0 +1,66 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.8'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.hotel_server'
+version = '0.0.1-SNAPSHOT'
+
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation ("org.springframework.boot:spring-boot-starter-data-jpa:${sbDataJPAVersion}")
+    implementation ("org.springframework.boot:spring-boot-starter-thymeleaf:${sbThymeleafVersion}")
+    implementation ("org.springframework.boot:spring-boot-starter-web:${sbWebVersion}")
+    implementation ("org.springframework.boot:spring-boot-starter-validation:${sbValidationVersion}")
+    implementation ("org.springframework.boot:spring-boot-starter-mail:${sbMailVersion}")
+    implementation ("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatJasperVersion}")
+    implementation ("org.springframework.security:spring-security-crypto:${sSecurityCryptoVersion}")
+
+    compileOnly ("org.projectlombok:lombok:${lombokVersion}")
+    annotationProcessor ("org.projectlombok:lombok:${lombokVersion}")
+
+    compileOnly ("org.springframework.boot:spring-boot-starter-tomcat:${tomcatVersion}")
+    implementation ("javax.xml.bind:jaxb-api:${javaxXmlBindVersion}")
+    implementation 'org.springframework.boot:spring-boot-starter-activemq'
+
+    implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.2.0'
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.9'
+
+    testImplementation ("org.springframework.boot:spring-boot-starter-test:${sbTestVersion}")
+
+//  for writing tests and extensions in JUnit 5
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+
+//  the Jupiter sub-project provides a TestEngine for running Jupiter based tests on the platform.
+    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    implementation project(':hotel_activemq')
+    implementation project(':hotel_commons')
+    implementation project(':hotel_database')
+    implementation project(':hotel_domain')
+    implementation project(':hotel_dto')
+    
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}

@@ -1,0 +1,406 @@
+/* ----------------NAVBAR--------------- */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section{
+    padding: 50px 0;
+}
+
+a {
+    color: #faf1e9;
+}
+
+.allPage a:hover {
+    color: #faf1e9;
+}
+
+/* header */
+.navbar .navbar-expand-lg .navbar-light {
+    background-color: #f45216;
+}
+
+.navbar-light  {
+    font-family: arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.top-menu li a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    height: 1px;
+    transition: all .3s;
+    transform: scale(0);
+}
+
+.top-menu li a:hover::after {
+    transform: scale(1);
+}
+/* -----------END NAVBAR------------*/
+
+/* ---------------FORM---------------*/
+input[type=text], input[type=email], input[type=password], select {
+    font-family: BORUTTA, sans-serif;
+    font-size: 14px;
+    color: #441d05;
+    width: 450px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=date] {
+    font-family: BORUTTA, sans-serif;
+    font-size: 14px;
+    color: #441d05;
+    width: 200px;
+    padding: 12px 20px;
+    margin: 2px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    font-family: BORUTTA, sans-serif;
+    font-size: 18px;
+    width: 250px;
+    background-color: #e6ac72;
+    color: white;
+    padding: 10px 20px;
+    margin: 4px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=reset] {
+    font-family: BORUTTA, sans-serif;
+    font-size: 18px;
+    width: 250px;
+    background-color: #e6ac72;
+    color: white;
+    padding: 10px 20px;
+    margin: 4px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color:  #f45216;
+}
+
+input[type=reset]:hover {
+    background-color: #f45216;
+}
+
+label {
+    width: 150px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.orderForm {
+    font-family: BORUTTA, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #441d05;
+    border-radius: 5px;
+    background-color: #faf1e9;
+    padding: 20px;
+}
+.containerWidthForm {
+    max-width: 1200px;
+}
+
+.containerWidthTable {
+    min-width: 1400px;
+}
+
+/* Input hidden */
+.hid {
+    border: none;
+    background-color: #faf1e9;
+    outline:none;
+}
+/* -------------END FORM---------------*/
+
+/*------------TEXT WITH DIFFERENT MARGIN --------------*/
+.allPage {
+    margin-top: 60px;
+    font-family:  BORUTTA, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color:  #441d05;
+    background-color: white;
+    padding: 20px;
+}
+
+.allPageWithoutMarginLeft {
+    margin-top: 60px;
+    font-family:  BORUTTA, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color:  #441d05;
+    background-color: white;
+
+}
+
+.upper {
+    text-transform: uppercase;
+    text-align: center;
+    color:  #441d05;
+}
+
+
+.allPageCenter {
+    font-family:  BORUTTA, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color:  #441d05;
+    background-color: white;
+    text-align: center;
+}
+
+.attention {
+    margin-left: 100px;
+    font-family:  BORUTTA, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color:  #441d05;
+    background-color: white;
+}
+/*------------END TEXT WITH DIFFERENT MARGIN ------------*/
+
+/*----------------TABLE------------------*/
+.mainTable {
+    font-family: BORUTTA, sans-serif;
+    color:  #441d05;
+    border-collapse: collapse;
+    width: 1000px;
+}
+.mainTable td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+.mainTable tr:hover {background-color: #faf1e9;}
+
+.mainTable tr:nth-child(even) {
+    background-color: #faf1e9;
+}
+
+.summa {
+    color:  #441d05;
+    font-weight: bold;
+    border-top: 2px solid #441d05;
+}
+
+.btnClient {
+    display: inline-block;
+    background: #e6ac72;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 18px;
+    font-family: BORUTTA, sans-serif;
+    border: 1px solid #e6ac72;
+    width: 250px;
+}
+
+.tableClient {
+    font-family: BORUTTA, sans-serif;
+    color:  #441d05;
+    border-collapse: collapse;
+    border: 2px solid #e6ac72;
+    margin-left: 20px;
+}
+
+td, th {
+    border: 1px solid #ddd;;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:hover {background-color: #faf1e9;}
+
+th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    background-color: #e6ac72;
+    color: #fff;
+    border: 2px solid #e6ac72;
+}
+
+.optionalsTableClient td, th {
+    text-align: left;
+    padding: 1px;
+    padding-right: 8px;
+    border-style: hidden;
+}
+/*-----------------END TABLE----------------*/
+
+/*-----------------TABLE TYPE 2 ----------------*/
+
+.tableClientWide {
+    font-family: BORUTTA, sans-serif;
+    color:  #441d05;
+    size: 16px;
+    border-collapse: collapse;
+    border: 2px solid #e6ac72;
+    margin-left: 20px;
+}
+
+.tableClientWide td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.tableClientWide tr:hover {
+    background-color: #faf1e9;
+}
+
+/* Header */
+.tableClientWide th {
+    padding: 8px;
+    size: 16px;
+    text-align: center;
+    background-color: #e6ac72; /*темнее*/
+    color: #fff;
+    border: 2px solid #e6ac72;
+}
+/* Header with fix width for small tables */
+.tableClientWideFix th {
+    padding: 8px;
+    size: 16px;
+    text-align: center;
+    width: 150px;
+    background-color: #e6ac72; /*темнее*/
+    color: #fff;
+    border: 2px solid #e6ac72;
+}
+
+/* Color for even rows */
+tr:nth-child(even) {
+    background-color: #faf1e9;
+}
+
+/* CSS for embedded tables */
+.embeddedTableClientWide {
+    font-family: BORUTTA, sans-serif;
+    color:  #441d05;
+    margin: auto;
+}
+
+.embeddedTableClientWide td, th {
+    text-align: left;
+    padding: 1px;
+    padding-right: 8px;
+    border-style: hidden;
+}
+/*-----------------END TABLE TYPE 2----------------*/
+
+
+/*-----------------ACCORDION----------------*/
+/*
+.accordionClient {
+    cursor: pointer;
+    padding: 18px;
+    width: 70%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #faf1e9;
+    border-radius: 5px;
+    text-align: left;
+    outline: 2px;
+    font-size: 16px;
+    transition: 0.4s;
+}
+
+.accordion-header > .accordion-button {
+    background-color:#e6ac72;
+    font-family: BORUTTA, sans-serif;
+    color:  #fff;
+    font-weight: bold;
+    border: 5px solid #e6ac72;
+    border-radius: 3px;
+}
+
+.accordion-header > .accordion-button:focus {
+    border-color:  #faf1e9;
+    background-color: #faf1e9;
+    font-family: BORUTTA, sans-serif;
+    color:   #441d05;
+    outline: none;
+}
+
+.accordion-header > .accordion-button:hover {
+    border-color:  #faf1e9;
+    background-color: #e6ac72;
+    font-family: BORUTTA, sans-serif;
+    color:  #fff;
+    outline: none;
+}
+
+.accordion-header > .accordion-button:not(.collapsed){
+    background-color: #e6ac72;
+    border-color:  #faf1e9;
+    font-family: BORUTTA, sans-serif;
+    color:  #441d05;
+    outline: none;
+}
+
+.accordion-header >.accordion-button:focus{outline: none;}
+/*-----------------END ACCORDION----------------*/
+
+/*---------------PAGINATION----------------------*/
+.page-link.newPage{
+    color: #441d05;
+    background-color: white;
+    border: 1px solid #e6ac72;
+}
+
+.page-link.newPage:hover{
+    color: #f45216;
+    background-color: #faf1e9;
+    border: 1px solid #e6ac72;
+}
+
+.page-link.newPageFix{
+    color: #441d05;
+    background-color: white;
+    border: 1px solid #e6ac72;
+}
+.page-link.newPageFix:hover{
+    color: #441d05;
+    background-color: white;
+    border: 1px solid #e6ac72;
+}
+
+.page-link.newPageFixActive{
+    color: #441d05;
+    background-color: #faf1e9;
+    border: 1px solid #e6ac72;
+}
+.page-link.newPageFixActive:hover{
+    color: #441d05;
+    background-color: #faf1e9;
+    border: 1px solid #e6ac72;
+}
+/*---------------END PAGINATION----------------------*/

@@ -1,0 +1,53 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.8'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+//    id 'war'
+}
+
+group = 'com.hotel_ui'
+version = '0.0.1-SNAPSHOT'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:${sbDataJPAVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:${sbThymeleafVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-web:${sbWebVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-validation:${sbValidationVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-mail:${sbMailVersion}")
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatJasperVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-security:${sbSecurityVersion}")
+    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:${sThymeleafSecurityVersion}")
+    implementation("org.apache.httpcomponents:httpclient:${httpClientVersion}")
+    compileOnly("org.projectlombok:lombok:${lombokVersion}")
+    annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${sbTestVersion}")
+    testImplementation("org.springframework.security:spring-security-test:${sSecurityTestVersion}")
+//  for writing tests and extensions in JUnit 5
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+//  the Jupiter sub-project provides a TestEngine for running Jupiter based tests on the platform.
+    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    compileOnly ("org.springframework.boot:spring-boot-starter-tomcat:${tomcatVersion}")
+
+    implementation project(':hotel_dto')
+    implementation project(':hotel_commons')
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}

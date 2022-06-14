@@ -1,0 +1,32 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.8'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.hotel_dto'
+version = '0.0.1-SNAPSHOT'
+
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation ("org.springframework.boot:spring-boot-starter-data-jpa:${sbDataJPAVersion}")
+    implementation ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonDatatypeJSR310Version}")
+    compileOnly ("org.projectlombok:lombok:${lombokVersion}")
+    annotationProcessor ("org.projectlombok:lombok:${lombokVersion}")
+    testImplementation ("org.springframework.boot:spring-boot-starter-test:${sbTestVersion}")
+    implementation project(':hotel_domain')
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

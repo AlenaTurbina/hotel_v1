@@ -1,0 +1,10 @@
+rootProject.name = 'hotel_v1'
+
+include('hotel_activemq')
+include('hotel_dto')
+include('hotel_room_manager')
+include('hotel_server')
+include('hotel_ui')
+include('hotel_commons')
+include('hotel_domain')
+include('hotel_database')

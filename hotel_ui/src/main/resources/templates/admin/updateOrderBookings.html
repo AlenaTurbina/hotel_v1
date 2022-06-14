@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head lang="en">
+    <title>UpdateOrderBookings</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- CSS -->
+    <link th:href="@{/css/adminStyles/adminStyle.css}" rel="stylesheet">
+
+    <!-- BootStrap. Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- BootStrap. Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Awesome fonts -->
+    <script src="https://kit.fontawesome.com/5ea6f45e85.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row align-items-start">
+        <div class="col-md-2">
+            <div th:insert="fragments/adminFragments :: listAdminPages"></div>
+        </div>
+        <div class="col">
+
+            <!-- Form -->
+            <div class="allPageWithoutMargin">
+                <h2>Order Bookings form update</h2>
+            </div>
+
+            <form action="#" th:action="@{/admin/orderBookings/update}" th:object="${orderBookingDTO}" method="post"
+                  class="adminForm" th:if="${orderBookingDTO != null}">
+
+                <p>
+                    <label for="rooms">Room</label>
+                    <select id="rooms" th:field="*{roomName}">
+                        <option class="option1" value="">Select room</option>
+                        <option th:each="room : ${rooms}"
+                                th:value="${room.name}"
+                                th:text="${room.name}">
+                        </option>
+                    </select>
+<!--                <div class="alert alert-danger" th:if="${#fields.hasErrors('room.name')}"-->
+<!--                     th:errors="*{room.name}">-->
+
+<!--            </div>-->
+
+                </p>
+                <p>
+                    <label for="orderStatus">Order status</label>
+                    <select id="orderStatus" th:field="*{orderStatusName}">
+                        <option class="option1" value="">Select orderStatus</option>
+                        <option th:each="orderStatus1 : ${orderStatuses}"
+                                th:value="${orderStatus1.name}"
+                                th:text="${orderStatus1.name}">
+                        </option>
+                    </select>
+<!--                <div class="alert alert-danger" th:if="${#fields.hasErrors('orderStatus.name')}"-->
+<!--                     th:errors="*{orderStatus.name}">-->
+
+<!--            </div>-->
+                </p>
+                <br>
+                <br>
+                <label for="id">ID</label>
+                <input readonly type="number" th:field="*{id}" id="id" placeholder="ID" class="inp hid">
+                <br>
+                <label for="date">Date of order</label>
+                <input readonly type="date" th:field="*{date}" id="date" placeholder="date" class="inp hid">
+                <br>
+                <label for="dateArrival">Date arrival</label>
+                <input readonly type="date" th:field="*{dateArrival}" id="dateArrival" class="inp hid">
+                <br>
+                <label for="dateDeparture">Date departure</label>
+                <input readonly type="date" th:field="*{dateDeparture}" id="dateDeparture" class="inp hid">
+                <br>
+                <label for="quantityPersons">Quantity persons</label>
+                <input readonly type="text" th:field="*{quantityPersons}" id="quantityPersons" class="inp hid">
+                <br>
+                <label for="clientID">Client ID</label>
+                <input readonly type="text" th:field="*{userLastName}" id="clientID" class="inp hid">
+                <br>
+                <label for="sumTotal">Sum total</label>
+                <input readonly type="text" th:field="*{sumTotal}" id="sumTotal" placeholder="sumTotal" class="inp hid">
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <p><input type="submit" id="submitButton" value="Save"/></p>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

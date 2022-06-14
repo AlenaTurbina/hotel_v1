@@ -1,0 +1,271 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1653916925456-25
+      author: elena (generated)
+      changes:
+        - addUniqueConstraint:
+            columnNames: order_booking_id, optional_id
+            constraintName: order_booking_id
+            tableName: order_booking_with_optional
+  - changeSet:
+      id: 1653916925456-26
+      author: elena (generated)
+      changes:
+        - addUniqueConstraint:
+            columnNames: room_type_id, class_apartment_id
+            constraintName: room_type_id
+            tableName: room_kind
+  - changeSet:
+      id: 1653916925456-27
+      author: elena (generated)
+      changes:
+        - addUniqueConstraint:
+            columnNames: user_id, role_id
+            constraintName: user_id
+            tableName: user_with_role
+  - changeSet:
+      id: 1653916925456-28
+      author: elena (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: class_apartment_id
+            indexName: fk_classApartment
+            tableName: room_kind
+  - changeSet:
+      id: 1653916925456-29
+      author: elena (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: client
+            indexName: fk_client
+            tableName: order_booking
+  - changeSet:
+      id: 1653916925456-30
+      author: elena (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: optional_id
+            indexName: fk_optionalID
+            tableName: order_booking_with_optional
+  - changeSet:
+      id: 1653916925456-31
+      author: elena (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: order_status
+            indexName: fk_orderStatus
+            tableName: order_booking
+  - changeSet:
+      id: 1653916925456-32
+      author: elena (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: role_id
+            indexName: fk_roleID
+            tableName: user_with_role
+  - changeSet:
+      id: 1653916925456-33
+      author: elena (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: room
+            indexName: fk_room
+            tableName: order_booking
+  - changeSet:
+      id: 1653916925456-34
+      author: elena (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: room_kind
+            indexName: fk_roomKind
+            tableName: room
+  - changeSet:
+      id: 1653916925456-35
+      author: elena (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: user_status
+            indexName: fk_userStatus
+            tableName: user
+  - changeSet:
+      id: 1653916925456-36
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: class_apartment_id
+            baseTableName: room_kind
+            constraintName: fk_classApartment
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: class_apartment
+            validate: true
+  - changeSet:
+      id: 1653916925456-37
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: client
+            baseTableName: order_booking
+            constraintName: fk_client
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1653916925456-38
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: optional_id
+            baseTableName: order_booking_with_optional
+            constraintName: fk_optionalID
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: optional
+            validate: true
+  - changeSet:
+      id: 1653916925456-39
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: order_booking_id
+            baseTableName: order_booking_with_optional
+            constraintName: fk_orderBookingID
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: order_booking
+            validate: true
+  - changeSet:
+      id: 1653916925456-40
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: order_status
+            baseTableName: order_booking
+            constraintName: fk_orderStatus
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: order_status
+            validate: true
+  - changeSet:
+      id: 1653916925456-41
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: user_with_role
+            constraintName: fk_roleID
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: role
+            validate: true
+  - changeSet:
+      id: 1653916925456-42
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: room
+            baseTableName: order_booking
+            constraintName: fk_room
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: room
+            validate: true
+  - changeSet:
+      id: 1653916925456-43
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: room_kind
+            baseTableName: room
+            constraintName: fk_roomKind
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: room_kind
+            validate: true
+  - changeSet:
+      id: 1653916925456-44
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: room_type_id
+            baseTableName: room_kind
+            constraintName: fk_roomType
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: room_type
+            validate: true
+  - changeSet:
+      id: 1653916925456-45
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_with_role
+            constraintName: fk_userID
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1653916925456-46
+      author: elena (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_status
+            baseTableName: user
+            constraintName: fk_userStatus
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user_status
+            validate: true
+

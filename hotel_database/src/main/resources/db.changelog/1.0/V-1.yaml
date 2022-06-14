@@ -1,0 +1,342 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1653916925456-1
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(256)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: place_price
+                  type: DOUBLE
+            tableName: class_apartment
+  - changeSet:
+      id: 1653916925456-2
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(256)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: optional_price
+                  type: DOUBLE
+            tableName: optional
+  - changeSet:
+      id: 1653916925456-3
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: date
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: date_arrival
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: date_departure
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity_persons
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: client
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: room
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sum_total
+                  type: DOUBLE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: order_status
+                  type: BIGINT
+            tableName: order_booking
+  - changeSet:
+      id: 1653916925456-4
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: order_booking_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: optional_id
+                  type: BIGINT
+            tableName: order_booking_with_optional
+  - changeSet:
+      id: 1653916925456-5
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(256)
+            tableName: order_status
+  - changeSet:
+      id: 1653916925456-6
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(256)
+            tableName: role
+  - changeSet:
+      id: 1653916925456-7
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(10)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: room_kind
+                  type: BIGINT
+            tableName: room
+  - changeSet:
+      id: 1653916925456-8
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: room_type_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: class_apartment_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: room_price
+                  type: DOUBLE
+            tableName: room_kind
+  - changeSet:
+      id: 1653916925456-9
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(256)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity_places
+                  type: INT
+            tableName: room_type
+  - changeSet:
+      id: 1653916925456-10
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: email
+                  type: VARCHAR(256)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: password
+                  type: VARCHAR(256)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: VARCHAR(256)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_name
+                  type: VARCHAR(256)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone_number
+                  type: VARCHAR(256)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: document
+                  type: VARCHAR(256)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_status
+                  type: BIGINT
+            tableName: user
+  - changeSet:
+      id: 1653916925456-11
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(256)
+            tableName: user_status
+  - changeSet:
+      id: 1653916925456-12
+      author: elena (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: role_id
+                  type: BIGINT
+            tableName: user_with_role
