@@ -1,0 +1,171 @@
+[2022-10-03 18:09:35.035] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 14980 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-10-03 18:09:35.035] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-10-03 18:09:35.035] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-10-03 18:09:36.036] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-10-03 18:09:36.036] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 61 ms. Found 10 JPA repository interfaces.
+[2022-10-03 18:09:37.037] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-10-03 18:09:37.037] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1965 ms
+[2022-10-03 18:09:39.039] [org.springframework.context.support.AbstractApplicationContext] [main] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+[2022-10-03 18:09:39.039] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [main] [136] [INFO ] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-10-03 18:09:39.039] [org.springframework.boot.SpringApplication] [main] [835] [ERROR] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:745)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:420)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at com.hotel_server.HotelServerApplication.main(HotelServerApplication.java:11)
+Caused by: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:271)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 18 common frames omitted
+Caused by: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:266)
+	... 20 common frames omitted
+[2022-10-03 18:15:00.000] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 16238 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-10-03 18:15:00.000] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-10-03 18:15:00.000] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-10-03 18:15:00.000] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-10-03 18:15:00.000] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 58 ms. Found 10 JPA repository interfaces.
+[2022-10-03 18:15:01.001] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-10-03 18:15:02.002] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1856 ms
+[2022-10-03 18:15:03.003] [org.springframework.context.support.AbstractApplicationContext] [main] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+[2022-10-03 18:15:03.003] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [main] [136] [INFO ] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-10-03 18:15:03.003] [org.springframework.boot.SpringApplication] [main] [835] [ERROR] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:745)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:420)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at com.hotel_server.HotelServerApplication.main(HotelServerApplication.java:11)
+Caused by: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:271)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 18 common frames omitted
+Caused by: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:266)
+	... 20 common frames omitted
+[2022-10-04 11:03:09.009] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 7808 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-10-04 11:03:09.009] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-10-04 11:03:09.009] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-10-04 11:03:09.009] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-10-04 11:03:09.009] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 56 ms. Found 10 JPA repository interfaces.
+[2022-10-04 11:03:10.010] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-10-04 11:03:11.011] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1981 ms
+[2022-10-04 11:03:12.012] [org.springframework.context.support.AbstractApplicationContext] [main] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+[2022-10-04 11:03:12.012] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [main] [136] [INFO ] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-10-04 11:03:12.012] [org.springframework.boot.SpringApplication] [main] [835] [ERROR] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:745)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:420)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at com.hotel_server.HotelServerApplication.main(HotelServerApplication.java:11)
+Caused by: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:271)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 18 common frames omitted
+Caused by: java.sql.SQLException: Access denied for user 'user_1'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:266)
+	... 20 common frames omitted
+[2022-10-05 16:00:33.033] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 44874 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-10-05 16:00:33.033] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-10-05 16:00:33.033] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-10-05 16:00:34.034] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-10-05 16:00:34.034] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 52 ms. Found 10 JPA repository interfaces.
+[2022-10-05 16:00:35.035] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-10-05 16:00:35.035] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1795 ms
+[2022-10-05 16:00:37.037] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-10-05 16:00:38.038] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-10-05 16:00:40.040] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-10-05 16:00:40.040] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 6.766 seconds (JVM running for 7.202)
+[2022-10-05 16:01:06.006] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
