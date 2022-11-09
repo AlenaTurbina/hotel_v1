@@ -19,4 +19,16 @@ public interface ClassApartmentRepository extends JpaRepository<ClassApartment, 
             "JOIN\n" +
             "class_apartment ON room_kind.class_apartment_id = class_apartment.id", nativeQuery = true)
     List<ClassApartment> findListUniqueClassApartmentFromRooms();
+
+//    @Query("SELECT distinct class_apartment.id as id, class_apartment.name as name, class_apartment.place_price as place_price\n" +
+//            "FROM\n" +
+//            "room\n" +
+//            "JOIN\n" +
+//            "room_kind ON room.room_kind = room_kind.id\n" +
+//            "JOIN\n" +
+//            "class_apartment ON room_kind.class_apartment_id = class_apartment.id")
+//    List<ClassApartment> findListUniqueClassApartmentFromRooms();
+
+
+
 }

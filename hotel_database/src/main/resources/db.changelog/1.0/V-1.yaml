@@ -11,7 +11,7 @@ databaseChangeLog:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: SERIAL
               - column:
                   constraints:
                     nullable: false
@@ -295,7 +295,7 @@ databaseChangeLog:
                     nullable: false
                   name: user_status
                   type: BIGINT
-            tableName: user
+            tableName: users
   - changeSet:
       id: 1653916925456-11
       author: elena (generated)

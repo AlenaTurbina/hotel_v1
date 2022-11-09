@@ -22,7 +22,8 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation ("org.springframework.boot:spring-boot-starter-data-jpa:${sbDataJPAVersion}")
-    runtimeOnly ("mysql:mysql-connector-java:${mySQLConnectorJavaVersion}")
+//    runtimeOnly ("mysql:mysql-connector-java:${mySQLConnectorJavaVersion}")
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.0'
     implementation ("javax.xml.bind:jaxb-api:${javaxXmlBindVersion}")
     implementation ("org.liquibase:liquibase-core:${liquibaseCoreVersion}")
 

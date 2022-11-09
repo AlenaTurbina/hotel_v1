@@ -284,11 +284,11 @@ databaseChangeLog:
                   type: NUMERIC
             commentLineStartsWith: '#'
             encoding: UTF-8
-            file: data/user.csv
+            file: data/users.csv
             quotchar: '"'
             separator: ','
             relativeToChangelogFile: true
-            tableName: user
+            tableName: users
   - changeSet:
       id: 1653916925456-23
       author: elena (generated)

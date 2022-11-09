@@ -102,7 +102,7 @@ databaseChangeLog:
               - column:
                   name: user_status
             indexName: fk_userStatus
-            tableName: user
+            tableName: users
   - changeSet:
       id: 1653916925456-36
       author: elena (generated)
@@ -131,7 +131,7 @@ databaseChangeLog:
             onDelete: RESTRICT
             onUpdate: RESTRICT
             referencedColumnNames: id
-            referencedTableName: user
+            referencedTableName: users
             validate: true
   - changeSet:
       id: 1653916925456-38
@@ -251,7 +251,7 @@ databaseChangeLog:
             onDelete: RESTRICT
             onUpdate: RESTRICT
             referencedColumnNames: id
-            referencedTableName: user
+            referencedTableName: users
             validate: true
   - changeSet:
       id: 1653916925456-46
@@ -259,7 +259,7 @@ databaseChangeLog:
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: user_status
-            baseTableName: user
+            baseTableName: users
             constraintName: fk_userStatus
             deferrable: false
             initiallyDeferred: false

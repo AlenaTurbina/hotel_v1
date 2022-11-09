@@ -243,3 +243,385 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 [2022-10-19 17:38:38.038] [com.hotel_server.exceptionHandler.ExceptionHandlerValidation] [http-nio-8080-exec-10] [54] [ERROR] EntityNotFoundExceptions: Entity is not found, id=5
 [2022-10-19 17:38:52.052] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-2] [29] [INFO ] Get class Apartment by id 3
 [2022-10-19 17:45:39.039] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 11:25:18.018] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 12474 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 11:25:18.018] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 11:25:18.018] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 11:25:19.019] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 11:25:19.019] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 47 ms. Found 10 JPA repository interfaces.
+[2022-11-08 11:25:19.019] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 11:25:20.020] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1336 ms
+[2022-11-08 11:25:22.022] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 11:25:22.022] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-08 11:25:23.023] [org.springframework.context.support.AbstractApplicationContext] [main] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+[2022-11-08 11:25:23.023] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 11:25:23.023] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [main] [136] [INFO ] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-11-08 11:25:23.023] [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter] [main] [40] [ERROR] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+[2022-11-08 11:25:40.040] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 12920 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 11:25:40.040] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 11:25:40.040] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 11:25:41.041] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 11:25:41.041] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 46 ms. Found 10 JPA repository interfaces.
+[2022-11-08 11:25:41.041] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 11:25:42.042] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1206 ms
+[2022-11-08 11:25:43.043] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 11:25:44.044] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-08 11:25:44.044] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-08 11:25:44.044] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.183 seconds (JVM running for 4.66)
+[2022-11-08 11:26:59.059] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 11:28:33.033] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 13961 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 11:28:33.033] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 11:28:33.033] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 11:28:33.033] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 11:28:33.033] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 45 ms. Found 10 JPA repository interfaces.
+[2022-11-08 11:28:34.034] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 11:28:34.034] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1207 ms
+[2022-11-08 11:28:35.035] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 11:28:36.036] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-08 11:28:37.037] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-08 11:28:37.037] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.129 seconds (JVM running for 4.652)
+[2022-11-08 11:28:42.042] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 11:31:38.038] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 17674 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 11:31:38.038] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 11:31:38.038] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 11:31:39.039] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 11:31:39.039] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 45 ms. Found 10 JPA repository interfaces.
+[2022-11-08 11:31:39.039] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 11:31:39.039] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1163 ms
+[2022-11-08 11:31:41.041] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 11:31:41.041] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-08 11:31:42.042] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-08 11:31:42.042] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.073 seconds (JVM running for 4.548)
+[2022-11-08 11:31:58.058] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 16:44:46.046] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 118355 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 16:44:46.046] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 16:44:46.046] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 16:44:46.046] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 16:44:46.046] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 44 ms. Found 10 JPA repository interfaces.
+[2022-11-08 16:44:47.047] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 16:44:47.047] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1188 ms
+[2022-11-08 16:44:48.048] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 16:44:49.049] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-08 16:44:49.049] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-08 16:44:49.049] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.24 seconds (JVM running for 4.782)
+[2022-11-08 16:44:52.052] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-11-08 16:44:52.052] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [547] [INFO ] Completed initialization in 1 ms
+[2022-11-08 16:44:52.052] [com.hotel_server.service.impl.UserServiceImpl] [http-nio-8080-exec-1] [36] [INFO ] User getAll
+[2022-11-08 16:45:08.008] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-3] [23] [INFO ] Class apartment getAll
+[2022-11-08 16:45:33.033] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-4] [40] [INFO ] Class apartment getByName is null (name): classic2
+[2022-11-08 16:45:33.033] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-4] [58] [INFO ] New ClassApartment build (name, price): classic2 , 10.0
+[2022-11-08 16:48:07.007] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-6] [40] [INFO ] Class apartment getByName is null (name): classic5
+[2022-11-08 16:48:07.007] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-6] [58] [INFO ] New ClassApartment build (name, price): classic5 , 10.0
+[2022-11-08 16:48:26.026] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-7] [37] [INFO ] Class apartment getByName is not null (name): classic5
+[2022-11-08 16:48:32.032] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-8] [40] [INFO ] Class apartment getByName is null (name): classic6
+[2022-11-08 16:48:32.032] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-8] [58] [INFO ] New ClassApartment build (name, price): classic6 , 10.0
+[2022-11-08 16:52:06.006] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-2] [40] [INFO ] Class apartment getByName is null (name): classic7
+[2022-11-08 16:52:06.006] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-2] [58] [INFO ] New ClassApartment build (name, price): classic7 , 10.0
+[2022-11-08 16:52:41.041] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-3] [40] [INFO ] Class apartment getByName is null (name): classic7
+[2022-11-08 16:52:41.041] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-3] [58] [INFO ] New ClassApartment build (name, price): classic7 , 10.0
+[2022-11-08 16:53:01.001] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-5] [40] [INFO ] Class apartment getByName is null (name): classic10
+[2022-11-08 16:53:01.001] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-5] [58] [INFO ] New ClassApartment build (name, price): classic10 , 10.0
+[2022-11-08 16:53:51.051] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-7] [40] [INFO ] Class apartment getByName is null (name): classic10
+[2022-11-08 16:53:51.051] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-7] [58] [INFO ] New ClassApartment build (name, price): classic10 , 10.0
+[2022-11-08 17:15:27.027] [com.hotel_server.exceptionHandler.ExceptionHandlerValidation] [http-nio-8080-exec-9] [63] [ERROR] EntityNotFoundExceptions: null
+[2022-11-08 17:15:41.041] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-1] [23] [INFO ] Class apartment getAll
+[2022-11-08 17:16:18.018] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 17:16:20.020] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 124301 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 17:16:20.020] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 17:16:20.020] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 17:16:21.021] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 17:16:21.021] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 44 ms. Found 10 JPA repository interfaces.
+[2022-11-08 17:16:21.021] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 17:16:22.022] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1180 ms
+[2022-11-08 17:16:23.023] [org.springframework.context.support.AbstractApplicationContext] [main] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db.changelog/constraints/VC-1.yaml::1653916925456-36::elena (generated):
+     Reason: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+[2022-11-08 17:16:23.023] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [main] [136] [INFO ] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-11-08 17:16:23.023] [org.springframework.boot.SpringApplication] [main] [835] [ERROR] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db.changelog/constraints/VC-1.yaml::1653916925456-36::elena (generated):
+     Reason: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:745)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:420)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at com.hotel_server.HotelServerApplication.main(HotelServerApplication.java:11)
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db.changelog/constraints/VC-1.yaml::1653916925456-36::elena (generated):
+     Reason: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:124)
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:265)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Scope.child(Scope.java:239)
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:264)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2404)
+	at liquibase.Liquibase.update(Liquibase.java:211)
+	at liquibase.Liquibase.update(Liquibase.java:197)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:314)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:269)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 18 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for change set db.changelog/constraints/VC-1.yaml::1653916925456-36::elena (generated):
+     Reason: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:695)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:49)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:111)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:110)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Scope.child(Scope.java:239)
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:94)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Scope.child(Scope.java:239)
+	at liquibase.Scope.child(Scope.java:243)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:66)
+	... 36 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:393)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:82)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:150)
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1279)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1261)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:660)
+	... 56 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment".
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2365)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:355)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:490)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:408)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:329)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:315)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:291)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:286)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:389)
+	... 61 common frames omitted
+[2022-11-08 17:17:29.029] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 124628 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 17:17:29.029] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 17:17:29.029] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 17:17:30.030] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 17:17:30.030] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 44 ms. Found 10 JPA repository interfaces.
+[2022-11-08 17:17:30.030] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 17:17:30.030] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1219 ms
+[2022-11-08 17:17:31.031] [org.springframework.context.support.AbstractApplicationContext] [main] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db.changelog/constraints/VC-1.yaml::1653916925456-36::elena (generated):
+     Reason: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+[2022-11-08 17:17:31.031] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [main] [136] [INFO ] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-11-08 17:17:31.031] [org.springframework.boot.SpringApplication] [main] [835] [ERROR] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db.changelog/constraints/VC-1.yaml::1653916925456-36::elena (generated):
+     Reason: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:745)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:420)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at com.hotel_server.HotelServerApplication.main(HotelServerApplication.java:11)
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db.changelog/constraints/VC-1.yaml::1653916925456-36::elena (generated):
+     Reason: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:124)
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:265)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Scope.child(Scope.java:239)
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:264)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2404)
+	at liquibase.Liquibase.update(Liquibase.java:211)
+	at liquibase.Liquibase.update(Liquibase.java:197)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:314)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:269)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 18 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for change set db.changelog/constraints/VC-1.yaml::1653916925456-36::elena (generated):
+     Reason: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:695)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:49)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:111)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:110)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Scope.child(Scope.java:239)
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:94)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Scope.child(Scope.java:239)
+	at liquibase.Scope.child(Scope.java:243)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:66)
+	... 36 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment". [Failed SQL: (0) ALTER TABLE public.room_kind ADD CONSTRAINT "fk_classApartment" FOREIGN KEY (class_apartment_id) REFERENCES public.class_apartment (id) ON UPDATE RESTRICT ON DELETE RESTRICT]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:393)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:82)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:150)
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1279)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1261)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:660)
+	... 56 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: insert or update on table "room_kind" violates foreign key constraint "fk_classApartment"
+  Detail: Key (class_apartment_id)=(1) is not present in table "class_apartment".
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2365)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:355)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:490)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:408)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:329)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:315)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:291)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:286)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:389)
+	... 61 common frames omitted
+[2022-11-08 17:21:56.056] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 130137 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 17:21:56.056] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 17:21:56.056] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 17:21:57.057] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 17:21:57.057] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 46 ms. Found 10 JPA repository interfaces.
+[2022-11-08 17:21:57.057] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 17:21:57.057] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1200 ms
+[2022-11-08 17:21:59.059] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 17:21:59.059] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-08 17:22:00.000] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-08 17:22:00.000] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.147 seconds (JVM running for 4.754)
+[2022-11-08 17:22:08.008] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-11-08 17:22:08.008] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [547] [INFO ] Completed initialization in 1 ms
+[2022-11-08 17:22:08.008] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-2] [23] [INFO ] Class apartment getAll
+[2022-11-08 17:22:16.016] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-3] [40] [INFO ] Class apartment getByName is null (name): classic10
+[2022-11-08 17:22:16.016] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-3] [58] [INFO ] New ClassApartment build (name, price): classic10 , 10.0
+[2022-11-08 17:22:23.023] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-4] [40] [INFO ] Class apartment getByName is null (name): classic11
+[2022-11-08 17:22:23.023] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-4] [58] [INFO ] New ClassApartment build (name, price): classic11 , 10.0
+[2022-11-08 17:22:34.034] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-5] [40] [INFO ] Class apartment getByName is null (name): classic12
+[2022-11-08 17:22:34.034] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-5] [58] [INFO ] New ClassApartment build (name, price): classic12 , 10.0
+[2022-11-08 17:22:45.045] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-6] [40] [INFO ] Class apartment getByName is null (name): classic13
+[2022-11-08 17:22:45.045] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-6] [58] [INFO ] New ClassApartment build (name, price): classic13 , 10.0
+[2022-11-08 17:24:48.048] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 17:24:51.051] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 133770 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 17:24:51.051] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 17:24:51.051] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 17:24:51.051] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 17:24:51.051] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 46 ms. Found 10 JPA repository interfaces.
+[2022-11-08 17:24:52.052] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 17:24:52.052] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1165 ms
+[2022-11-08 17:24:53.053] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 17:24:54.054] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-08 17:24:55.055] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-08 17:24:55.055] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.208 seconds (JVM running for 4.681)
+[2022-11-08 17:25:02.002] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-11-08 17:25:02.002] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-4] [547] [INFO ] Completed initialization in 2 ms
+[2022-11-08 17:25:02.002] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-4] [40] [INFO ] Class apartment getByName is null (name): classic15
+[2022-11-08 17:25:02.002] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-4] [58] [INFO ] New ClassApartment build (name, price): classic15 , 10.0
+[2022-11-08 17:25:12.012] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-1] [40] [INFO ] Class apartment getByName is null (name): classic16
+[2022-11-08 17:25:12.012] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-1] [58] [INFO ] New ClassApartment build (name, price): classic16 , 10.0
+[2022-11-08 17:25:16.016] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-2] [40] [INFO ] Class apartment getByName is null (name): classic17
+[2022-11-08 17:25:16.016] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-2] [58] [INFO ] New ClassApartment build (name, price): classic17 , 10.0
+[2022-11-08 17:25:21.021] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-5] [40] [INFO ] Class apartment getByName is null (name): classic18
+[2022-11-08 17:25:21.021] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-5] [58] [INFO ] New ClassApartment build (name, price): classic18 , 10.0
+[2022-11-08 17:25:28.028] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-6] [40] [INFO ] Class apartment getByName is null (name): classic20
+[2022-11-08 17:25:28.028] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-6] [58] [INFO ] New ClassApartment build (name, price): classic20 , 10.0
+[2022-11-08 17:26:54.054] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 17:30:17.017] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 138070 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-08 17:30:17.017] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-08 17:30:17.017] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-08 17:30:17.017] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-08 17:30:17.017] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 43 ms. Found 10 JPA repository interfaces.
+[2022-11-08 17:30:18.018] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-08 17:30:18.018] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1159 ms
+[2022-11-08 17:30:20.020] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-08 17:30:20.020] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-08 17:30:21.021] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-08 17:30:21.021] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.244 seconds (JVM running for 4.881)
+[2022-11-08 17:30:27.027] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-11-08 17:30:27.027] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [547] [INFO ] Completed initialization in 1 ms
+[2022-11-08 17:30:27.027] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-2] [23] [INFO ] Class apartment getAll
+[2022-11-08 17:30:33.033] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-3] [23] [INFO ] Class apartment getAll
+[2022-11-08 17:30:42.042] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-5] [40] [INFO ] Class apartment getByName is null (name): classic1
+[2022-11-08 17:30:42.042] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-5] [58] [INFO ] New ClassApartment build (name, price): classic1 , 10.0
+[2022-11-08 17:30:50.050] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-4] [40] [INFO ] Class apartment getByName is null (name): classic2
+[2022-11-08 17:30:50.050] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-4] [58] [INFO ] New ClassApartment build (name, price): classic2 , 10.0
+[2022-11-08 17:30:54.054] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-6] [40] [INFO ] Class apartment getByName is null (name): classic3
+[2022-11-08 17:30:54.054] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-6] [58] [INFO ] New ClassApartment build (name, price): classic3 , 10.0
+[2022-11-08 17:33:56.056] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'

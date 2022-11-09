@@ -15,6 +15,8 @@ import javax.persistence.*;
 @Table(name = "Class_apartment")
 public class ClassApartment {
     @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "class_generator")
+//    @SequenceGenerator(name="class_generator", sequenceName = "class_apartment_id_seq", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
