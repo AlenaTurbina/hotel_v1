@@ -67,26 +67,26 @@ class ClassApartmentUpdateValidatorTest {
         verify(errors, never())
                 .rejectValue("name", "validation.adminSide.duplicateName");
     }
-
-    @Test
-    void testValidateShouldRejectClassApartmentSameName() {
-        when(classApartmentService.getClassApartmentByName(any())).thenReturn(classApartmentExist);
-        when(classApartmentDTO.getId()).thenReturn(1);
-        when(classApartmentExist.getId()).thenReturn(1);
-        classApartmentUpdateValidator.validate(classApartmentDTO, errors);
-
-        verify(errors, never())
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
-
-    @Test
-    void testValidateShouldRejectClassApartmentSameExistName() {
-        when(classApartmentService.getClassApartmentByName(any())).thenReturn(classApartmentExist);
-        when(classApartmentDTO.getId()).thenReturn(1);
-        when(classApartmentExist.getId()).thenReturn(2);
-        classApartmentUpdateValidator.validate(classApartmentDTO, errors);
-
-        verify(errors, times(1))
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
+//
+//    @Test
+//    void testValidateShouldRejectClassApartmentSameName() {
+//        when(classApartmentService.getClassApartmentByName(any())).thenReturn(classApartmentExist);
+//        when(classApartmentDTO.getId()).thenReturn(1);
+//        when(classApartmentExist.getId()).thenReturn(1);
+//        classApartmentUpdateValidator.validate(classApartmentDTO, errors);
+//
+//        verify(errors, never())
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
+//
+//    @Test
+//    void testValidateShouldRejectClassApartmentSameExistName() {
+//        when(classApartmentService.getClassApartmentByName(any())).thenReturn(classApartmentExist);
+//        when(classApartmentDTO.getId()).thenReturn(1);
+//        when(classApartmentExist.getId()).thenReturn(2);
+//        classApartmentUpdateValidator.validate(classApartmentDTO, errors);
+//
+//        verify(errors, times(1))
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
 }

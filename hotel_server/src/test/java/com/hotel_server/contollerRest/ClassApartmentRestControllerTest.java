@@ -36,59 +36,59 @@ class ClassApartmentRestControllerTest {
     private ClassApartmentMapper classApartmentMapper;
 
 
-    @Test
-    void testGetAllClassApartments() throws Exception {
-        ClassApartmentDTO classApartmentDTO = new ClassApartmentDTO();
-        classApartmentDTO.setId(1);
-        classApartmentDTO.setName("A");
-        classApartmentDTO.setPlacePrice(10.0);
-
-        List<ClassApartmentDTO> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDTO));
-        Mockito.when(classApartmentMapper.toListClassApartmentDTO(any())).thenReturn(classApartmentDTOList);
-
-        mockMvc.perform(get("/api/admin/classApartments")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(jsonPath("$[0].name", Matchers.equalTo(classApartmentDTO.getName())))
-                .andExpect(content().json(asJsonString(classApartmentDTOList)))
-                .andDo(print());
-    }
-
-    @Test
-    void testCreateClassApartment() throws Exception {
-        ClassApartmentDTO classApartmentDTO = new ClassApartmentDTO();
-        classApartmentDTO.setId(null);
-        classApartmentDTO.setName("A");
-        classApartmentDTO.setPlacePrice(10.0);
-
-        Mockito.when(classApartmentMapper.toClassApartmentDTO(any())).thenReturn(classApartmentDTO);
-        Mockito.when(classApartmentValidator.supports(any())).thenReturn(true);
-        mockMvc.perform(post("/api/admin/classApartments")
-                        .content(asJsonString(classApartmentDTO))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated())
-                .andExpect(content().json(asJsonString(classApartmentDTO)))
-                .andDo(print());
-    }
-
-    @Test
-    void testShowUniqueClassApartmentsFromRooms() throws Exception {
-        ClassApartmentDTO classApartmentDTO = new ClassApartmentDTO();
-        classApartmentDTO.setId(null);
-        classApartmentDTO.setName("A");
-        classApartmentDTO.setPlacePrice(10.0);
-
-        List<ClassApartmentDTO> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDTO));
-        Mockito.when(classApartmentMapper.toListClassApartmentDTO(any())).thenReturn(classApartmentDTOList);
-
-        mockMvc.perform(get("/api/uniqueClassApartmentsFromRooms")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(content().json(asJsonString(classApartmentDTOList)))
-                .andDo(print());
-    }
+//    @Test
+//    void testGetAllClassApartments() throws Exception {
+//        ClassApartmentDTO classApartmentDTO = new ClassApartmentDTO();
+//        classApartmentDTO.setId(1);
+//        classApartmentDTO.setName("A");
+//        classApartmentDTO.setPlacePrice(10.0);
+//
+//        List<ClassApartmentDTO> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDTO));
+//        Mockito.when(classApartmentMapper.toListClassApartmentDTO(any())).thenReturn(classApartmentDTOList);
+//
+//        mockMvc.perform(get("/api/admin/classApartments")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(jsonPath("$[0].name", Matchers.equalTo(classApartmentDTO.getName())))
+//                .andExpect(content().json(asJsonString(classApartmentDTOList)))
+//                .andDo(print());
+//    }
+//
+//    @Test
+//    void testCreateClassApartment() throws Exception {
+//        ClassApartmentDTO classApartmentDTO = new ClassApartmentDTO();
+//        classApartmentDTO.setId(null);
+//        classApartmentDTO.setName("A");
+//        classApartmentDTO.setPlacePrice(10.0);
+//
+//        Mockito.when(classApartmentMapper.toClassApartmentDTO(any())).thenReturn(classApartmentDTO);
+//        Mockito.when(classApartmentValidator.supports(any())).thenReturn(true);
+//        mockMvc.perform(post("/api/admin/classApartments")
+//                        .content(asJsonString(classApartmentDTO))
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isCreated())
+//                .andExpect(content().json(asJsonString(classApartmentDTO)))
+//                .andDo(print());
+//    }
+//
+//    @Test
+//    void testShowUniqueClassApartmentsFromRooms() throws Exception {
+//        ClassApartmentDTO classApartmentDTO = new ClassApartmentDTO();
+//        classApartmentDTO.setId(null);
+//        classApartmentDTO.setName("A");
+//        classApartmentDTO.setPlacePrice(10.0);
+//
+//        List<ClassApartmentDTO> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDTO));
+//        Mockito.when(classApartmentMapper.toListClassApartmentDTO(any())).thenReturn(classApartmentDTOList);
+//
+//        mockMvc.perform(get("/api/uniqueClassApartmentsFromRooms")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(content().json(asJsonString(classApartmentDTOList)))
+//                .andDo(print());
+//    }
 
 }

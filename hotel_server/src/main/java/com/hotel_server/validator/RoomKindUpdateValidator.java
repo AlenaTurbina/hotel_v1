@@ -24,7 +24,7 @@ public class RoomKindUpdateValidator implements Validator {
     public void validate(Object target, Errors errors) {
         RoomKindDTO roomKindDTO = (RoomKindDTO) target;
 
-        Integer falseID = roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(roomKindDTO.getRoomType(), roomKindDTO.getClassApartment());
+//        Integer falseID = roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(roomKindDTO.getRoomType(), roomKindDTO.getClassApartment());
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "roomType", "validation.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "classApartment", "validation.required");
@@ -34,9 +34,9 @@ public class RoomKindUpdateValidator implements Validator {
             errors.rejectValue("roomPrice", "validation.field.positive");
         }
 
-        if (falseID != null && falseID != roomKindDTO.getId()) {
-            errors.rejectValue("classApartment", "validation.adminSide.roomKind.classApartment");
-        }
+//        if (falseID != null && falseID != roomKindDTO.getId()) {
+//            errors.rejectValue("classApartment", "validation.adminSide.roomKind.classApartment");
+//        }
 
 
     }

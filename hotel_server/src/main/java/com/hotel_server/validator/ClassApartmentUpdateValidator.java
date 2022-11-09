@@ -9,6 +9,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import java.util.UUID;
+
 
 @Component
 @AllArgsConstructor
@@ -24,7 +26,8 @@ public class ClassApartmentUpdateValidator implements Validator {
     public void validate(Object target, Errors errors) {
        ClassApartmentDTO classApartmentDTO = (ClassApartmentDTO) target;
 
-        Integer checkID = checkClassApartment(classApartmentDTO);
+//        Integer checkID = checkClassApartment(classApartmentDTO);
+        UUID checkID = checkClassApartment(classApartmentDTO);
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "validation.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "placePrice", "validation.required");
@@ -39,7 +42,14 @@ public class ClassApartmentUpdateValidator implements Validator {
         }
     }
 
-    public Integer checkClassApartment(ClassApartmentDTO classApartmentDTO) {
+//    public Integer checkClassApartment(ClassApartmentDTO classApartmentDTO) {
+//        ClassApartment findClassApartment = classApartmentService.getClassApartmentByName(classApartmentDTO.getName());
+//        if (findClassApartment != null) {
+//            return findClassApartment.getId();
+//        }
+//        return null;
+//    }
+    public UUID checkClassApartment(ClassApartmentDTO classApartmentDTO) {
         ClassApartment findClassApartment = classApartmentService.getClassApartmentByName(classApartmentDTO.getName());
         if (findClassApartment != null) {
             return findClassApartment.getId();

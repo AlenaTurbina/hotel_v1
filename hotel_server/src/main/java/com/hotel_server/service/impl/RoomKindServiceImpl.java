@@ -53,23 +53,25 @@ public class RoomKindServiceImpl implements RoomKindService {
     @Override
     @Transactional
     public RoomKind saveRoomKind(RoomKindDTO roomKindDTO) {
-        var roomKind = new RoomKind();
-        roomKind.setRoomType(roomTypeService.getRoomTypeById(roomKindDTO.getRoomType()));
-        roomKind.setClassApartment(classApartmentService.getClassApartmentById(roomKindDTO.getClassApartment()));
-        roomKind.setRoomPrice(roomKindDTO.getRoomPrice());
-        log.info("New room kind set (roomType, classApartment, price): " + roomKindDTO.getRoomType() + ", "
-                + roomKindDTO.getClassApartment() + ", " + roomKindDTO.getRoomPrice());
-        return roomKindRepository.saveAndFlush(roomKind);
+//        var roomKind = new RoomKind();
+//        roomKind.setRoomType(roomTypeService.getRoomTypeById(roomKindDTO.getRoomType()));
+//        roomKind.setClassApartment(classApartmentService.getClassApartmentById(roomKindDTO.getClassApartment()));
+//        roomKind.setRoomPrice(roomKindDTO.getRoomPrice());
+//        log.info("New room kind set (roomType, classApartment, price): " + roomKindDTO.getRoomType() + ", "
+//                + roomKindDTO.getClassApartment() + ", " + roomKindDTO.getRoomPrice());
+//        return roomKindRepository.saveAndFlush(roomKind);
+        return null;
     }
 
     @Override
     @Transactional
     public RoomKind updateRoomKind(RoomKindDTO roomKindDTO) {
-        var roomKindNew = roomKindRepository.getById(roomKindDTO.getId());
-        roomKindNew.setRoomType(roomTypeRepository.getById(roomKindDTO.getRoomType()));
-        roomKindNew.setClassApartment(classApartmentRepository.getById(roomKindDTO.getClassApartment()));
-        roomKindNew.setRoomPrice(roomKindDTO.getRoomPrice());
-        log.info("Room kind update (id): " + roomKindDTO.getId());
-        return roomKindRepository.saveAndFlush(roomKindNew);
+//        var roomKindNew = roomKindRepository.getById(roomKindDTO.getId());
+//        roomKindNew.setRoomType(roomTypeRepository.getById(roomKindDTO.getRoomType()));
+//        roomKindNew.setClassApartment(classApartmentRepository.getById(roomKindDTO.getClassApartment()));
+//        roomKindNew.setRoomPrice(roomKindDTO.getRoomPrice());
+//        log.info("Room kind update (id): " + roomKindDTO.getId());
+//        return roomKindRepository.saveAndFlush(roomKindNew);
+        return null;
     }
 }

@@ -8,7 +8,7 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: name
                   name: name
@@ -207,7 +207,7 @@ databaseChangeLog:
               - column:
                   header: class_apartment_id
                   name: class_apartment_id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: room_price
                   name: room_price

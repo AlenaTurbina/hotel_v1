@@ -176,7 +176,7 @@ public class OrderBookingServiceImpl implements OrderBookingService {
             RoomKindDTO roomKindDTO = new RoomKindDTO();
             roomKindDTO.setId(convertDataObjectBigIntIntoInteger(resultRoom[0]));
             roomKindDTO.setRoomType(convertDataObjectBigIntIntoInteger(resultRoom[1]));
-            roomKindDTO.setClassApartment(convertDataObjectBigIntIntoInteger(resultRoom[2]));
+//            roomKindDTO.setClassApartment(convertDataObjectBigIntIntoInteger(resultRoom[2]));
             roomKindDTO.setRoomPrice((Double) resultRoom[3]);
             resultMap.put(roomKindDTO, convertDataObjectBigIntIntoInteger(resultRoom[4]).longValue());
         }

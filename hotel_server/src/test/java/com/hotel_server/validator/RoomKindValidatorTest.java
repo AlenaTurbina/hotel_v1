@@ -28,50 +28,50 @@ class RoomKindValidatorTest {
     private static final Double testPriceInvalidZero = 0.0;
 
 
-    @Test
-    void testValidateShouldAcceptRoomKindDTOPositivePlacePrice() {
-        when(roomKindDTO.getRoomPrice()).thenReturn(testPriceValid);
-        roomKindValidator.validate(roomKindDTO, errors);
+//    @Test
+//    void testValidateShouldAcceptRoomKindDTOPositivePlacePrice() {
+//        when(roomKindDTO.getRoomPrice()).thenReturn(testPriceValid);
+//        roomKindValidator.validate(roomKindDTO, errors);
+//
+//        verify(errors, never())
+//                .rejectValue("roomPrice", "validation.field.positive");
+//    }
+//
+//    @Test
+//    void testValidateShouldRejectRoomKindDTONegativePlacePrice() {
+//        when(roomKindDTO.getRoomPrice()).thenReturn(testPriceInvalid);
+//        roomKindValidator.validate(roomKindDTO, errors);
+//
+//        verify(errors, times(1))
+//                .rejectValue("roomPrice", "validation.field.positive");
+//    }
+//
+//    @Test
+//    void testValidateShouldRejectRoomKindDTOZeroPlacePrice() {
+//        when(roomKindDTO.getRoomPrice()).thenReturn(testPriceInvalidZero);
+//        roomKindValidator.validate(roomKindDTO, errors);
+//
+//        verify(errors, times(1))
+//                .rejectValue("roomPrice", "validation.field.positive");
+//    }
+//
+//    @Test
+//    void testValidateShouldAcceptRoomKindNewName() {
+//        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(null);
+//        roomKindValidator.validate(roomKindDTO, errors);
+//
+//        verify(errors, never())
+//                .rejectValue("classApartment", "validation.adminSide.roomKind.classApartment");
+//    }
 
-        verify(errors, never())
-                .rejectValue("roomPrice", "validation.field.positive");
-    }
-
-    @Test
-    void testValidateShouldRejectRoomKindDTONegativePlacePrice() {
-        when(roomKindDTO.getRoomPrice()).thenReturn(testPriceInvalid);
-        roomKindValidator.validate(roomKindDTO, errors);
-
-        verify(errors, times(1))
-                .rejectValue("roomPrice", "validation.field.positive");
-    }
-
-    @Test
-    void testValidateShouldRejectRoomKindDTOZeroPlacePrice() {
-        when(roomKindDTO.getRoomPrice()).thenReturn(testPriceInvalidZero);
-        roomKindValidator.validate(roomKindDTO, errors);
-
-        verify(errors, times(1))
-                .rejectValue("roomPrice", "validation.field.positive");
-    }
-
-    @Test
-    void testValidateShouldAcceptRoomKindNewName() {
-        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(null);
-        roomKindValidator.validate(roomKindDTO, errors);
-
-        verify(errors, never())
-                .rejectValue("classApartment", "validation.adminSide.roomKind.classApartment");
-    }
-
-    @Test
-    void testValidateShouldRejectRoomKindExistName() {
-        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(1);
-        when(roomKindDTO.getClassApartment()).thenReturn(1);
-        when(roomKindDTO.getRoomType()).thenReturn(1);
-        roomKindValidator.validate(roomKindDTO, errors);
-
-        verify(errors, times(1))
-                .rejectValue("classApartment", "validation.adminSide.roomKind.classApartment");
-    }
+//    @Test
+//    void testValidateShouldRejectRoomKindExistName() {
+//        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(1);
+//        when(roomKindDTO.getClassApartment()).thenReturn(1);
+//        when(roomKindDTO.getRoomType()).thenReturn(1);
+//        roomKindValidator.validate(roomKindDTO, errors);
+//
+//        verify(errors, times(1))
+//                .rejectValue("classApartment", "validation.adminSide.roomKind.classApartment");
+//    }
 }

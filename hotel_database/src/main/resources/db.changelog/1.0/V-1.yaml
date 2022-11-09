@@ -6,12 +6,11 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: SERIAL
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -214,7 +213,8 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: class_apartment_id
-                  type: BIGINT
+#                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false

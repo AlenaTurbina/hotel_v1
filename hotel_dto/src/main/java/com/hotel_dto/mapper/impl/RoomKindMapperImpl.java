@@ -19,7 +19,7 @@ public class RoomKindMapperImpl implements RoomKindMapper {
         roomKindDTO.setPlacePrice(roomKind.getClassApartment().getPlacePrice());
         roomKindDTO.setQuantityPlaces(roomKind.getRoomType().getQuantityPlaces());
         roomKindDTO.setRoomType(roomKind.getRoomType().getId());
-        roomKindDTO.setClassApartment(roomKind.getClassApartment().getId());
+       // roomKindDTO.setClassApartment(roomKind.getClassApartment().getId());
         roomKindDTO.setClassApartmentName(roomKind.getClassApartment().getName());
         roomKindDTO.setRoomTypeName(roomKind.getRoomType().getName());
         return roomKindDTO;
