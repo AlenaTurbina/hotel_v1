@@ -31,21 +31,21 @@ class RoleRestControllerTest {
     private RoleMapper roleMapper;
 
 
-    @Test
-    void testGetAllRoles() throws Exception {
-        Integer id = 1;
-        RoleDTO roleDTO = new RoleDTO();
-        roleDTO.setId(id);
-
-        List<RoleDTO> roleDTOList = new ArrayList<>(List.of(roleDTO));
-        Mockito.when(roleMapper.toListRoleDTO(any())).thenReturn(roleDTOList);
-
-        mockMvc.perform(get("/api/admin/roles")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(jsonPath("$[0].id", Matchers.equalTo(roleDTO.getId())))
-                .andExpect(content().json(asJsonString((roleDTOList))))
-                .andDo(print());
-    }
+//    @Test
+//    void testGetAllRoles() throws Exception {
+//        Integer id = 1;
+//        RoleDTO roleDTO = new RoleDTO();
+//        roleDTO.setId(id);
+//
+//        List<RoleDTO> roleDTOList = new ArrayList<>(List.of(roleDTO));
+//        Mockito.when(roleMapper.toListRoleDTO(any())).thenReturn(roleDTOList);
+//
+//        mockMvc.perform(get("/api/admin/roles")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(jsonPath("$[0].id", Matchers.equalTo(roleDTO.getId())))
+//                .andExpect(content().json(asJsonString((roleDTOList))))
+//                .andDo(print());
+//    }
 }

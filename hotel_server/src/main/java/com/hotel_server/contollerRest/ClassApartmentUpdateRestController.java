@@ -13,6 +13,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 
 @RestController
@@ -31,8 +32,8 @@ public class ClassApartmentUpdateRestController {
 
     @Operation(summary = "Getting Class apartment by id")
     @GetMapping(value = "/admin/classApartments/{id}")
-    ClassApartmentDTO getClassApartment(@PathVariable Integer id) {
-        return classApartmentMapper.toClassApartmentDTO(classApartmentService.getClassApartmentById(id));
+    ClassApartmentDTO getClassApartment(@PathVariable String id) {
+        return classApartmentMapper.toClassApartmentDTO(classApartmentService.getClassApartmentById(UUID.fromString(id)));
     }
 
     @Operation(summary = "Updating Class apartment")

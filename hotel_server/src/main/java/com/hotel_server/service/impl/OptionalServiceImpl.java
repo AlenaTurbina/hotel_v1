@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -26,7 +27,7 @@ public class OptionalServiceImpl implements OptionalService {
     }
 
     @Override
-    public Optional getOptionalById(Integer id) {
+    public Optional getOptionalById(UUID id) {
         log.info("Get optional by id " + id);
         return optionalRepository.findById(id).orElseThrow(() -> new ServerEntityNotFoundException(id));
     }
@@ -44,9 +45,9 @@ public class OptionalServiceImpl implements OptionalService {
     }
 
     @Override
-    public List<Optional> getListOptionalById(List<Integer> ids) {
+    public List<Optional> getListOptionalById(List<UUID> ids) {
         List<Optional> optionals = new ArrayList<>();
-        for (Integer id : ids) {
+        for (UUID id : ids) {
             optionals.add(getOptionalById(id));
             log.info("Optional getListById add optional (id): " + id);
         }

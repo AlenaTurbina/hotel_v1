@@ -51,7 +51,7 @@ class ClassApartmentServiceImplTest {
 //        assertThat(classApartmentList).isNotEmpty();
 //        assertThat(classApartmentList.size()).isEqualTo(2);
 //    }
-//
+////
 //    @DisplayName("JUnit test for getAllClassApartment method (empty list)")
 //    @Test
 //    void test_WhenGetAll_ThenReturnEmptyClassApartmentList(){

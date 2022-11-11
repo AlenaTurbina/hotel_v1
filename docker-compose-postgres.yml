@@ -7,15 +7,10 @@ services:
     ports:
       - "5432:5432"
     restart: always
-#    healthcheck:
-#      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", '-u$MYSQL_USER', '-p$MYSQL_PASSWORD'  ]
-#      timeout: 10s
-#      retries: 10
     environment:
       - POSTGRES_DB=hotel
       - POSTGRES_USER=user_1
       - POSTGRES_PASSWORD=12345
-#      - MYSQL_ROOT_PASSWORD=12345
     volumes:
       - db:/var/lib/postgres
 

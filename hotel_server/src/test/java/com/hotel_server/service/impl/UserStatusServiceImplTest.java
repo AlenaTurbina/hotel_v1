@@ -28,61 +28,61 @@ class UserStatusServiceImplTest {
 
     private UserStatus userStatus;
 
-    @BeforeEach
-    public void setUp() {
-        userStatus = UserStatus.builder()
-                .id(1)
-                .name("US1")
-                .build();
-    }
-
-    @DisplayName("JUnit test for getAllUserStatuses method")
-    @Test
-    void test_WhenGetAll_ThenReturnUserStatusList() {
-        UserStatus userStatus1 = UserStatus.builder()
-                .id(2)
-                .name("US2")
-                .build();
-        given(userStatusRepository.findAll()).willReturn(List.of(userStatus, userStatus1));
-        List<UserStatus> userStatusList = userStatusService.getAllUserStatuses();
-
-        assertThat(userStatusList).isNotEmpty();
-        assertThat(userStatusList.size()).isEqualTo(2);
-    }
-
-    @DisplayName("JUnit test for getAllUserStatuses method (empty list)")
-    @Test
-    void test_WhenGetAll_ThenReturnEmptyUserStatusList() {
-        UserStatus userStatus1 = UserStatus.builder()
-                .id(2)
-                .name("US2")
-                .build();
-
-        given(userStatusRepository.findAll()).willReturn(Collections.emptyList());
-        List<UserStatus> userStatusList = userStatusService.getAllUserStatuses();
-
-        assertThat(userStatusList).isEmpty();
-        assertThat(userStatusList.size()).isEqualTo(0);
-    }
-
-    @DisplayName("JUnit test for getUserStatusById method")
-    @Test
-    void test_GivenUserStatusId_WhenGetUserStatusById_thenReturnUserStatus() {
-        given(userStatusRepository.findById(userStatus.getId()))
-                .willReturn(Optional.of(userStatus));
-        UserStatus userStatusExpected = userStatusService.getUserStatusById(userStatus.getId());
-
-        assertThat(userStatusExpected).isNotNull();
-    }
-
-    @DisplayName("JUnit test for getUserStatusById method (throw exception)")
-    @Test
-    void test_GivenUserStatusId_WhenGetUserStatusById_ThenThrowException() {
-        given(userStatusRepository.findById(userStatus.getId()))
-                .willReturn(Optional.empty());
-
-        Assertions.assertThrows(ServerEntityNotFoundException.class,
-                () -> userStatusService.getUserStatusById(userStatus.getId()));
-    }
+//    @BeforeEach
+//    public void setUp() {
+//        userStatus = UserStatus.builder()
+//                .id(1)
+//                .name("US1")
+//                .build();
+//    }
+//
+//    @DisplayName("JUnit test for getAllUserStatuses method")
+//    @Test
+//    void test_WhenGetAll_ThenReturnUserStatusList() {
+//        UserStatus userStatus1 = UserStatus.builder()
+//                .id(2)
+//                .name("US2")
+//                .build();
+//        given(userStatusRepository.findAll()).willReturn(List.of(userStatus, userStatus1));
+//        List<UserStatus> userStatusList = userStatusService.getAllUserStatuses();
+//
+//        assertThat(userStatusList).isNotEmpty();
+//        assertThat(userStatusList.size()).isEqualTo(2);
+//    }
+//
+//    @DisplayName("JUnit test for getAllUserStatuses method (empty list)")
+//    @Test
+//    void test_WhenGetAll_ThenReturnEmptyUserStatusList() {
+//        UserStatus userStatus1 = UserStatus.builder()
+//                .id(2)
+//                .name("US2")
+//                .build();
+//
+//        given(userStatusRepository.findAll()).willReturn(Collections.emptyList());
+//        List<UserStatus> userStatusList = userStatusService.getAllUserStatuses();
+//
+//        assertThat(userStatusList).isEmpty();
+//        assertThat(userStatusList.size()).isEqualTo(0);
+//    }
+//
+//    @DisplayName("JUnit test for getUserStatusById method")
+//    @Test
+//    void test_GivenUserStatusId_WhenGetUserStatusById_thenReturnUserStatus() {
+//        given(userStatusRepository.findById(userStatus.getId()))
+//                .willReturn(Optional.of(userStatus));
+//        UserStatus userStatusExpected = userStatusService.getUserStatusById(userStatus.getId());
+//
+//        assertThat(userStatusExpected).isNotNull();
+//    }
+//
+//    @DisplayName("JUnit test for getUserStatusById method (throw exception)")
+//    @Test
+//    void test_GivenUserStatusId_WhenGetUserStatusById_ThenThrowException() {
+//        given(userStatusRepository.findById(userStatus.getId()))
+//                .willReturn(Optional.empty());
+//
+//        Assertions.assertThrows(ServerEntityNotFoundException.class,
+//                () -> userStatusService.getUserStatusById(userStatus.getId()));
+//    }
 
 }

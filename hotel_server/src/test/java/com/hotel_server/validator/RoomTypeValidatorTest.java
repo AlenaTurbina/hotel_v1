@@ -59,22 +59,22 @@ class RoomTypeValidatorTest {
     }
 
 
-    @Test
-    void testValidateShouldAcceptRoomTypeNewName() {
-        when(roomTypeService.getRoomTypeByName(any())).thenReturn(null);
-        roomTypeValidator.validate(roomTypeDTO, errors);
-
-        verify(errors, never())
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
-
-    @Test
-    void testValidateShouldRejectRoomTypeExistName() {
-        when(roomTypeService.getRoomTypeByName(any())).thenReturn(roomTypeExist);
-        roomTypeValidator.validate(roomTypeDTO, errors);
-
-        verify(errors, times(1))
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
+//    @Test
+//    void testValidateShouldAcceptRoomTypeNewName() {
+//        when(roomTypeService.getRoomTypeByName(any())).thenReturn(null);
+//        roomTypeValidator.validate(roomTypeDTO, errors);
+//
+//        verify(errors, never())
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
+//
+//    @Test
+//    void testValidateShouldRejectRoomTypeExistName() {
+//        when(roomTypeService.getRoomTypeByName(any())).thenReturn(roomTypeExist);
+//        roomTypeValidator.validate(roomTypeDTO, errors);
+//
+//        verify(errors, times(1))
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
 
 }

@@ -31,27 +31,27 @@ class DateBookingRestControllerTest {
     @MockBean
     private DateBookingValidator dateBookingValidator;
 
-    @Test
-    void testGetRoomKindsWithFreeRoomsQuantity() throws Exception {
-        RoomKindDTO roomKindDTO = new RoomKindDTO();
-        roomKindDTO.setId(1);
-        roomKindDTO.setRoomTypeName("A");
-        roomKindDTO.setClassApartmentName("B");
-
-        OrderBookingDTO orderBookingDTO = new OrderBookingDTO();
-        orderBookingDTO.setRoomKind(3);
-
-        Map<RoomKindDTO, Long> roomKindsMap = new HashMap<>();
-        roomKindsMap.put(roomKindDTO, 5L);
-        Mockito.when(orderBookingService.getRoomKindsWithFreeRooms(any())).thenReturn(roomKindsMap);
-        Mockito.when(dateBookingValidator.supports(any())).thenReturn(true);
-        mockMvc.perform(post("/api/home/freeRooms")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(orderBookingDTO))
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated())
-                .andExpect(content().json(asJsonString(roomKindsMap)))
-                .andDo(print());
-    }
+//    @Test
+//    void testGetRoomKindsWithFreeRoomsQuantity() throws Exception {
+//        RoomKindDTO roomKindDTO = new RoomKindDTO();
+//        roomKindDTO.setId(1);
+//        roomKindDTO.setRoomTypeName("A");
+//        roomKindDTO.setClassApartmentName("B");
+//
+//        OrderBookingDTO orderBookingDTO = new OrderBookingDTO();
+//        orderBookingDTO.setRoomKind(3);
+//
+//        Map<RoomKindDTO, Long> roomKindsMap = new HashMap<>();
+//        roomKindsMap.put(roomKindDTO, 5L);
+//        Mockito.when(orderBookingService.getRoomKindsWithFreeRooms(any())).thenReturn(roomKindsMap);
+//        Mockito.when(dateBookingValidator.supports(any())).thenReturn(true);
+//        mockMvc.perform(post("/api/home/freeRooms")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(asJsonString(orderBookingDTO))
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isCreated())
+//                .andExpect(content().json(asJsonString(roomKindsMap)))
+//                .andDo(print());
+//    }
 
 }

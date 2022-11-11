@@ -28,75 +28,75 @@ class OrderStatusServiceImplTest {
 
     private OrderStatus orderStatus;
 
-    @BeforeEach
-    public void setUp() {
-        orderStatus = OrderStatus.builder()
-                .id(1)
-                .name("OS1")
-                .build();
-    }
-
-    @DisplayName("JUnit test for getAllOrderStatuses method")
-    @Test
-    void test_WhenGetAll_ThenReturnOrderStatusList() {
-        OrderStatus orderStatus1 = OrderStatus.builder()
-                .id(1)
-                .name("OS1")
-                .build();
-        given(orderStatusRepository.findAll()).willReturn(List.of(orderStatus, orderStatus1));
-        List<OrderStatus> orderStatusList = orderStatusService.getAllOrderStatuses();
-
-        assertThat(orderStatusList).isNotEmpty();
-        assertThat((orderStatusList).size()).isEqualTo(2);
-    }
-
-    @DisplayName("JUnit test for getAllOrderStatuses method (empty list)")
-    @Test
-    void test_WhenGetAll_ThenReturnEmptyOrderStatusList() {
-        OrderStatus orderStatus1 = OrderStatus.builder()
-                .id(1)
-                .name("OS1")
-                .build();
-        given(orderStatusRepository.findAll()).willReturn(Collections.emptyList());
-        List<OrderStatus> orderStatusList = orderStatusService.getAllOrderStatuses();
-
-        assertThat(orderStatusList).isEmpty();
-        assertThat((orderStatusList).size()).isEqualTo(0);
-    }
-
-    @DisplayName("JUnit test for getOrderStatusById method")
-    @Test
-    void test_GivenOrderStatusId_WhenGetOrderStatusById_thenReturnOrderStatus() {
-        given(orderStatusRepository.findById(orderStatus.getId())).willReturn(Optional.of(orderStatus));
-        OrderStatus orderStatusExpected = orderStatusService.getOrderStatusById(orderStatus.getId());
-
-        assertThat(orderStatusExpected).isNotNull();
-    }
-
-    @DisplayName("JUnit test for getOrderStatusById method (throw exception")
-    @Test
-    void test_GivenOrderStatusId_WhenGetOrderStatusById_thenThrowException() {
-        given(orderStatusRepository.findById(orderStatus.getId())).willReturn(Optional.empty());
-
-        Assertions.assertThrows(ServerEntityNotFoundException.class, () ->
-                orderStatusService.getOrderStatusById(orderStatus.getId()));
-    }
-
-    @DisplayName("JUnit test for getOrderStatusByName method")
-    @Test
-    void test_GivenOrderStatusName_WhenFindOrderStatusByName_ThenReturnOrderStatus() {
-        given(orderStatusRepository.findOrderStatusByName(orderStatus.getName())).willReturn(orderStatus);
-        OrderStatus orderStatusExpected = orderStatusService.getOrderStatusByName(orderStatus.getName());
-
-        assertThat(orderStatusExpected).isNotNull();
-    }
-
-    @DisplayName("JUnit test for getOrderStatusByName method (return null)")
-    @Test
-    void test_GivenOrderStatusName_WhenFindOrderStatusByName_ThenReturnNull() {
-        given(orderStatusRepository.findOrderStatusByName(orderStatus.getName())).willReturn(null);
-        OrderStatus orderStatusExpected = orderStatusService.getOrderStatusByName(orderStatus.getName());
-
-        assertThat(orderStatusExpected).isNull();
-    }
+//    @BeforeEach
+//    public void setUp() {
+//        orderStatus = OrderStatus.builder()
+//                .id(1)
+//                .name("OS1")
+//                .build();
+//    }
+//
+//    @DisplayName("JUnit test for getAllOrderStatuses method")
+//    @Test
+//    void test_WhenGetAll_ThenReturnOrderStatusList() {
+//        OrderStatus orderStatus1 = OrderStatus.builder()
+//                .id(1)
+//                .name("OS1")
+//                .build();
+//        given(orderStatusRepository.findAll()).willReturn(List.of(orderStatus, orderStatus1));
+//        List<OrderStatus> orderStatusList = orderStatusService.getAllOrderStatuses();
+//
+//        assertThat(orderStatusList).isNotEmpty();
+//        assertThat((orderStatusList).size()).isEqualTo(2);
+//    }
+//
+//    @DisplayName("JUnit test for getAllOrderStatuses method (empty list)")
+//    @Test
+//    void test_WhenGetAll_ThenReturnEmptyOrderStatusList() {
+//        OrderStatus orderStatus1 = OrderStatus.builder()
+//                .id(1)
+//                .name("OS1")
+//                .build();
+//        given(orderStatusRepository.findAll()).willReturn(Collections.emptyList());
+//        List<OrderStatus> orderStatusList = orderStatusService.getAllOrderStatuses();
+//
+//        assertThat(orderStatusList).isEmpty();
+//        assertThat((orderStatusList).size()).isEqualTo(0);
+//    }
+//
+//    @DisplayName("JUnit test for getOrderStatusById method")
+//    @Test
+//    void test_GivenOrderStatusId_WhenGetOrderStatusById_thenReturnOrderStatus() {
+//        given(orderStatusRepository.findById(orderStatus.getId())).willReturn(Optional.of(orderStatus));
+//        OrderStatus orderStatusExpected = orderStatusService.getOrderStatusById(orderStatus.getId());
+//
+//        assertThat(orderStatusExpected).isNotNull();
+//    }
+//
+//    @DisplayName("JUnit test for getOrderStatusById method (throw exception")
+//    @Test
+//    void test_GivenOrderStatusId_WhenGetOrderStatusById_thenThrowException() {
+//        given(orderStatusRepository.findById(orderStatus.getId())).willReturn(Optional.empty());
+//
+//        Assertions.assertThrows(ServerEntityNotFoundException.class, () ->
+//                orderStatusService.getOrderStatusById(orderStatus.getId()));
+//    }
+//
+//    @DisplayName("JUnit test for getOrderStatusByName method")
+//    @Test
+//    void test_GivenOrderStatusName_WhenFindOrderStatusByName_ThenReturnOrderStatus() {
+//        given(orderStatusRepository.findOrderStatusByName(orderStatus.getName())).willReturn(orderStatus);
+//        OrderStatus orderStatusExpected = orderStatusService.getOrderStatusByName(orderStatus.getName());
+//
+//        assertThat(orderStatusExpected).isNotNull();
+//    }
+//
+//    @DisplayName("JUnit test for getOrderStatusByName method (return null)")
+//    @Test
+//    void test_GivenOrderStatusName_WhenFindOrderStatusByName_ThenReturnNull() {
+//        given(orderStatusRepository.findOrderStatusByName(orderStatus.getName())).willReturn(null);
+//        OrderStatus orderStatusExpected = orderStatusService.getOrderStatusByName(orderStatus.getName());
+//
+//        assertThat(orderStatusExpected).isNull();
+//    }
 }

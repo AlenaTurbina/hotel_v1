@@ -13,6 +13,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 
 @RestController
@@ -31,7 +32,7 @@ public class RoomUpdateRestController {
 
     @Operation(summary = "Getting Room by id")
     @GetMapping(value = "/admin/rooms/{id}")
-    RoomDTO getRoom(@PathVariable Integer id) {
+    RoomDTO getRoom(@PathVariable UUID id) {
         return roomMapper.toRoomDTO(roomService.getRoomById(id));
     }
 

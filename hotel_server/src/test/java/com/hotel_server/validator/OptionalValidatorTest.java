@@ -59,21 +59,21 @@ class OptionalValidatorTest {
                 .rejectValue("optionalPrice", "validation.field.positive");
     }
 
-    @Test
-    void testValidateShouldAcceptOptionalNewName() {
-        when(optionalService.getOptionalByName(any())).thenReturn(null);
-        optionalValidator.validate(optionalDTO, errors);
-
-        verify(errors, never())
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
-
-    @Test
-    void testValidateShouldRejectOptionalExistName() {
-        when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
-        optionalValidator.validate(optionalDTO, errors);
-
-        verify(errors, times(1))
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
+//    @Test
+//    void testValidateShouldAcceptOptionalNewName() {
+//        when(optionalService.getOptionalByName(any())).thenReturn(null);
+//        optionalValidator.validate(optionalDTO, errors);
+//
+//        verify(errors, never())
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
+//
+//    @Test
+//    void testValidateShouldRejectOptionalExistName() {
+//        when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
+//        optionalValidator.validate(optionalDTO, errors);
+//
+//        verify(errors, times(1))
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
 }

@@ -4,15 +4,16 @@ import com.hotel_domain.model.entity.Optional;
 import com.hotel_dto.dto.OptionalDTO;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface OptionalService {
     List<Optional> getAllOptionals();
 
-    Optional getOptionalById(Integer id);
+    Optional getOptionalById(UUID id);
 
     Optional getOptionalByName(String name);
 
-    List<Optional> getListOptionalById(List<Integer> ids);
+    List<Optional> getListOptionalById(List<UUID> ids);
 
     Optional saveOptional(OptionalDTO optionalDTO);
 

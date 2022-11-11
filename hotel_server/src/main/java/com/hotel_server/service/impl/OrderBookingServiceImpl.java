@@ -18,12 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static com.hotel_commons.convert.ObjectConverter.convertDataObjectBigIntIntoInteger;
+import java.util.*;
 
 
 @Service
@@ -38,10 +33,10 @@ public class OrderBookingServiceImpl implements OrderBookingService {
     private UserService userService;
     private OrderStatusService orderStatusService;
 
-    private static final Integer ID_DEFAULT_ORDER_STATUS_WAIT =
-            Messages.getIntegerMessage("server.booking.idDefaultOrderStatusWait");
-    private static final Integer ID_DEFAULT_ORDER_STATUS_CANCEL =
-            Messages.getIntegerMessage("server.booking.idDefaultOrderStatusCancel");
+    private static final UUID ID_DEFAULT_ORDER_STATUS_WAIT =
+            Messages.getUUIDMessage("server.booking.idDefaultOrderStatusWait");
+    private static final UUID ID_DEFAULT_ORDER_STATUS_CANCEL =
+            Messages.getUUIDMessage("server.booking.idDefaultOrderStatusCancel");
 
     @Override
     public List<OrderBooking> getAllOrderBooking() {
@@ -50,7 +45,7 @@ public class OrderBookingServiceImpl implements OrderBookingService {
     }
 
     @Override
-    public OrderBooking getOrderBookingById(Integer id) {
+    public OrderBooking getOrderBookingById(UUID id) {
         log.info("Get orderBooking by id " + id);
         return orderBookingRepository.findById(id).orElseThrow(() -> new ServerEntityNotFoundException(id));
     }
@@ -118,8 +113,8 @@ public class OrderBookingServiceImpl implements OrderBookingService {
     public Room getFirstRelevantFreeRoom(OrderBookingDTO orderBookingDTO) {
         LocalDate dateArrival = orderBookingDTO.getDateArrival();
         LocalDate dateDeparture = orderBookingDTO.getDateDeparture();
-        Integer roomTypeId = orderBookingDTO.getRoomType();
-        Integer classApartmentId = orderBookingDTO.getClassApartment();
+        UUID roomTypeId = orderBookingDTO.getRoomType();
+        UUID classApartmentId = orderBookingDTO.getClassApartment();
 
         var resultRooms = roomRepository.findListFreeRoomsForBooking(ID_DEFAULT_ORDER_STATUS_CANCEL,
                 dateArrival, dateDeparture, roomTypeId, classApartmentId);
@@ -165,22 +160,23 @@ public class OrderBookingServiceImpl implements OrderBookingService {
     //Quantity of free rooms withDTO grouping by kind for the desired dates
     @Override
     public Map<RoomKindDTO, Long> getRoomKindsWithFreeRooms(OrderBookingDTO orderBookingDTO) {
-        LocalDate dateArrival = orderBookingDTO.getDateArrival();
-        LocalDate dateDeparture = orderBookingDTO.getDateDeparture();
-
-        ArrayList<Object[]> resultRooms = roomKindRepository.findQuantityFreeRoomsWithRoomKinds(
-                ID_DEFAULT_ORDER_STATUS_CANCEL, dateArrival, dateDeparture);
-
-        Map<RoomKindDTO, Long> resultMap = new HashMap<>();
-        for (Object[] resultRoom : resultRooms) {
-            RoomKindDTO roomKindDTO = new RoomKindDTO();
-            roomKindDTO.setId(convertDataObjectBigIntIntoInteger(resultRoom[0]));
-            roomKindDTO.setRoomType(convertDataObjectBigIntIntoInteger(resultRoom[1]));
+//        LocalDate dateArrival = orderBookingDTO.getDateArrival();
+//        LocalDate dateDeparture = orderBookingDTO.getDateDeparture();
+//
+//        ArrayList<Object[]> resultRooms = roomKindRepository.findQuantityFreeRoomsWithRoomKinds(
+//                ID_DEFAULT_ORDER_STATUS_CANCEL, dateArrival, dateDeparture);
+//
+//        Map<RoomKindDTO, Long> resultMap = new HashMap<>();
+//        for (Object[] resultRoom : resultRooms) {
+//            RoomKindDTO roomKindDTO = new RoomKindDTO();
+//            roomKindDTO.setId(convertDataObjectBigIntIntoInteger(resultRoom[0]));
+//            roomKindDTO.setRoomType(convertDataObjectBigIntIntoInteger(resultRoom[1]));
 //            roomKindDTO.setClassApartment(convertDataObjectBigIntIntoInteger(resultRoom[2]));
-            roomKindDTO.setRoomPrice((Double) resultRoom[3]);
-            resultMap.put(roomKindDTO, convertDataObjectBigIntIntoInteger(resultRoom[4]).longValue());
-        }
-        return resultMap;
+//            roomKindDTO.setRoomPrice((Double) resultRoom[3]);
+//            resultMap.put(roomKindDTO, convertDataObjectBigIntIntoInteger(resultRoom[4]).longValue());
+//        }
+//        return resultMap;
+        return null;
     }
 
     @Override

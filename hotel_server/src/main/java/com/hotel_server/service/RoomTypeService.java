@@ -4,11 +4,12 @@ import com.hotel_domain.model.entity.RoomType;
 import com.hotel_dto.dto.RoomTypeDTO;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface RoomTypeService {
     List<RoomType> getAll();
 
-    RoomType getRoomTypeById(Integer id);
+    RoomType getRoomTypeById(UUID id);
 
     RoomType getRoomTypeByName(String name);
 

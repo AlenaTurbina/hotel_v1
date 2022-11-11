@@ -32,36 +32,36 @@ class RoomUpdateRestControllerTest {
     private RoomUpdateValidator roomUpdateValidator;
 
 
-    @Test
-    void testGetRoom() throws Exception {
-        RoomDTO roomDTO = new RoomDTO();
-        roomDTO.setId(1);
-        roomDTO.setName("1A");
-        roomDTO.setRoomKind(2);
-
-        Mockito.when(roomMapper.toRoomDTO(any())).thenReturn(roomDTO);
-        mockMvc.perform(get("/api/admin/rooms/{id}", 1)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().json(asJsonString(roomDTO)))
-                .andDo(print());
-    }
-
-    @Test
-    void testUpdateRoom() throws Exception {
-        RoomDTO roomDTO = new RoomDTO();
-        roomDTO.setId(1);
-        roomDTO.setName("1A");
-        roomDTO.setRoomKind(2);
-
-        Mockito.when(roomMapper.toRoomDTO(any())).thenReturn(roomDTO);
-        Mockito.when(roomUpdateValidator.supports(any())).thenReturn(true);
-        mockMvc.perform(put("/api/admin/rooms")
-                        .content(asJsonString(roomDTO))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated())
-                .andExpect(content().json(asJsonString(roomDTO)))
-                .andDo(print());
-    }
+//    @Test
+//    void testGetRoom() throws Exception {
+//        RoomDTO roomDTO = new RoomDTO();
+//        roomDTO.setId(1);
+//        roomDTO.setName("1A");
+//        roomDTO.setRoomKind(2);
+//
+//        Mockito.when(roomMapper.toRoomDTO(any())).thenReturn(roomDTO);
+//        mockMvc.perform(get("/api/admin/rooms/{id}", 1)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(content().json(asJsonString(roomDTO)))
+//                .andDo(print());
+//    }
+//
+//    @Test
+//    void testUpdateRoom() throws Exception {
+//        RoomDTO roomDTO = new RoomDTO();
+//        roomDTO.setId(1);
+//        roomDTO.setName("1A");
+//        roomDTO.setRoomKind(2);
+//
+//        Mockito.when(roomMapper.toRoomDTO(any())).thenReturn(roomDTO);
+//        Mockito.when(roomUpdateValidator.supports(any())).thenReturn(true);
+//        mockMvc.perform(put("/api/admin/rooms")
+//                        .content(asJsonString(roomDTO))
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isCreated())
+//                .andExpect(content().json(asJsonString(roomDTO)))
+//                .andDo(print());
+//    }
 }

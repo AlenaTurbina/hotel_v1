@@ -33,7 +33,7 @@
             <form action="#" th:action="@{/admin/classApartments/update}" th:object="${classApartmentDTO}" method="post"
                   class="adminForm"  th:if="${classApartmentDTO != null}">
                 <label for="id">ID</label>
-                <input readonly type="number"  th:value="*{id}" th:field="*{id}" id="id" placeholder="ID" class="inp hid">
+                <input readonly type="text"  th:value="*{id}" th:field="*{id}" id="id" placeholder="ID" class="inp hid">
                 <br>
                 <label for="name">name</label>
                 <input type="text"  th:value="*{name}" th:field="*{name}" id="name" placeholder="name" required="required" class="inp ord">

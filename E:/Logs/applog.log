@@ -904,3 +904,76 @@ Caused by: org.postgresql.util.PSQLException: ERROR: foreign key constraint "fk_
 [2022-11-09 16:43:51.051] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [547] [INFO ] Completed initialization in 2 ms
 [2022-11-09 16:43:51.051] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-1] [23] [INFO ] Class apartment getAll
 [2022-11-09 16:44:17.017] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-10 14:12:40.040] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 31712 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-10 14:12:40.040] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-10 14:12:40.040] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-10 14:12:41.041] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-10 14:12:41.041] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 50 ms. Found 10 JPA repository interfaces.
+[2022-11-10 14:12:41.041] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-10 14:12:41.041] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1205 ms
+[2022-11-10 14:12:43.043] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-10 14:12:43.043] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-10 14:12:44.044] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-10 14:12:44.044] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.191 seconds (JVM running for 4.782)
+[2022-11-10 14:13:49.049] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-11-10 14:13:49.049] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [547] [INFO ] Completed initialization in 1 ms
+[2022-11-10 14:13:50.050] [com.hotel_server.exceptionHandler.ExceptionHandlerValidation] [http-nio-8080-exec-2] [63] [ERROR] EntityNotFoundExceptions: null
+[2022-11-10 14:14:17.017] [com.hotel_server.exceptionHandler.ExceptionHandlerValidation] [http-nio-8080-exec-3] [63] [ERROR] EntityNotFoundExceptions: null
+[2022-11-10 14:14:30.030] [com.hotel_server.exceptionHandler.ExceptionHandlerValidation] [http-nio-8080-exec-6] [63] [ERROR] EntityNotFoundExceptions: null
+[2022-11-10 14:15:07.007] [com.hotel_server.exceptionHandler.ExceptionHandlerValidation] [http-nio-8080-exec-10] [63] [ERROR] EntityNotFoundExceptions: null
+[2022-11-10 14:15:53.053] [com.hotel_server.exceptionHandler.ExceptionHandlerValidation] [http-nio-8080-exec-1] [63] [ERROR] EntityNotFoundExceptions: null
+[2022-11-10 14:16:09.009] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-4] [24] [INFO ] Class apartment getAll
+[2022-11-10 14:16:20.020] [com.hotel_server.service.impl.RoomTypeServiceImpl] [http-nio-8080-exec-3] [24] [INFO ] RoomType getAll
+[2022-11-10 14:17:48.048] [com.hotel_server.exceptionHandler.ExceptionHandlerValidation] [http-nio-8080-exec-7] [63] [ERROR] EntityNotFoundExceptions: null
+[2022-11-10 14:17:54.054] [com.hotel_server.exceptionHandler.ExceptionHandlerValidation] [http-nio-8080-exec-9] [63] [ERROR] EntityNotFoundExceptions: null
+[2022-11-10 14:18:18.018] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-2] [41] [INFO ] Class apartment getByName is null (name): classicOpt
+[2022-11-10 14:18:18.018] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-2] [59] [INFO ] New ClassApartment build (name, price): classicOpt , 2.0
+[2022-11-10 14:18:44.044] [com.hotel_server.service.impl.RoomTypeServiceImpl] [http-nio-8080-exec-4] [41] [INFO ] Room type getRoomTypeByName is null (name): classicOpt
+[2022-11-10 14:18:44.044] [com.hotel_server.service.impl.RoomTypeServiceImpl] [http-nio-8080-exec-4] [53] [INFO ] New RoomType build (name, places): classicOpt, 15
+[2022-11-10 14:18:54.054] [com.hotel_server.service.impl.RoomTypeServiceImpl] [http-nio-8080-exec-3] [24] [INFO ] RoomType getAll
+[2022-11-10 14:26:19.019] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-10 14:30:40.040] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 34927 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-10 14:30:40.040] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-10 14:30:40.040] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-10 14:30:41.041] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-10 14:30:41.041] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 44 ms. Found 10 JPA repository interfaces.
+[2022-11-10 14:30:41.041] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-10 14:30:42.042] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1192 ms
+[2022-11-10 14:30:43.043] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-10 14:30:44.044] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-10 14:30:44.044] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-10 14:30:44.044] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.04 seconds (JVM running for 4.52)
+[2022-11-10 14:30:48.048] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-11-10 14:30:48.048] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [547] [INFO ] Completed initialization in 3 ms
+[2022-11-10 14:30:48.048] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-1] [41] [INFO ] Class apartment getByName is null (name): classicOpt
+[2022-11-10 14:30:48.048] [com.hotel_server.service.impl.ClassApartmentServiceImpl] [http-nio-8080-exec-1] [59] [INFO ] New ClassApartment build (name, price): classicOpt , 2.0
+[2022-11-10 14:30:54.054] [com.hotel_server.service.impl.RoomTypeServiceImpl] [http-nio-8080-exec-3] [24] [INFO ] RoomType getAll
+[2022-11-10 14:31:01.001] [com.hotel_server.service.impl.RoomTypeServiceImpl] [http-nio-8080-exec-5] [41] [INFO ] Room type getRoomTypeByName is null (name): classicOpt
+[2022-11-10 14:31:01.001] [com.hotel_server.service.impl.RoomTypeServiceImpl] [http-nio-8080-exec-5] [53] [INFO ] New RoomType build (name, places): classicOpt, 15
+[2022-11-10 14:33:39.039] [com.hotel_server.service.impl.RoomKindServiceImpl] [http-nio-8080-exec-8] [50] [INFO ] Get room Kind by (roomTypeID, ClassApartmentID): 27f7d8a1-b7a3-4224-8bcd-b6a48df25488, 3b8619a0-afe6-4016-abd8-cfe2d66a2656
+[2022-11-10 16:04:55.055] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-10 16:05:48.048] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 42660 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-10 16:05:48.048] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-10 16:05:48.048] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-10 16:05:49.049] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-10 16:05:49.049] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 45 ms. Found 10 JPA repository interfaces.
+[2022-11-10 16:05:49.049] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-10 16:05:49.049] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1227 ms
+[2022-11-10 16:05:51.051] [org.springframework.context.support.AbstractApplicationContext] [main] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db.changelog/constraints/VC-1.yaml::1653916925456-27::elena (generated):
+     Reason: liquibase.exception.DatabaseException: ERROR: could not create unique index "user_id"
+  Detail: Key (user_id, role_id)=(f2d7d5d5-3553-4381-8fab-bf75a77d8137, fc922896-e3c9-4ae0-adf6-ca49f1a3dfbf) is duplicated. [Failed SQL: (0) ALTER TABLE public.user_with_role ADD CONSTRAINT user_id UNIQUE (user_id, role_id)]
+[2022-11-10 16:12:16.016] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting HotelServerApplication using Java 11.0.16 on PC0003-01 with PID 46218 (/home/elena/Projects/hotel_v1/hotel_server/build/classes/java/main started by elena in /home/elena/Projects/hotel_v1)
+[2022-11-10 16:12:16.016] [org.springframework.boot.StartupInfoLogger] [main] [56] [DEBUG] Running with Spring Boot v2.6.8, Spring v5.3.20
+[2022-11-10 16:12:16.016] [org.springframework.boot.SpringApplication] [main] [645] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-11-10 16:12:16.016] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-10 16:12:16.016] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [201] [INFO ] Finished Spring Data repository scanning in 47 ms. Found 10 JPA repository interfaces.
+[2022-11-10 16:12:17.017] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-11-10 16:12:17.017] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [290] [INFO ] Root WebApplicationContext: initialization completed in 1243 ms
+[2022-11-10 16:12:19.019] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-10 16:12:19.019] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-10 16:12:20.020] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path '/hotel'
+[2022-11-10 16:12:20.020] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started HotelServerApplication in 4.209 seconds (JVM running for 4.714)
+[2022-11-10 16:12:46.046] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-11-10 16:12:46.046] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-2] [547] [INFO ] Completed initialization in 2 ms
+[2022-11-10 16:12:46.046] [com.hotel_server.service.impl.RoomKindServiceImpl] [http-nio-8080-exec-2] [32] [INFO ] RoomKind getAll
+[2022-11-10 16:13:01.001] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'

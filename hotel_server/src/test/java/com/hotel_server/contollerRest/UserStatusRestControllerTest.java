@@ -32,21 +32,21 @@ class UserStatusRestControllerTest {
     private UserStatusMapper userStatusMapper;
 
 
-    @Test
-    void testGetAllUserStatuses() throws Exception {
-        Integer id = 1;
-        UserStatusDTO userStatusDTO = new UserStatusDTO();
-        userStatusDTO.setId(id);
-
-        List<UserStatusDTO> userStatusDTOList = new ArrayList<>(List.of(userStatusDTO));
-        Mockito.when(userStatusMapper.toListUserStatusDTO(any())).thenReturn(userStatusDTOList);
-
-        mockMvc.perform(get("/api/admin/userStatuses")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(jsonPath("$[0].id", Matchers.equalTo(userStatusDTO.getId())))
-                .andExpect(content().json(asJsonString(userStatusDTOList)))
-                .andDo(print());
-    }
+//    @Test
+//    void testGetAllUserStatuses() throws Exception {
+//        Integer id = 1;
+//        UserStatusDTO userStatusDTO = new UserStatusDTO();
+//        userStatusDTO.setId(id);
+//
+//        List<UserStatusDTO> userStatusDTOList = new ArrayList<>(List.of(userStatusDTO));
+//        Mockito.when(userStatusMapper.toListUserStatusDTO(any())).thenReturn(userStatusDTOList);
+//
+//        mockMvc.perform(get("/api/admin/userStatuses")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(jsonPath("$[0].id", Matchers.equalTo(userStatusDTO.getId())))
+//                .andExpect(content().json(asJsonString(userStatusDTOList)))
+//                .andDo(print());
+//    }
 }

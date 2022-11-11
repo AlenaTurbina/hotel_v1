@@ -6,10 +6,9 @@ import java.util.UUID;
 
 @Data
 public class RoomKindDTO {
-    private Integer id;
-    private Integer roomType;
+    private UUID id;
+    private UUID roomType;
     private UUID classApartment;
-//    private Integer classApartment;
     private Double roomPrice;
     private Double placePrice;
     private Integer quantityPlaces;

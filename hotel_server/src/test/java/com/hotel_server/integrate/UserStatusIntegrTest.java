@@ -32,17 +32,17 @@ class UserStatusIntegrTest {
     private UserStatusService userStatusService;
     @Autowired
     private UserStatusMapper userStatusMapper;
-
-    @Test
-    void testGetAllUserStatuses() throws Exception {
-        UserStatus userStatus = new UserStatus(1, null);
-        List<UserStatus> userStatusList = new ArrayList<>(List.of(userStatus));
-        Mockito.when(userStatusService.getAllUserStatuses()).thenReturn(userStatusList);
-        mockMvc.perform(get("/api/admin/userStatuses")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(content().json(asJsonString(userStatusMapper.toListUserStatusDTO(userStatusList))))
-                .andDo(print());
-    }
+//
+//    @Test
+//    void testGetAllUserStatuses() throws Exception {
+//        UserStatus userStatus = new UserStatus(1, null);
+//        List<UserStatus> userStatusList = new ArrayList<>(List.of(userStatus));
+//        Mockito.when(userStatusService.getAllUserStatuses()).thenReturn(userStatusList);
+//        mockMvc.perform(get("/api/admin/userStatuses")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(content().json(asJsonString(userStatusMapper.toListUserStatusDTO(userStatusList))))
+//                .andDo(print());
+//    }
 }

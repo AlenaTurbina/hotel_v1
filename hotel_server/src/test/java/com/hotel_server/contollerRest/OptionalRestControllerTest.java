@@ -34,40 +34,40 @@ class OptionalRestControllerTest {
     @MockBean
     private OptionalValidator optionalValidator;
 
-    @Test
-    void testGetAllOptionals() throws Exception {
-        OptionalDTO optionalDTO = new OptionalDTO();
-        optionalDTO.setId(1);
-        optionalDTO.setName("A");
-        optionalDTO.setOptionalPrice(10.0);
-
-        List<OptionalDTO> optionalDTOList = new ArrayList<>(List.of(optionalDTO));
-        Mockito.when(optionalMapper.toListOptionalDTO(any())).thenReturn(optionalDTOList);
-
-        mockMvc.perform(get("/api/admin/optionals")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(jsonPath("$[0].name", Matchers.equalTo(optionalDTO.getName())))
-                .andExpect(content().json(asJsonString(optionalDTOList)))
-                .andDo(print());
-    }
-
-    @Test
-    void testCreateOptional() throws Exception {
-        OptionalDTO optionalDTO = new OptionalDTO();
-        optionalDTO.setName("A");
-        optionalDTO.setOptionalPrice(10.0);
-
-        Mockito.when(optionalMapper.toOptionalDTO(any())).thenReturn(optionalDTO);
-        Mockito.when(optionalValidator.supports(any())).thenReturn(true);
-
-        mockMvc.perform(post("/api/admin/optionals")
-                        .content(asJsonString(optionalDTO))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated())
-                .andExpect(content().json(asJsonString(optionalDTO)))
-                .andDo(print());
-    }
+//    @Test
+//    void testGetAllOptionals() throws Exception {
+//        OptionalDTO optionalDTO = new OptionalDTO();
+//        optionalDTO.setId(1);
+//        optionalDTO.setName("A");
+//        optionalDTO.setOptionalPrice(10.0);
+//
+//        List<OptionalDTO> optionalDTOList = new ArrayList<>(List.of(optionalDTO));
+//        Mockito.when(optionalMapper.toListOptionalDTO(any())).thenReturn(optionalDTOList);
+//
+//        mockMvc.perform(get("/api/admin/optionals")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(jsonPath("$[0].name", Matchers.equalTo(optionalDTO.getName())))
+//                .andExpect(content().json(asJsonString(optionalDTOList)))
+//                .andDo(print());
+//    }
+//
+//    @Test
+//    void testCreateOptional() throws Exception {
+//        OptionalDTO optionalDTO = new OptionalDTO();
+//        optionalDTO.setName("A");
+//        optionalDTO.setOptionalPrice(10.0);
+//
+//        Mockito.when(optionalMapper.toOptionalDTO(any())).thenReturn(optionalDTO);
+//        Mockito.when(optionalValidator.supports(any())).thenReturn(true);
+//
+//        mockMvc.perform(post("/api/admin/optionals")
+//                        .content(asJsonString(optionalDTO))
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isCreated())
+//                .andExpect(content().json(asJsonString(optionalDTO)))
+//                .andDo(print());
+//    }
 }

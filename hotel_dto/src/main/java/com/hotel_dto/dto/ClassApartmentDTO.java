@@ -7,7 +7,6 @@ import java.util.UUID;
 @Data
 public class ClassApartmentDTO {
     private UUID id;
-//    private Integer id;
     private String name;
     private Double placePrice;
 }

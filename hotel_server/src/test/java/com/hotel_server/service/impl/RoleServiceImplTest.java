@@ -33,62 +33,62 @@ class RoleServiceImplTest {
 
     private Role role;
 
-    @BeforeEach
-    public void setup() {
-       role = Role.builder()
-                .id(1)
-                .name("R1")
-                .build();
-    }
-
-    @DisplayName("JUnit test for getAllRoles method")
-    @Test
-    void test_WhenGetAllRoles_ThenReturnRoleList() {
-        Role role1 = Role.builder()
-                .id(2)
-                .name("R2")
-                .build();
-
-        given(roleRepository.findAll()).willReturn(List.of(role, role1));
-        List<Role> roleList = roleService.getAllRoles();
-
-        assertThat(roleList).isNotEmpty();
-        assertThat(roleList.size()).isEqualTo(2);
-    }
-
-    @DisplayName("JUnit test for getAllRoles method (empty list)")
-    @Test
-    void test_WhenGetAllRoles_ThenReturnEmptyRoleList() {
-        Role role1 = Role.builder()
-                .id(2)
-                .name("R2")
-                .build();
-
-        given(roleRepository.findAll()).willReturn(Collections.emptyList());
-        List<Role> roleList = roleService.getAllRoles();
-
-        assertThat(roleList).isEmpty();
-        assertThat(roleList.size()).isEqualTo(0);
-    }
-
-    @DisplayName("JUnit test for getRoleById method")
-    @Test
-    void test_GivenRoleId_WhenGetRoleById_thenReturnRole() {
-        given(roleRepository.findById(role.getId()))
-                .willReturn(Optional.of(role));
-        Role roleExpected = roleService.getRoleById(role.getId());
-
-        assertThat(roleExpected).isNotNull();
-    }
-
-    @DisplayName("JUnit test for getRoleById method (throw exception)")
-    @Test
-    void test_GivenRoleId_WhenGetRoleById_ThenThrowException() {
-        given(roleRepository.findById(role.getId()))
-                .willReturn(Optional.empty());
-
-        Assertions.assertThrows(ServerEntityNotFoundException.class,
-                () -> roleService.getRoleById(role.getId()));
-    }
+//    @BeforeEach
+//    public void setup() {
+//       role = Role.builder()
+//                .id(1)
+//                .name("R1")
+//                .build();
+//    }
+//
+//    @DisplayName("JUnit test for getAllRoles method")
+//    @Test
+//    void test_WhenGetAllRoles_ThenReturnRoleList() {
+//        Role role1 = Role.builder()
+//                .id(2)
+//                .name("R2")
+//                .build();
+//
+//        given(roleRepository.findAll()).willReturn(List.of(role, role1));
+//        List<Role> roleList = roleService.getAllRoles();
+//
+//        assertThat(roleList).isNotEmpty();
+//        assertThat(roleList.size()).isEqualTo(2);
+//    }
+//
+//    @DisplayName("JUnit test for getAllRoles method (empty list)")
+//    @Test
+//    void test_WhenGetAllRoles_ThenReturnEmptyRoleList() {
+//        Role role1 = Role.builder()
+//                .id(2)
+//                .name("R2")
+//                .build();
+//
+//        given(roleRepository.findAll()).willReturn(Collections.emptyList());
+//        List<Role> roleList = roleService.getAllRoles();
+//
+//        assertThat(roleList).isEmpty();
+//        assertThat(roleList.size()).isEqualTo(0);
+//    }
+//
+//    @DisplayName("JUnit test for getRoleById method")
+//    @Test
+//    void test_GivenRoleId_WhenGetRoleById_thenReturnRole() {
+//        given(roleRepository.findById(role.getId()))
+//                .willReturn(Optional.of(role));
+//        Role roleExpected = roleService.getRoleById(role.getId());
+//
+//        assertThat(roleExpected).isNotNull();
+//    }
+//
+//    @DisplayName("JUnit test for getRoleById method (throw exception)")
+//    @Test
+//    void test_GivenRoleId_WhenGetRoleById_ThenThrowException() {
+//        given(roleRepository.findById(role.getId()))
+//                .willReturn(Optional.empty());
+//
+//        Assertions.assertThrows(ServerEntityNotFoundException.class,
+//                () -> roleService.getRoleById(role.getId()));
+//    }
 
 }

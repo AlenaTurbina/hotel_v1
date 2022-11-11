@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -23,7 +24,7 @@ public class OrderStatusServiceImpl implements OrderStatusService {
     }
 
     @Override
-    public OrderStatus getOrderStatusById(Integer id) {
+    public OrderStatus getOrderStatusById(UUID id) {
         log.info("Get OrderStatus by id " + id);
         return orderStatusRepository.findById(id).orElseThrow(() -> new ServerEntityNotFoundException(id));
     }

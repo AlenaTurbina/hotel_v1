@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -27,8 +28,8 @@ public class UserServiceImpl implements UserService {
     private UserStatusService userStatusService;
     private PasswordEncoder passwordEncoder;
 
-    private static final Integer ID_DEFAULT_ROLE_CLIENT = Messages.getIntegerMessage("server.booking.idDefaultRoleClient");
-    private static final Integer ID_DEFAULT_USER_STATUS_ACTIVE = Messages.getIntegerMessage("server.booking.idDefaultUserStatusActive");
+    private static final UUID ID_DEFAULT_ROLE_CLIENT = Messages.getUUIDMessage("server.booking.idDefaultRoleClient");
+    private static final UUID ID_DEFAULT_USER_STATUS_ACTIVE = Messages.getUUIDMessage("server.booking.idDefaultUserStatusActive");
 
 
     @Override

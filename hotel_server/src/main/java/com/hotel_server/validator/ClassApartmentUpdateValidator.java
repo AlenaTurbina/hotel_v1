@@ -42,13 +42,6 @@ public class ClassApartmentUpdateValidator implements Validator {
         }
     }
 
-//    public Integer checkClassApartment(ClassApartmentDTO classApartmentDTO) {
-//        ClassApartment findClassApartment = classApartmentService.getClassApartmentByName(classApartmentDTO.getName());
-//        if (findClassApartment != null) {
-//            return findClassApartment.getId();
-//        }
-//        return null;
-//    }
     public UUID checkClassApartment(ClassApartmentDTO classApartmentDTO) {
         ClassApartment findClassApartment = classApartmentService.getClassApartmentByName(classApartmentDTO.getName());
         if (findClassApartment != null) {
@@ -56,5 +49,6 @@ public class ClassApartmentUpdateValidator implements Validator {
         }
         return null;
     }
+
 
 }

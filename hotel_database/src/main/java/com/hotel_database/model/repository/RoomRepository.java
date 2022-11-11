@@ -7,10 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 
 @Repository
-public interface RoomRepository extends JpaRepository<Room, Integer> {
+public interface RoomRepository extends JpaRepository<Room, UUID> {
     Room findRoomByName(String name);
 
     @Query(value = "SELECT room.* from room\n" +
@@ -21,7 +22,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
             "!(date_arrival  >= ?3 OR \n" +
             "date_departure  <= ?2)\n" +
             ")", nativeQuery = true)
-    List<Room> findFreeRoomsOnSelectedDates(Integer orderStatusCancelId, LocalDate dateArrival, LocalDate dateDeparture);
+    List<Room> findFreeRoomsOnSelectedDates(UUID orderStatusCancelId, LocalDate dateArrival, LocalDate dateDeparture);
 
     @Query(value = "SELECT room.* from room\n" +
             "JOIN room_kind \n" +
@@ -37,7 +38,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
             "room_kind.room_type_id=?4\n" +
             "AND\n" +
             "room_kind.class_apartment_id=?5", nativeQuery = true)
-    List<Room> findListFreeRoomsForBooking(Integer orderStatusCancelId, LocalDate dateArrival, LocalDate dateDeparture,
-                                           Integer roomTypeId, Integer classApartmentId);
+    List<Room> findListFreeRoomsForBooking(UUID orderStatusCancelId, LocalDate dateArrival, LocalDate dateDeparture,
+                                           UUID roomTypeId, UUID classApartmentId);
 
 }

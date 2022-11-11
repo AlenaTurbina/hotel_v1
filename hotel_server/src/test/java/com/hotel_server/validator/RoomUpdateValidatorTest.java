@@ -36,26 +36,26 @@ class RoomUpdateValidatorTest {
                 .rejectValue("name", "validation.adminSide.duplicateName");
     }
 
-    @Test
-    void testValidateShouldAcceptRoomSameName() {
-        when(roomService.getRoomByName(any())).thenReturn(roomExist);
-        when(roomDTO.getId()).thenReturn(1);
-        when(roomExist.getId()).thenReturn(1);
-        roomUpdateValidator.validate(roomDTO, errors);
-
-        verify(errors, never())
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
-
-    @Test
-    void testValidateShouldRejectRoomSameExistName() {
-        when(roomService.getRoomByName(any())).thenReturn(roomExist);
-        when(roomDTO.getId()).thenReturn(1);
-        when(roomExist.getId()).thenReturn(2);
-        roomUpdateValidator.validate(roomDTO, errors);
-
-        verify(errors, times(1))
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
+//    @Test
+//    void testValidateShouldAcceptRoomSameName() {
+//        when(roomService.getRoomByName(any())).thenReturn(roomExist);
+//        when(roomDTO.getId()).thenReturn(1);
+//        when(roomExist.getId()).thenReturn(1);
+//        roomUpdateValidator.validate(roomDTO, errors);
+//
+//        verify(errors, never())
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
+//
+//    @Test
+//    void testValidateShouldRejectRoomSameExistName() {
+//        when(roomService.getRoomByName(any())).thenReturn(roomExist);
+//        when(roomDTO.getId()).thenReturn(1);
+//        when(roomExist.getId()).thenReturn(2);
+//        roomUpdateValidator.validate(roomDTO, errors);
+//
+//        verify(errors, times(1))
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
 
 }

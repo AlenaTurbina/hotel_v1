@@ -9,6 +9,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import java.util.UUID;
+
 
 @Component
 @AllArgsConstructor
@@ -24,7 +26,7 @@ public class OptionalUpdateValidator implements Validator {
     public void validate(Object target, Errors errors) {
         OptionalDTO optionalDTO = (OptionalDTO) target;
 
-        Integer checkID = checkOptional(optionalDTO);
+        UUID checkID = checkOptional(optionalDTO);
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "validation.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "optionalPrice", "validation.required");
@@ -39,7 +41,7 @@ public class OptionalUpdateValidator implements Validator {
 
     }
 
-    public Integer checkOptional(OptionalDTO optionalDTO) {
+    public UUID checkOptional(OptionalDTO optionalDTO) {
         Optional findOptional = optionalService.getOptionalByName(optionalDTO.getName());
         if (findOptional != null) {
             return findOptional.getId();

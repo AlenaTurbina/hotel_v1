@@ -33,7 +33,7 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: name
                   name: name
@@ -58,7 +58,7 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: date
                   name: date
@@ -78,11 +78,11 @@ databaseChangeLog:
               - column:
                   header: client
                   name: client
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: room
                   name: room
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: sum_total
                   name: sum_total
@@ -90,7 +90,7 @@ databaseChangeLog:
               - column:
                   header: order_status
                   name: order_status
-                  type: NUMERIC
+                  type: UUID
             commentLineStartsWith: '#'
             encoding: UTF-8
             file: data/order_booking.csv
@@ -107,15 +107,15 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: order_booking_id
                   name: order_booking_id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: optional_id
                   name: optional_id
-                  type: NUMERIC
+                  type: UUID
             commentLineStartsWith: '#'
             encoding: UTF-8
             file: data/order_booking_with_optional.csv
@@ -132,7 +132,7 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: name
                   name: name
@@ -153,7 +153,7 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: name
                   name: name
@@ -174,7 +174,7 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: name
                   name: name
@@ -182,7 +182,7 @@ databaseChangeLog:
               - column:
                   header: room_kind
                   name: room_kind
-                  type: NUMERIC
+                  type: UUID
             commentLineStartsWith: '#'
             encoding: UTF-8
             file: data/room.csv
@@ -199,11 +199,11 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: room_type_id
                   name: room_type_id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: class_apartment_id
                   name: class_apartment_id
@@ -228,7 +228,7 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: name
                   name: name
@@ -253,7 +253,7 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: email
                   name: email
@@ -281,7 +281,7 @@ databaseChangeLog:
               - column:
                   header: user_status
                   name: user_status
-                  type: NUMERIC
+                  type: UUID
             commentLineStartsWith: '#'
             encoding: UTF-8
             file: data/users.csv
@@ -298,7 +298,7 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: name
                   name: name
@@ -319,15 +319,15 @@ databaseChangeLog:
               - column:
                   header: id
                   name: id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: user_id
                   name: user_id
-                  type: NUMERIC
+                  type: UUID
               - column:
                   header: role_id
                   name: role_id
-                  type: NUMERIC
+                  type: UUID
             commentLineStartsWith: '#'
             encoding: UTF-8
             file: data/user_with_role.csv

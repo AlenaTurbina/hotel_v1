@@ -35,9 +35,9 @@ public class RoomKindValidator implements Validator {
 
 
 
-//        if (roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(roomKindDTO.getRoomType(), roomKindDTO.getClassApartment()) != null) {
-//            errors.rejectValue("classApartment", "validation.adminSide.roomKind.classApartment");
-//        }
+        if (roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(roomKindDTO.getRoomType(), roomKindDTO.getClassApartment()) != null) {
+            errors.rejectValue("classApartment", "validation.adminSide.roomKind.classApartment");
+        }
 
     }
 

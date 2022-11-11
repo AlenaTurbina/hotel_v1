@@ -9,6 +9,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import java.util.UUID;
+
 
 @Component
 @AllArgsConstructor
@@ -23,7 +25,7 @@ public class RoomUpdateValidator implements Validator {
     public void validate(Object target, Errors errors) {
         RoomDTO roomDTO = (RoomDTO) target;
 
-        Integer checkID = checkRoom(roomDTO);
+        UUID checkID = checkRoom(roomDTO);
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "validation.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "roomKind", "validation.required");
@@ -34,7 +36,7 @@ public class RoomUpdateValidator implements Validator {
 
     }
 
-    public Integer checkRoom(RoomDTO roomDTO) {
+    public UUID checkRoom(RoomDTO roomDTO) {
         Room findRoom = roomService.getRoomByName(roomDTO.getName());
         if (findRoom != null) {
             return findRoom.getId();

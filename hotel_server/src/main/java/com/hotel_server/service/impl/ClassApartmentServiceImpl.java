@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -25,7 +26,7 @@ public class ClassApartmentServiceImpl implements ClassApartmentService {
     }
 
     @Override
-    public ClassApartment getClassApartmentById(Integer id) {
+    public ClassApartment getClassApartmentById(UUID id) {
         log.info("Get class Apartment by id " + id);
         return classApartmentRepository.findById(id).orElseThrow(() -> new ServerEntityNotFoundException(id));
     }

@@ -6,6 +6,7 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
@@ -30,12 +31,12 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -55,12 +56,12 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -85,12 +86,12 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: client
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
                   name: room
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -100,7 +101,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: order_status
-                  type: BIGINT
+                  type: UUID
             tableName: order_booking
   - changeSet:
       id: 1653916925456-4
@@ -109,22 +110,22 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
                   name: order_booking_id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
                   name: optional_id
-                  type: BIGINT
+                  type: UUID
             tableName: order_booking_with_optional
   - changeSet:
       id: 1653916925456-5
@@ -133,12 +134,12 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -153,12 +154,12 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -173,12 +174,12 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -189,7 +190,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: room_kind
-                  type: BIGINT
+                  type: UUID
             tableName: room
   - changeSet:
       id: 1653916925456-8
@@ -198,22 +199,21 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
                   name: room_type_id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
                   name: class_apartment_id
-#                  type: BIGINT
                   type: UUID
               - column:
                   constraints:
@@ -228,12 +228,12 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -253,12 +253,12 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -294,7 +294,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: user_status
-                  type: BIGINT
+                  type: UUID
             tableName: users
   - changeSet:
       id: 1653916925456-11
@@ -303,12 +303,12 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
@@ -323,20 +323,20 @@ databaseChangeLog:
         - createTable:
             columns:
               - column:
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     nullable: false
                     primaryKey: true
                   name: id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
                   name: user_id
-                  type: BIGINT
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
                   name: role_id
-                  type: BIGINT
+                  type: UUID
             tableName: user_with_role

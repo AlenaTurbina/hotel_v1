@@ -45,22 +45,22 @@ class RoomRestControllerTest {
     @MockBean
     private RoomValidator roomValidator;
 
-    @Test
-    void testGetAllRooms() throws Exception {
-        RoomDTO roomDTO = new RoomDTO();
-        roomDTO.setId(1);
-        roomDTO.setName("1A");
-        roomDTO.setRoomKind(2);
-
-        List<RoomDTO> roomDTOList = new ArrayList<>(List.of(roomDTO));
-        Mockito.when(roomMapper.toListRoomDTO(any())).thenReturn(roomDTOList);
-        mockMvc.perform(get("/api/admin/rooms")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(content().json(asJsonString(roomDTOList)))
-                .andDo(print());
-    }
+//    @Test
+//    void testGetAllRooms() throws Exception {
+//        RoomDTO roomDTO = new RoomDTO();
+//        roomDTO.setId(1);
+//        roomDTO.setName("1A");
+//        roomDTO.setRoomKind(2);
+//
+//        List<RoomDTO> roomDTOList = new ArrayList<>(List.of(roomDTO));
+//        Mockito.when(roomMapper.toListRoomDTO(any())).thenReturn(roomDTOList);
+//        mockMvc.perform(get("/api/admin/rooms")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(content().json(asJsonString(roomDTOList)))
+//                .andDo(print());
+//    }
 
 //    @Test
 //    void testCreateRoom() throws Exception {

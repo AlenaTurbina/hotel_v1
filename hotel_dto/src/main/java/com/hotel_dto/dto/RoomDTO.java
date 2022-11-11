@@ -2,17 +2,19 @@ package com.hotel_dto.dto;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class RoomDTO {
-    private Integer id;
+    private UUID id;
     private String name;
-    private Integer roomKind;
+    private UUID roomKind;
 
     private String roomTypeName;
     private String classApartmentName;
 
-    private Integer roomType;
-    private Integer classApartment;
+    private UUID roomType;
+    private UUID classApartment;
 
 
 }

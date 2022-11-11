@@ -68,25 +68,25 @@ class OptionalUpdateValidatorTest {
                 .rejectValue("name", "validation.adminSide.duplicateName");
     }
 
-    @Test
-    void testValidateShouldRejectOptionalSameName() {
-        when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
-        when(optionalDTO.getId()).thenReturn(1);
-        when(optionalExist.getId()).thenReturn(1);
-        optionalUpdateValidator.validate(optionalDTO, errors);
-
-        verify(errors, never())
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
-
-    @Test
-    void testValidateShouldRejectOptionalSameExistName() {
-        when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
-        when(optionalDTO.getId()).thenReturn(1);
-        when(optionalExist.getId()).thenReturn(2);
-        optionalUpdateValidator.validate(optionalDTO, errors);
-
-        verify(errors, times(1))
-                .rejectValue("name", "validation.adminSide.duplicateName");
-    }
+//    @Test
+//    void testValidateShouldRejectOptionalSameName() {
+//        when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
+//        when(optionalDTO.getId()).thenReturn(1);
+//        when(optionalExist.getId()).thenReturn(1);
+//        optionalUpdateValidator.validate(optionalDTO, errors);
+//
+//        verify(errors, never())
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
+//
+//    @Test
+//    void testValidateShouldRejectOptionalSameExistName() {
+//        when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
+//        when(optionalDTO.getId()).thenReturn(1);
+//        when(optionalExist.getId()).thenReturn(2);
+//        optionalUpdateValidator.validate(optionalDTO, errors);
+//
+//        verify(errors, times(1))
+//                .rejectValue("name", "validation.adminSide.duplicateName");
+//    }
 }

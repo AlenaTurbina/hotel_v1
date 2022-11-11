@@ -14,6 +14,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 
 @RequestMapping("/api")
@@ -32,7 +33,7 @@ public class RoomTypeUpdateRestController {
 
     @Operation(summary = "Getting Room type by id")
     @GetMapping(value = "/admin/roomTypes/{id}")
-    RoomTypeDTO getRoomType(@PathVariable Integer id) {
+    RoomTypeDTO getRoomType(@PathVariable UUID id) {
         return roomTypeMapper.toRoomTypeDTO(roomTypeService.getRoomTypeById(id));
     }
 

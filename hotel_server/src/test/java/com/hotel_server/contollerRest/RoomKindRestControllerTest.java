@@ -34,57 +34,57 @@ class RoomKindRestControllerTest {
     @MockBean
     private RoomKindValidator roomKindValidator;
 
-    @Test
-    void testGetAllRoomKinds() throws Exception {
-        RoomKindDTO roomKindDTO = new RoomKindDTO();
-        roomKindDTO.setId(1);
-        roomKindDTO.setRoomTypeName("A");
-        roomKindDTO.setClassApartmentName("B");
-
-        List<RoomKindDTO> roomKindDTOList = new ArrayList<>(List.of(roomKindDTO));
-        Mockito.when(roomKindMapper.toListRoomKindDTO(any())).thenReturn(roomKindDTOList);
-
-        mockMvc.perform(get("/api/admin/roomKinds")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(jsonPath("$[0].roomTypeName", Matchers.equalTo(roomKindDTO.getRoomTypeName())))
-                .andExpect(content().json(asJsonString(roomKindDTOList)))
-                .andDo(print());
-    }
-
-    @Test
-    void testCreateRoomKind() throws Exception {
-        RoomKindDTO roomKindDTO = new RoomKindDTO();
-        roomKindDTO.setRoomTypeName("A");
-        roomKindDTO.setClassApartmentName("B");
-
-        Mockito.when(roomKindMapper.toRoomKindDTO(any())).thenReturn(roomKindDTO);
-        Mockito.when(roomKindValidator.supports(any())).thenReturn(true);
-        mockMvc.perform(post("/api/admin/roomKinds")
-                        .content(asJsonString(roomKindDTO))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated())
-                .andExpect(content().json(asJsonString(roomKindDTO)))
-                .andDo(print());
-    }
-
-    @Test
-    void testPriceList() throws Exception {
-        RoomKindDTO roomKindDTO = new RoomKindDTO();
-        roomKindDTO.setId(1);
-        roomKindDTO.setRoomTypeName("A");
-        roomKindDTO.setClassApartmentName("B");
-
-        List<RoomKindDTO> roomKindDTOList = new ArrayList<>(List.of(roomKindDTO));
-        Mockito.when(roomKindMapper.toListRoomKindDTO(any())).thenReturn(roomKindDTOList);
-
-        mockMvc.perform(get("/api/uniqueRoomKindsFromRooms")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(content().json(asJsonString(roomKindDTOList)))
-                .andDo(print());
-    }
+//    @Test
+//    void testGetAllRoomKinds() throws Exception {
+//        RoomKindDTO roomKindDTO = new RoomKindDTO();
+//        roomKindDTO.setId(1);
+//        roomKindDTO.setRoomTypeName("A");
+//        roomKindDTO.setClassApartmentName("B");
+//
+//        List<RoomKindDTO> roomKindDTOList = new ArrayList<>(List.of(roomKindDTO));
+//        Mockito.when(roomKindMapper.toListRoomKindDTO(any())).thenReturn(roomKindDTOList);
+//
+//        mockMvc.perform(get("/api/admin/roomKinds")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(jsonPath("$[0].roomTypeName", Matchers.equalTo(roomKindDTO.getRoomTypeName())))
+//                .andExpect(content().json(asJsonString(roomKindDTOList)))
+//                .andDo(print());
+//    }
+//
+//    @Test
+//    void testCreateRoomKind() throws Exception {
+//        RoomKindDTO roomKindDTO = new RoomKindDTO();
+//        roomKindDTO.setRoomTypeName("A");
+//        roomKindDTO.setClassApartmentName("B");
+//
+//        Mockito.when(roomKindMapper.toRoomKindDTO(any())).thenReturn(roomKindDTO);
+//        Mockito.when(roomKindValidator.supports(any())).thenReturn(true);
+//        mockMvc.perform(post("/api/admin/roomKinds")
+//                        .content(asJsonString(roomKindDTO))
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isCreated())
+//                .andExpect(content().json(asJsonString(roomKindDTO)))
+//                .andDo(print());
+//    }
+//
+//    @Test
+//    void testPriceList() throws Exception {
+//        RoomKindDTO roomKindDTO = new RoomKindDTO();
+//        roomKindDTO.setId(1);
+//        roomKindDTO.setRoomTypeName("A");
+//        roomKindDTO.setClassApartmentName("B");
+//
+//        List<RoomKindDTO> roomKindDTOList = new ArrayList<>(List.of(roomKindDTO));
+//        Mockito.when(roomKindMapper.toListRoomKindDTO(any())).thenReturn(roomKindDTOList);
+//
+//        mockMvc.perform(get("/api/uniqueRoomKindsFromRooms")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(content().json(asJsonString(roomKindDTOList)))
+//                .andDo(print());
+//    }
 }

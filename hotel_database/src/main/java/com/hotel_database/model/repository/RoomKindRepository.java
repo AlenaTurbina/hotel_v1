@@ -8,9 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface RoomKindRepository extends JpaRepository<RoomKind, Integer> {
+public interface RoomKindRepository extends JpaRepository<RoomKind, UUID> {
 
     @Query(value = "SELECT * FROM room_kind WHERE id IN \n" +
             "(SELECT DISTINCT room_kind FROM room)", nativeQuery = true)
@@ -36,6 +37,6 @@ public interface RoomKindRepository extends JpaRepository<RoomKind, Integer> {
             "FROM room_kind\n" +
             "WHERE\n" +
             "room_kind.class_apartment_id = ?1 AND room_kind.room_type_id = ?2", nativeQuery = true)
-    Integer findRoomKindIDByRoomTypeAndClassApartmentID(Integer classApartmentId, Integer roomTypeId);
+    UUID findRoomKindIDByRoomTypeAndClassApartmentID(UUID classApartmentId, UUID roomTypeId);
 
 }

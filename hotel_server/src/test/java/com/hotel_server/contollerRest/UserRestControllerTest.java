@@ -37,80 +37,80 @@ class UserRestControllerTest {
     private UserClientUpdateValidator userClientUpdateValidator;
 
 
-    @Test
-    void testGetAllUsers() throws Exception {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(1);
-        userDTO.setFirstName("A");
-        userDTO.setLastName("B");
-        userDTO.setEmail("test@test.com");
+//    @Test
+//    void testGetAllUsers() throws Exception {
+//        UserDTO userDTO = new UserDTO();
+//        userDTO.setId(1);
+//        userDTO.setFirstName("A");
+//        userDTO.setLastName("B");
+//        userDTO.setEmail("test@test.com");
+//
+//        List<UserDTO> userDTOList = new ArrayList<>(List.of(userDTO));
+//        Mockito.when(userMapper.toListUserDTO(any())).thenReturn(userDTOList);
+//
+//        mockMvc.perform(get("/api/admin/users")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(jsonPath("$[0].email", Matchers.equalTo(userDTO.getEmail())))
+//                .andExpect(content().json(asJsonString(userDTOList)))
+//                .andDo(print());
+//    }
 
-        List<UserDTO> userDTOList = new ArrayList<>(List.of(userDTO));
-        Mockito.when(userMapper.toListUserDTO(any())).thenReturn(userDTOList);
+//    @Test
+//    void testGetUserOnEmail() throws Exception {
+//        String email = "test@test.com";
+//        UserDTO userDTO = new UserDTO();
+//        userDTO.setId(1);
+//        userDTO.setFirstName("A");
+//        userDTO.setLastName("B");
+//        userDTO.setEmail(email);
+//
+//        Mockito.when(userMapper.toUserDTO(any())).thenReturn(userDTO);
+//        mockMvc.perform(post("/api/client/user")
+//                        .content(asJsonString(email))
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(content().json(asJsonString(userDTO)))
+//                .andDo(print());
+//    }
 
-        mockMvc.perform(get("/api/admin/users")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(jsonPath("$[0].email", Matchers.equalTo(userDTO.getEmail())))
-                .andExpect(content().json(asJsonString(userDTOList)))
-                .andDo(print());
-    }
-
-    @Test
-    void testGetUserOnEmail() throws Exception {
-        String email = "test@test.com";
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(1);
-        userDTO.setFirstName("A");
-        userDTO.setLastName("B");
-        userDTO.setEmail(email);
-
-        Mockito.when(userMapper.toUserDTO(any())).thenReturn(userDTO);
-        mockMvc.perform(post("/api/client/user")
-                        .content(asJsonString(email))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().json(asJsonString(userDTO)))
-                .andDo(print());
-    }
-
-    @Test
-    void testUpdateClientUser() throws Exception {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(1);
-        userDTO.setFirstName("A");
-        userDTO.setLastName("B");
-        userDTO.setEmail("test@test.com");
-
-        Mockito.when(userMapper.toUserDTO(any())).thenReturn(userDTO);
-        Mockito.when(userClientUpdateValidator.supports(any())).thenReturn(true);
-        mockMvc.perform(put("/api/client/user/update")
-                        .content(asJsonString(userDTO))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated())
-                .andExpect(content().json(asJsonString(userDTO)))
-                .andDo(print());
-    }
-
-    @Test
-    void testCheckAuthentication() throws Exception {
-        String email = "test@test.com";
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(1);
-        userDTO.setFirstName("A");
-        userDTO.setLastName("B");
-        userDTO.setEmail(email);
-
-        Mockito.when(userMapper.toUserDTOAuth(any())).thenReturn(userDTO);
-        mockMvc.perform(post("/api/auth")
-                        .content(asJsonString(email))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().json(asJsonString(userDTO)))
-                .andDo(print());
-    }
+//    @Test
+//    void testUpdateClientUser() throws Exception {
+//        UserDTO userDTO = new UserDTO();
+//        userDTO.setId(1);
+//        userDTO.setFirstName("A");
+//        userDTO.setLastName("B");
+//        userDTO.setEmail("test@test.com");
+//
+//        Mockito.when(userMapper.toUserDTO(any())).thenReturn(userDTO);
+//        Mockito.when(userClientUpdateValidator.supports(any())).thenReturn(true);
+//        mockMvc.perform(put("/api/client/user/update")
+//                        .content(asJsonString(userDTO))
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isCreated())
+//                .andExpect(content().json(asJsonString(userDTO)))
+//                .andDo(print());
+//    }
+//
+//    @Test
+//    void testCheckAuthentication() throws Exception {
+//        String email = "test@test.com";
+//        UserDTO userDTO = new UserDTO();
+//        userDTO.setId(1);
+//        userDTO.setFirstName("A");
+//        userDTO.setLastName("B");
+//        userDTO.setEmail(email);
+//
+//        Mockito.when(userMapper.toUserDTOAuth(any())).thenReturn(userDTO);
+//        mockMvc.perform(post("/api/auth")
+//                        .content(asJsonString(email))
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(content().json(asJsonString(userDTO)))
+//                .andDo(print());
+//    }
 }

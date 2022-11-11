@@ -9,11 +9,12 @@ import com.hotel_dto.dto.UserDTO;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public interface OrderBookingService {
     List<OrderBooking> getAllOrderBooking();
 
-    OrderBooking getOrderBookingById(Integer id);
+    OrderBooking getOrderBookingById(UUID id);
 
     OrderBooking saveOrderBooking(OrderBookingDTO orderBookingDTO);
 
