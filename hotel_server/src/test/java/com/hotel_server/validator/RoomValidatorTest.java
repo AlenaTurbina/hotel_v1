@@ -26,22 +26,22 @@ class RoomValidatorTest {
     @InjectMocks
     private RoomValidator roomValidator;
 
-//    @Test
-//    void testValidateShouldAcceptClassApartmentNewName() {
-//        when(roomService.getRoomByName(any())).thenReturn(null);
-//        roomValidator.validate(roomDTO, errors);
-//
-//        verify(errors, never())
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
-//
-//    @Test
-//    void testValidateShouldRejectClassApartmentExistName() {
-//        when(roomService.getRoomByName(any())).thenReturn(roomExist);
-//        roomValidator.validate(roomDTO, errors);
-//
-//        verify(errors, times(1))
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
+    @Test
+    void testValidateShouldAcceptClassApartmentNewName() {
+        when(roomService.getRoomByName(any())).thenReturn(null);
+        roomValidator.validate(roomDTO, errors);
+
+        verify(errors, never())
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
+
+    @Test
+    void testValidateShouldRejectClassApartmentExistName() {
+        when(roomService.getRoomByName(any())).thenReturn(roomExist);
+        roomValidator.validate(roomDTO, errors);
+
+        verify(errors, times(1))
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
 
 }

@@ -1,16 +1,14 @@
 package com.hotel_server.contollerRest;
 
+import com.hotel_dto.dto.RoomDTO;
 import com.hotel_dto.mapper.ClassApartmentMapper;
 import com.hotel_dto.mapper.RoomKindMapper;
 import com.hotel_dto.mapper.RoomMapper;
 import com.hotel_dto.mapper.RoomTypeMapper;
 import com.hotel_server.service.RoomService;
 import com.hotel_server.validator.RoomValidator;
-import com.hotel_dto.dto.ClassApartmentDTO;
-import com.hotel_dto.dto.RoomDTO;
-import com.hotel_dto.dto.RoomKindDTO;
-import com.hotel_dto.dto.RoomTypeDTO;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.hotel_server.util.Utils.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
@@ -45,29 +44,30 @@ class RoomRestControllerTest {
     @MockBean
     private RoomValidator roomValidator;
 
-//    @Test
-//    void testGetAllRooms() throws Exception {
-//        RoomDTO roomDTO = new RoomDTO();
-//        roomDTO.setId(1);
-//        roomDTO.setName("1A");
-//        roomDTO.setRoomKind(2);
-//
-//        List<RoomDTO> roomDTOList = new ArrayList<>(List.of(roomDTO));
-//        Mockito.when(roomMapper.toListRoomDTO(any())).thenReturn(roomDTOList);
-//        mockMvc.perform(get("/api/admin/rooms")
-//                        .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-//                .andExpect(content().json(asJsonString(roomDTOList)))
-//                .andDo(print());
-//    }
+    RoomDTO roomDTO = new RoomDTO();
 
+    @BeforeEach
+    public void setUp() {
+        roomDTO.setId(UUID.randomUUID());
+        roomDTO.setName("1A");
+        roomDTO.setRoomKind(UUID.randomUUID());
+    }
+
+    @Test
+    void testGetAllRooms() throws Exception {
+        List<RoomDTO> roomDTOList = new ArrayList<>(List.of(roomDTO));
+        Mockito.when(roomMapper.toListRoomDTO(any())).thenReturn(roomDTOList);
+        mockMvc.perform(get("/api/admin/rooms")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+                .andExpect(content().json(asJsonString(roomDTOList)))
+                .andDo(print());
+    }
+
+    //This function was moved into another microservice
 //    @Test
 //    void testCreateRoom() throws Exception {
-//        RoomDTO roomDTO = new RoomDTO();
-//        roomDTO.setName("1A");
-//        roomDTO.setRoomKind(2);
-//
 //        Mockito.when(roomMapper.toRoomDTO(any())).thenReturn(roomDTO);
 //        Mockito.when(roomValidator.supports(any())).thenReturn(true);
 //        mockMvc.perform(post("/api/admin/rooms")
@@ -78,10 +78,4 @@ class RoomRestControllerTest {
 //                .andExpect(content().json(asJsonString(roomDTO)))
 //                .andDo(print());
 //    }
-
-
-
-
-
-
 }

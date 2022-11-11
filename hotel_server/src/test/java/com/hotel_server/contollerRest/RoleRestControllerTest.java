@@ -1,9 +1,10 @@
 package com.hotel_server.contollerRest;
 
+import com.hotel_dto.dto.RoleDTO;
 import com.hotel_dto.mapper.RoleMapper;
 import com.hotel_server.service.RoleService;
-import com.hotel_dto.dto.RoleDTO;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.hotel_server.util.Utils.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
@@ -30,22 +32,24 @@ class RoleRestControllerTest {
     @MockBean
     private RoleMapper roleMapper;
 
+    RoleDTO roleDTO = new RoleDTO();
+    UUID uuid = UUID.randomUUID();
 
-//    @Test
-//    void testGetAllRoles() throws Exception {
-//        Integer id = 1;
-//        RoleDTO roleDTO = new RoleDTO();
-//        roleDTO.setId(id);
-//
-//        List<RoleDTO> roleDTOList = new ArrayList<>(List.of(roleDTO));
-//        Mockito.when(roleMapper.toListRoleDTO(any())).thenReturn(roleDTOList);
-//
-//        mockMvc.perform(get("/api/admin/roles")
-//                        .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-//                .andExpect(jsonPath("$[0].id", Matchers.equalTo(roleDTO.getId())))
-//                .andExpect(content().json(asJsonString((roleDTOList))))
-//                .andDo(print());
-//    }
+    @BeforeEach
+    public void setUp() {
+        roleDTO.setId(uuid);
+    }
+
+    @Test
+    void testGetAllRoles() throws Exception {
+        List<RoleDTO> roleDTOList = new ArrayList<>(List.of(roleDTO));
+        Mockito.when(roleMapper.toListRoleDTO(any())).thenReturn(roleDTOList);
+        mockMvc.perform(get("/api/admin/roles")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+                .andExpect(jsonPath("$[0].id", Matchers.equalTo(roleDTO.getId().toString())))
+                .andExpect(content().json(asJsonString((roleDTOList))))
+                .andDo(print());
+    }
 }

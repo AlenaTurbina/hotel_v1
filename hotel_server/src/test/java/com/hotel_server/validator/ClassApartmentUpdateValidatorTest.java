@@ -1,14 +1,16 @@
 package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.ClassApartment;
-import com.hotel_server.service.ClassApartmentService;
 import com.hotel_dto.dto.ClassApartmentDTO;
+import com.hotel_server.service.ClassApartmentService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.Errors;
+
+import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -23,14 +25,13 @@ class ClassApartmentUpdateValidatorTest {
     @Mock
     private ClassApartmentDTO classApartmentDTO;
     @Mock
-    private  Errors errors;
+    private Errors errors;
     @InjectMocks
     private ClassApartmentUpdateValidator classApartmentUpdateValidator;
 
     private static final Double testPriceValid = 10.0;
     private static final Double testPriceInvalid = -5.0;
     private static final Double testPriceInvalidZero = 0.0;
-
 
     @Test
     void testValidateShouldAcceptClassApartmentPositivePlacePrice() {
@@ -67,26 +68,29 @@ class ClassApartmentUpdateValidatorTest {
         verify(errors, never())
                 .rejectValue("name", "validation.adminSide.duplicateName");
     }
-//
-//    @Test
-//    void testValidateShouldRejectClassApartmentSameName() {
-//        when(classApartmentService.getClassApartmentByName(any())).thenReturn(classApartmentExist);
-//        when(classApartmentDTO.getId()).thenReturn(1);
-//        when(classApartmentExist.getId()).thenReturn(1);
-//        classApartmentUpdateValidator.validate(classApartmentDTO, errors);
-//
-//        verify(errors, never())
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
-//
-//    @Test
-//    void testValidateShouldRejectClassApartmentSameExistName() {
-//        when(classApartmentService.getClassApartmentByName(any())).thenReturn(classApartmentExist);
-//        when(classApartmentDTO.getId()).thenReturn(1);
-//        when(classApartmentExist.getId()).thenReturn(2);
-//        classApartmentUpdateValidator.validate(classApartmentDTO, errors);
-//
-//        verify(errors, times(1))
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
+
+    @Test
+    void testValidateShouldRejectClassApartmentSameName() {
+        UUID uuid = UUID.randomUUID();
+        when(classApartmentService.getClassApartmentByName(any())).thenReturn(classApartmentExist);
+        when(classApartmentDTO.getId()).thenReturn(uuid);
+        when(classApartmentExist.getId()).thenReturn(uuid);
+        classApartmentUpdateValidator.validate(classApartmentDTO, errors);
+
+        verify(errors, never())
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
+
+    @Test
+    void testValidateShouldRejectClassApartmentSameExistName() {
+        UUID uuid = UUID.randomUUID();
+        UUID uuidExist = UUID.randomUUID();
+        when(classApartmentService.getClassApartmentByName(any())).thenReturn(classApartmentExist);
+        when(classApartmentDTO.getId()).thenReturn(uuid);
+        when(classApartmentExist.getId()).thenReturn(uuidExist);
+        classApartmentUpdateValidator.validate(classApartmentDTO, errors);
+
+        verify(errors, times(1))
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
 }

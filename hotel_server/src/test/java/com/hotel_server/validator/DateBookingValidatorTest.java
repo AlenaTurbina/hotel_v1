@@ -1,7 +1,7 @@
 package com.hotel_server.validator;
 
-import com.hotel_server.message.Messages;
 import com.hotel_dto.dto.OrderBookingDTO;
+import com.hotel_server.message.Messages;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +19,7 @@ class DateBookingValidatorTest {
     @Mock
     private OrderBookingDTO orderBookingDTO;
     @Mock
-    private  Errors errors;
+    private Errors errors;
     @InjectMocks
     private DateBookingValidator dateBookingValidator;
 

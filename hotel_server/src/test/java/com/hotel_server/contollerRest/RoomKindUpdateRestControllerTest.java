@@ -1,9 +1,10 @@
 package com.hotel_server.contollerRest;
 
+import com.hotel_dto.dto.RoomKindDTO;
 import com.hotel_dto.mapper.RoomKindMapper;
 import com.hotel_server.service.RoomKindService;
 import com.hotel_server.validator.RoomKindUpdateValidator;
-import com.hotel_dto.dto.RoomKindDTO;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.UUID;
 
 import static com.hotel_server.util.Utils.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
@@ -31,37 +34,35 @@ class RoomKindUpdateRestControllerTest {
     @MockBean
     private RoomKindUpdateValidator roomKindUpdateValidator;
 
+    RoomKindDTO roomKindDTO = new RoomKindDTO();
+    UUID uuid = UUID.randomUUID();
 
-//    @Test
-//    void testGetRoomKind() throws Exception {
-//        RoomKindDTO roomKindDTO = new RoomKindDTO();
-//        roomKindDTO.setId(1);
-//        roomKindDTO.setRoomTypeName("A");
-//        roomKindDTO.setClassApartmentName("B");
-//
-//        Mockito.when(roomKindMapper.toRoomKindDTO(any())).thenReturn(roomKindDTO);
-//        mockMvc.perform(get("/api/admin/roomKinds/{id}", 1))
-//                .andExpect(status().isOk())
-//                .andExpect(content().json(asJsonString(roomKindDTO)))
-//                .andDo(print());
-//
-//    }
-//
-//    @Test
-//    void testUpdateRoomKind() throws Exception {
-//        RoomKindDTO roomKindDTO = new RoomKindDTO();
-//        roomKindDTO.setId(1);
-//        roomKindDTO.setRoomTypeName("A");
-//        roomKindDTO.setClassApartmentName("B");
-//
-//        Mockito.when(roomKindMapper.toRoomKindDTO(any())).thenReturn(roomKindDTO);
-//        Mockito.when(roomKindUpdateValidator.supports(any())).thenReturn(true);
-//        mockMvc.perform(put("/api/admin/roomKinds/")
-//                        .content(asJsonString(roomKindDTO))
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isCreated())
-//                .andExpect(content().json(asJsonString(roomKindDTO)))
-//                .andDo(print());
-//    }
+    @BeforeEach
+    public void setUp() {
+        roomKindDTO.setId(uuid);
+        roomKindDTO.setRoomTypeName("A");
+        roomKindDTO.setClassApartmentName("B");
+    }
+
+    @Test
+    void testGetRoomKind() throws Exception {
+        Mockito.when(roomKindMapper.toRoomKindDTO(any())).thenReturn(roomKindDTO);
+        mockMvc.perform(get("/api/admin/roomKinds/{id}", uuid))
+                .andExpect(status().isOk())
+                .andExpect(content().json(asJsonString(roomKindDTO)))
+                .andDo(print());
+    }
+
+    @Test
+    void testUpdateRoomKind() throws Exception {
+        Mockito.when(roomKindMapper.toRoomKindDTO(any())).thenReturn(roomKindDTO);
+        Mockito.when(roomKindUpdateValidator.supports(any())).thenReturn(true);
+        mockMvc.perform(put("/api/admin/roomKinds/")
+                .content(asJsonString(roomKindDTO))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andExpect(content().json(asJsonString(roomKindDTO)))
+                .andDo(print());
+    }
 }

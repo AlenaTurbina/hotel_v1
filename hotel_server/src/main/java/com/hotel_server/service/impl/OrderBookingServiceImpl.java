@@ -141,7 +141,7 @@ public class OrderBookingServiceImpl implements OrderBookingService {
                 dateArrival, dateDeparture);
 
         //add room of current orderBooking for option
-        if (orderBooking.getOrderStatus().getId() == ID_DEFAULT_ORDER_STATUS_CANCEL) {
+        if (orderBooking.getOrderStatus().getId().equals(ID_DEFAULT_ORDER_STATUS_CANCEL)) {
             log.info("OrderBookingStatus == CANCEL, current room wasn't added");
         } else {
             resultRooms.add(orderBooking.getRoom());

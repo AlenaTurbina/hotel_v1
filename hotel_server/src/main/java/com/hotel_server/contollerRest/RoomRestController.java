@@ -42,8 +42,4 @@ public class RoomRestController {
         return roomMapper.toListRoomDTO(roomService.getAllRooms());
     }
 
-
-
-
-
 }

@@ -30,7 +30,6 @@ class RoomTypeValidatorTest {
     private static final Integer quantityPlacesOneValid = 1;
     private static final Integer quantityPlacesInvalidZero = 0;
 
-
     @Test
     void testValidateShouldAcceptRoomTypeQuantityPlacesValid() {
         when(roomTypeDTO.getQuantityPlaces()).thenReturn(quantityPlacesValid);
@@ -58,23 +57,21 @@ class RoomTypeValidatorTest {
                 .rejectValue("quantityPlaces", "validation.field.positive");
     }
 
+    @Test
+    void testValidateShouldAcceptRoomTypeNewName() {
+        when(roomTypeService.getRoomTypeByName(any())).thenReturn(null);
+        roomTypeValidator.validate(roomTypeDTO, errors);
 
-//    @Test
-//    void testValidateShouldAcceptRoomTypeNewName() {
-//        when(roomTypeService.getRoomTypeByName(any())).thenReturn(null);
-//        roomTypeValidator.validate(roomTypeDTO, errors);
-//
-//        verify(errors, never())
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
-//
-//    @Test
-//    void testValidateShouldRejectRoomTypeExistName() {
-//        when(roomTypeService.getRoomTypeByName(any())).thenReturn(roomTypeExist);
-//        roomTypeValidator.validate(roomTypeDTO, errors);
-//
-//        verify(errors, times(1))
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
+        verify(errors, never())
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
 
+    @Test
+    void testValidateShouldRejectRoomTypeExistName() {
+        when(roomTypeService.getRoomTypeByName(any())).thenReturn(roomTypeExist);
+        roomTypeValidator.validate(roomTypeDTO, errors);
+
+        verify(errors, times(1))
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
 }

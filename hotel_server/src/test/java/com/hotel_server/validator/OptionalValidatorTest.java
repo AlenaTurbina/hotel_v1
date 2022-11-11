@@ -1,8 +1,8 @@
 package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.Optional;
-import com.hotel_server.service.OptionalService;
 import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_server.service.OptionalService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,7 +31,6 @@ class OptionalValidatorTest {
     private static final Double testPriceInvalid = -5.0;
     private static final Double testPriceInvalidZero = 0.0;
 
-
     @Test
     void testValidateShouldAcceptOptionalDTOPositiveOptionalPrice() {
         when(optionalDTO.getOptionalPrice()).thenReturn(testPriceValid);
@@ -59,21 +58,21 @@ class OptionalValidatorTest {
                 .rejectValue("optionalPrice", "validation.field.positive");
     }
 
-//    @Test
-//    void testValidateShouldAcceptOptionalNewName() {
-//        when(optionalService.getOptionalByName(any())).thenReturn(null);
-//        optionalValidator.validate(optionalDTO, errors);
-//
-//        verify(errors, never())
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
-//
-//    @Test
-//    void testValidateShouldRejectOptionalExistName() {
-//        when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
-//        optionalValidator.validate(optionalDTO, errors);
-//
-//        verify(errors, times(1))
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
+    @Test
+    void testValidateShouldAcceptOptionalNewName() {
+        when(optionalService.getOptionalByName(any())).thenReturn(null);
+        optionalValidator.validate(optionalDTO, errors);
+
+        verify(errors, never())
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
+
+    @Test
+    void testValidateShouldRejectOptionalExistName() {
+        when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
+        optionalValidator.validate(optionalDTO, errors);
+
+        verify(errors, times(1))
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
 }

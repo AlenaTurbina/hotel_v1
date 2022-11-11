@@ -10,6 +10,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.Errors;
 
+import java.util.UUID;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -26,7 +28,6 @@ class RoomUpdateValidatorTest {
     @InjectMocks
     private RoomUpdateValidator roomUpdateValidator;
 
-
     @Test
     void testValidateShouldAcceptRoomNewName() {
         when(roomService.getRoomByName(any())).thenReturn(null);
@@ -36,26 +37,28 @@ class RoomUpdateValidatorTest {
                 .rejectValue("name", "validation.adminSide.duplicateName");
     }
 
-//    @Test
-//    void testValidateShouldAcceptRoomSameName() {
-//        when(roomService.getRoomByName(any())).thenReturn(roomExist);
-//        when(roomDTO.getId()).thenReturn(1);
-//        when(roomExist.getId()).thenReturn(1);
-//        roomUpdateValidator.validate(roomDTO, errors);
-//
-//        verify(errors, never())
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
-//
-//    @Test
-//    void testValidateShouldRejectRoomSameExistName() {
-//        when(roomService.getRoomByName(any())).thenReturn(roomExist);
-//        when(roomDTO.getId()).thenReturn(1);
-//        when(roomExist.getId()).thenReturn(2);
-//        roomUpdateValidator.validate(roomDTO, errors);
-//
-//        verify(errors, times(1))
-//                .rejectValue("name", "validation.adminSide.duplicateName");
-//    }
+    @Test
+    void testValidateShouldAcceptRoomSameName() {
+        UUID uuid = UUID.randomUUID();
+        when(roomService.getRoomByName(any())).thenReturn(roomExist);
+        when(roomDTO.getId()).thenReturn(uuid);
+        when(roomExist.getId()).thenReturn(uuid);
+        roomUpdateValidator.validate(roomDTO, errors);
 
+        verify(errors, never())
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
+
+    @Test
+    void testValidateShouldRejectRoomSameExistName() {
+        UUID uuid = UUID.randomUUID();
+        UUID uuidExist = UUID.randomUUID();
+        when(roomService.getRoomByName(any())).thenReturn(roomExist);
+        when(roomDTO.getId()).thenReturn(uuid);
+        when(roomExist.getId()).thenReturn(uuidExist);
+        roomUpdateValidator.validate(roomDTO, errors);
+
+        verify(errors, times(1))
+                .rejectValue("name", "validation.adminSide.duplicateName");
+    }
 }

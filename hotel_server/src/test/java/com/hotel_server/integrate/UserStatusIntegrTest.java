@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.hotel_server.util.Utils.asJsonString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -32,17 +33,17 @@ class UserStatusIntegrTest {
     private UserStatusService userStatusService;
     @Autowired
     private UserStatusMapper userStatusMapper;
-//
-//    @Test
-//    void testGetAllUserStatuses() throws Exception {
-//        UserStatus userStatus = new UserStatus(1, null);
-//        List<UserStatus> userStatusList = new ArrayList<>(List.of(userStatus));
-//        Mockito.when(userStatusService.getAllUserStatuses()).thenReturn(userStatusList);
-//        mockMvc.perform(get("/api/admin/userStatuses")
-//                        .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-//                .andExpect(content().json(asJsonString(userStatusMapper.toListUserStatusDTO(userStatusList))))
-//                .andDo(print());
-//    }
+
+    @Test
+    void testGetAllUserStatuses() throws Exception {
+        UserStatus userStatus = new UserStatus(UUID.randomUUID(), null);
+        List<UserStatus> userStatusList = new ArrayList<>(List.of(userStatus));
+        Mockito.when(userStatusService.getAllUserStatuses()).thenReturn(userStatusList);
+        mockMvc.perform(get("/api/admin/userStatuses")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", Matchers.hasSize(1)))
+                .andExpect(content().json(asJsonString(userStatusMapper.toListUserStatusDTO(userStatusList))))
+                .andDo(print());
+    }
 }
