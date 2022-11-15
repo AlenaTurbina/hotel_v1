@@ -45,6 +45,8 @@ dependencies {
 //  the Jupiter sub-project provides a TestEngine for running Jupiter based tests on the platform.
     runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.0'
+
     implementation project(':hotel_activemq')
     implementation project(':hotel_commons')
     implementation project(':hotel_database')

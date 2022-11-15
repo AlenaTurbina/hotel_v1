@@ -1,5 +1,7 @@
 package com.hotel_server.service.impl;
 
+import com.fasterxml.jackson.databind.deser.std.UUIDDeserializer;
+import com.fasterxml.jackson.databind.ser.std.UUIDSerializer;
 import com.hotel_database.model.repository.ClassApartmentRepository;
 import com.hotel_database.model.repository.RoomKindRepository;
 import com.hotel_database.model.repository.RoomTypeRepository;
@@ -48,7 +50,7 @@ public class RoomKindServiceImpl implements RoomKindService {
     @Override
     public UUID getRoomKindIdByRoomTypeIdAndClassApartmentId(UUID roomTypeID, UUID classApartmentID) {
         log.info("Get room Kind by (roomTypeID, ClassApartmentID): " + roomTypeID + ", " + classApartmentID);
-        return roomKindRepository.findRoomKindIDByRoomTypeAndClassApartmentID(classApartmentID, roomTypeID);
+        return roomKindRepository.findRoomKindIDByRoomTypeAndClassApartmentID1(classApartmentID, roomTypeID);
     }
 
     @Override
@@ -72,5 +74,12 @@ public class RoomKindServiceImpl implements RoomKindService {
         roomKindNew.setRoomPrice(roomKindDTO.getRoomPrice());
         log.info("Room kind update (id): " + roomKindDTO.getId());
         return roomKindRepository.saveAndFlush(roomKindNew);
+    }
+
+
+    @Override
+    public UUID testRK(UUID classApartment, UUID roomType) {
+        System.out.println("from");
+        return roomKindRepository.findRoomKindIDByRoomTypeAndClassApartmentID1(classApartment, roomType);
     }
 }

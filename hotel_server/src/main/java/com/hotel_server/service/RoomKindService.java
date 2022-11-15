@@ -1,5 +1,7 @@
 package com.hotel_server.service;
 
+import com.fasterxml.jackson.databind.deser.std.UUIDDeserializer;
+import com.fasterxml.jackson.databind.ser.std.UUIDSerializer;
 import com.hotel_domain.model.entity.RoomKind;
 import com.hotel_dto.dto.RoomKindDTO;
 
@@ -18,5 +20,7 @@ public interface RoomKindService {
     RoomKind saveRoomKind(RoomKindDTO roomKindDTO);
 
     RoomKind updateRoomKind(RoomKindDTO roomKindDTO);
+
+    UUID testRK(UUID classApartment, UUID roomType);
 
 }

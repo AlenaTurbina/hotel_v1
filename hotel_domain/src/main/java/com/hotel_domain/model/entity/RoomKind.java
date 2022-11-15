@@ -29,4 +29,5 @@ public class RoomKind {
     @JoinColumn(name = "class_apartment_id")
     private ClassApartment classApartment;
 
+
 }

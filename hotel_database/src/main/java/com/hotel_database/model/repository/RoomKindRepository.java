@@ -1,8 +1,12 @@
 package com.hotel_database.model.repository;
 
+import com.fasterxml.jackson.databind.deser.std.UUIDDeserializer;
+import com.fasterxml.jackson.databind.ser.std.UUIDSerializer;
 import com.hotel_domain.model.entity.RoomKind;
+import org.hibernate.annotations.ParamDef;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -38,5 +42,12 @@ public interface RoomKindRepository extends JpaRepository<RoomKind, UUID> {
             "WHERE\n" +
             "room_kind.class_apartment_id = ?1 AND room_kind.room_type_id = ?2", nativeQuery = true)
     UUID findRoomKindIDByRoomTypeAndClassApartmentID(UUID classApartmentId, UUID roomTypeId);
+
+    @Query(value = "SELECT id from room_kind r where r.class_apartment_id =classApartment and r.room_type_id  = roomType", nativeQuery = true)
+    UUID findRoomKindIDByRoomTypeAndClassApartmentID1( @Param("roomType") UUID roomType, @Param("classApartment") UUID classApartment);
+
+
+//    @Query("SELECT r.id from RoomKind r where r.classApartment = '678bb12d-ef27-43b4-bdf4-e7be834c115c' and r.roomType = '15715979-d0d6-4691-953f-e0c81f07a3ca'")
+//    UUID findRoomKindIDByRoomTypeAndClassApartmentID1();
 
 }
