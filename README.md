@@ -25,4 +25,4 @@
 ­ SpringSecurity Login-password-roles, 
 ­ TemplateEngine Thymeleaf, 
 ­ UI BootStrap, HTML, CSS, JS, 
-­ Testing JUnit5, Mockito.
+­ Testing JUnit5, Mockito
