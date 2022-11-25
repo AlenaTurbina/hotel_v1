@@ -7,15 +7,19 @@ services:
     ports:
       - "5432:5432"
     restart: always
-    environment:
-      - POSTGRES_DB=hotel
-      - POSTGRES_USER=user_1
-      - POSTGRES_PASSWORD=12345
+    env_file:
+      - dc.env
     volumes:
       - db:/var/lib/postgres
+#    networks:
+#      - net
 
 volumes:
   db:
+
+#networks:
+#  net:
+
 
 
 
