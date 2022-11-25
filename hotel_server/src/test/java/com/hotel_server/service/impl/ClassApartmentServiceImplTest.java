@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -27,40 +28,35 @@ class ClassApartmentServiceImplTest {
     private ClassApartmentServiceImpl classApartmentService;
 
     private ClassApartment classApartment;
+    private ClassApartment classApartment1;
 
     @BeforeEach
     public void setUp() {
         classApartment = ClassApartment.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("CA1")
                 .placePrice(10.0)
+                .build();
+       classApartment1 = ClassApartment.builder()
+                .id(UUID.randomUUID())
+                .name("CA2")
+                .placePrice(20.0)
                 .build();
     }
 
     @DisplayName("JUnit test for getAllClassApartment method")
     @Test
     void test_WhenGetAll_ThenReturnClassApartmentList(){
-        ClassApartment classApartment1 = ClassApartment.builder()
-                .id(2)
-                .name("CA2")
-                .placePrice(20.0)
-                .build();
         given(classApartmentRepository.findAll()).willReturn(List.of(classApartment, classApartment1));
         List<ClassApartment> classApartmentList = classApartmentService.getAllClassApartments();
 
         assertThat(classApartmentList).isNotEmpty();
         assertThat(classApartmentList.size()).isEqualTo(2);
     }
-
+//
     @DisplayName("JUnit test for getAllClassApartment method (empty list)")
     @Test
     void test_WhenGetAll_ThenReturnEmptyClassApartmentList(){
-        ClassApartment classApartment1 = ClassApartment.builder()
-                .id(2)
-                .name("CA2")
-                .placePrice(20.0)
-                .build();
-
         given(classApartmentRepository.findAll()).willReturn(Collections.emptyList());
         List<ClassApartment> classApartmentList = classApartmentService.getAllClassApartments();
 
@@ -109,11 +105,6 @@ class ClassApartmentServiceImplTest {
     @DisplayName("JUnit test for getListUniqueClassApartmentsFromRooms method")
     @Test
     void test_WhenListUniqueClassApartmentsFromRooms_thenReturnClassApartmentList(){
-        ClassApartment classApartment1 = ClassApartment.builder()
-                .id(2)
-                .name("CA2")
-                .placePrice(20.0)
-                .build();
         given(classApartmentRepository.findListUniqueClassApartmentFromRooms()).willReturn(List.of(classApartment, classApartment1));
         List<ClassApartment> classApartmentList = classApartmentService.getListUniqueClassApartmentsFromRooms();
 
@@ -124,11 +115,6 @@ class ClassApartmentServiceImplTest {
     @DisplayName("JUnit test for getListUniqueClassApartmentsFromRooms method (empty list)")
     @Test
     void test_WhenListUniqueClassApartmentsFromRooms_ThenReturnEmptyClassApartmentList(){
-        ClassApartment classApartment1 = ClassApartment.builder()
-                .id(2)
-                .name("CA2")
-                .placePrice(20.0)
-                .build();
         given(classApartmentRepository.findListUniqueClassApartmentFromRooms()).willReturn(Collections.emptyList());
         List<ClassApartment> classApartmentList = classApartmentService.getListUniqueClassApartmentsFromRooms();
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 
 @RestController
@@ -32,7 +33,7 @@ public class OptionalUpdateRestController {
 
     @Operation(summary = "Getting Optional by id")
     @GetMapping(value = "/admin/optionals/{id}")
-    OptionalDTO getOptional(@PathVariable Integer id) {
+    OptionalDTO getOptional(@PathVariable UUID id) {
         return optionalMapper.toOptionalDTO(optionalService.getOptionalById(id));
     }
 

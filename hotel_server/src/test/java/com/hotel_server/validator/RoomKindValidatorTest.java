@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.Errors;
 
+import java.util.UUID;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -26,7 +28,6 @@ class RoomKindValidatorTest {
     private static final Double testPriceValid = 10.0;
     private static final Double testPriceInvalid = -5.0;
     private static final Double testPriceInvalidZero = 0.0;
-
 
     @Test
     void testValidateShouldAcceptRoomKindDTOPositivePlacePrice() {
@@ -66,9 +67,9 @@ class RoomKindValidatorTest {
 
     @Test
     void testValidateShouldRejectRoomKindExistName() {
-        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(1);
-        when(roomKindDTO.getClassApartment()).thenReturn(1);
-        when(roomKindDTO.getRoomType()).thenReturn(1);
+        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(UUID.randomUUID());
+        when(roomKindDTO.getClassApartment()).thenReturn(UUID.randomUUID());
+        when(roomKindDTO.getRoomType()).thenReturn(UUID.randomUUID());
         roomKindValidator.validate(roomKindDTO, errors);
 
         verify(errors, times(1))

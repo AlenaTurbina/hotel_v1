@@ -4,10 +4,11 @@ import lombok.Data;
 
 import javax.persistence.Transient;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 public class UserDTO {
-    private Integer id;
+    private UUID id;
     private String email;
     private String password;
     private String firstName;
@@ -18,9 +19,13 @@ public class UserDTO {
 
     private List<String> rolesString;
     private String userStatusString;
-    private Integer userStatusInteger;
+    private UUID userStatusInteger;
 
     @Transient
     private String confirmPassword;
+
+
+
+
 
 }

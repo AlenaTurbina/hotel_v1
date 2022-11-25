@@ -22,7 +22,8 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation ("org.springframework.boot:spring-boot-starter-data-jpa:${sbDataJPAVersion}")
-    runtimeOnly ("mysql:mysql-connector-java:${mySQLConnectorJavaVersion}")
+//    runtimeOnly ("mysql:mysql-connector-java:${mySQLConnectorJavaVersion}")
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.0'
     implementation ("javax.xml.bind:jaxb-api:${javaxXmlBindVersion}")
     implementation ("org.liquibase:liquibase-core:${liquibaseCoreVersion}")
 
@@ -34,6 +35,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
 //  the Jupiter sub-project provides a TestEngine for running Jupiter based tests on the platform.
     runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
 
     implementation project(':hotel_commons')
     implementation project(':hotel_domain')

@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import static com.hotel_server.util.Utils.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
@@ -56,13 +57,16 @@ class OrderBookingCreateIntegrTest {
     @MockBean
     private  EmailSenderServiceImpl emailSenderService;
 
-    private static final Integer ID_DEFAULT_ORDER_STATUS_PAID = Messages.getIntegerMessage("server.booking.idDefaultOrderStatusPaid");
+    private static final UUID ID_DEFAULT_ORDER_STATUS_PAID = Messages.getUUIDMessage("server.booking.idDefaultOrderStatusPaid");
 
     private User user;
     private Room room1;
     private Room room2;
     private OrderStatus orderStatusPaid;
     private Optional optional1;
+
+    private UUID uuidRoomType = UUID.randomUUID();
+    private UUID uuidClassApartment = UUID.randomUUID();
 
     @BeforeEach
     public void setUp() {
@@ -71,47 +75,47 @@ class OrderBookingCreateIntegrTest {
                 .name("Paid")
                 .build();
         ClassApartment classApartment1 = ClassApartment.builder()
-                .id(1)
+                .id(uuidRoomType)
                 .name("CA1")
                 .placePrice(20.0)
                 .build();
         RoomType roomType1 = RoomType.builder()
-                .id(1)
+                .id(uuidRoomType)
                 .name("RT1")
                 .quantityPlaces(2)
                 .build();
         RoomKind roomKind1 = RoomKind.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .classApartment(classApartment1)
                 .roomType(roomType1)
                 .roomPrice(100.0)
                 .build();
         room1 = Room.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("R1")
                 .roomKind(roomKind1)
                 .build();
         room2 = Room.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .name("R2")
                 .roomKind(roomKind1)
                 .build();
         optional1 = Optional.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("O1")
                 .optionalPrice(1.0)
                 .build();
         UserStatus userStatus1 = UserStatus.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("US1")
                 .build();
         Role role1 = Role.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("R1")
                 .build();
         List<Role> roles = new ArrayList<>(List.of(role1));
         user = User.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .email("user@test.com")
                 .userStatus(userStatus1)
                 .roles(roles)
@@ -126,8 +130,8 @@ class OrderBookingCreateIntegrTest {
         orderBookingDTO1.setDateDeparture(LocalDate.of(2022, 05, 10));
         orderBookingDTO1.setQuantityPersons(1);
         orderBookingDTO1.setUser(user.getId());
-        orderBookingDTO1.setRoomType(1);
-        orderBookingDTO1.setClassApartment(1);
+        orderBookingDTO1.setRoomType(uuidRoomType);
+        orderBookingDTO1.setClassApartment(uuidClassApartment);
 
         List<Room> rooms = new ArrayList<>(List.of(room1, room2));
         Mockito.when(roomRepository.findListFreeRoomsForBooking(any(), any(), any(), any(), any())).thenReturn(rooms);
@@ -173,8 +177,8 @@ class OrderBookingCreateIntegrTest {
         orderBookingDTO1.setDateDeparture(LocalDate.of(2022, 05, 10));
         orderBookingDTO1.setQuantityPersons(1);
         orderBookingDTO1.setUser(user.getId());
-        orderBookingDTO1.setRoomType(1);
-        orderBookingDTO1.setClassApartment(1);
+        orderBookingDTO1.setRoomType(uuidRoomType);
+        orderBookingDTO1.setClassApartment(uuidClassApartment);
 
         List<Room> rooms = new ArrayList<>(List.of(room1, room2));
         Mockito.when(roomRepository.findListFreeRoomsForBooking(any(), any(), any(), any(), any()))

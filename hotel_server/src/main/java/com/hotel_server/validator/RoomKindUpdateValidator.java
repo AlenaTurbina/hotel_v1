@@ -8,6 +8,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import java.util.UUID;
+
 
 @Component
 @AllArgsConstructor
@@ -24,7 +26,7 @@ public class RoomKindUpdateValidator implements Validator {
     public void validate(Object target, Errors errors) {
         RoomKindDTO roomKindDTO = (RoomKindDTO) target;
 
-        Integer falseID = roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(roomKindDTO.getRoomType(), roomKindDTO.getClassApartment());
+        UUID falseID = roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(roomKindDTO.getRoomType(), roomKindDTO.getClassApartment());
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "roomType", "validation.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "classApartment", "validation.required");

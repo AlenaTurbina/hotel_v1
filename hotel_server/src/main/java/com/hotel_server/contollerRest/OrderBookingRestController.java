@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -79,7 +80,7 @@ public class OrderBookingRestController {
 
     @Operation(summary = "Getting Order booking by id")
     @GetMapping(value = "/admin/orderBookings/{id}")
-    OrderBookingDTO getOrderBooking(@PathVariable Integer id) {
+    OrderBookingDTO getOrderBooking(@PathVariable UUID id) {
         return orderBookingMapper.toOrderBookingDTO(orderBookingService.getOrderBookingById(id));
     }
 
@@ -92,7 +93,7 @@ public class OrderBookingRestController {
 
     @Operation(summary = "Getting list of free rooms to certain Order booking")
     @PostMapping("/roomsForDates")
-    ResponseEntity getRoomsOnOrderBookingDate(@RequestBody Integer id) {
+    ResponseEntity getRoomsOnOrderBookingDate(@RequestBody UUID id) {
         var rooms = orderBookingService.getListFreeRoomsOnOrderBookingDates(orderBookingService.getOrderBookingById(id));
         return new ResponseEntity<>(roomMapper.toListRoomDTO(rooms), HttpStatus.OK);
     }

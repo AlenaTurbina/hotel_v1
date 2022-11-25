@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -15,8 +17,9 @@ import javax.persistence.*;
 @Table(name = "Room_kind")
 public class RoomKind {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private UUID id;
     @Column(name = "room_price")
     private Double roomPrice;
     @ManyToOne(cascade = CascadeType.ALL)
@@ -25,5 +28,6 @@ public class RoomKind {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "class_apartment_id")
     private ClassApartment classApartment;
+
 
 }

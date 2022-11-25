@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -27,25 +28,25 @@ class RoomTypeServiceImplTest {
     private RoomTypeServiceImpl roomTypeService;
 
     private RoomType roomType;
+    private RoomType roomType1;
 
     @BeforeEach
     public void setUp() {
         roomType = RoomType.builder()
-                .id(1)
-                .name("RT1")
+                .id(UUID.randomUUID())
+                .name("RT")
                 .quantityPlaces(1)
+                .build();
+        roomType1 = RoomType.builder()
+                .id(UUID.randomUUID())
+                .name("RT1")
+                .quantityPlaces(2)
                 .build();
     }
 
     @DisplayName("JUnit test for getAllRoomTypes method")
     @Test
     void test_WhenGetAll_ThenReturnRoomTypeList() {
-        RoomType roomType1 = RoomType.builder()
-                .id(2)
-                .name("RT2")
-                .quantityPlaces(2)
-                .build();
-
         given(roomTypeRepository.findAll()).willReturn(List.of(roomType, roomType1));
         List<RoomType> roomTypeList = roomTypeService.getAll();
 
@@ -56,12 +57,6 @@ class RoomTypeServiceImplTest {
     @DisplayName("JUnit test for getAllRoomTypes method (empty list)")
     @Test
     void test_WhenGetAll_ThenReturnEmptyRoomTypeList() {
-        RoomType roomType1 = RoomType.builder()
-                .id(2)
-                .name("RT2")
-                .quantityPlaces(2)
-                .build();
-
         given(roomTypeRepository.findAll()).willReturn(Collections.emptyList());
         List<RoomType> roomTypeList = roomTypeService.getAll();
 
@@ -110,11 +105,6 @@ class RoomTypeServiceImplTest {
     @DisplayName("JUnit test for getListUniqueRoomTypesFromRooms method")
     @Test
     void test_WhenListUniqueRoomTypesFromRooms_thenReturnRoomTypeList() {
-        RoomType roomType1 = RoomType.builder()
-                .id(2)
-                .name("RT2")
-                .quantityPlaces(2)
-                .build();
         given(roomTypeRepository.findListUniqueRoomTypeFromRooms()).willReturn(List.of(roomType, roomType1));
         List<RoomType> roomTypeList = roomTypeService.getListUniqueRoomTypesFromRooms();
 
@@ -125,11 +115,6 @@ class RoomTypeServiceImplTest {
     @DisplayName("JUnit test for getListUniqueRoomTypesFromRooms method (empty list)")
     @Test
     void test_WhenListUniqueRoomTypesFromRooms_ThenReturnEmptyRoomTypeList() {
-        RoomType roomType1 = RoomType.builder()
-                .id(2)
-                .name("RT2")
-                .quantityPlaces(2)
-                .build();
         given(roomTypeRepository.findListUniqueRoomTypeFromRooms()).willReturn(Collections.emptyList());
         List<RoomType> roomTypeList = roomTypeService.getListUniqueRoomTypesFromRooms();
 

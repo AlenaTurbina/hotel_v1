@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.Errors;
 
+import java.util.UUID;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -70,11 +72,12 @@ class RoomKindUpdateValidatorTest {
 
     @Test
     void testValidateShouldAcceptRoomKindSameName() {
+        UUID uuid = UUID.randomUUID();
         when(roomKindDTO.getRoomPrice()).thenReturn(testPriceValid);
-        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(1);
-        when(roomKindDTO.getClassApartment()).thenReturn(1);
-        when(roomKindDTO.getRoomType()).thenReturn(1);
-        when(roomKindDTO.getId()).thenReturn(1);
+        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(uuid);
+        when(roomKindDTO.getClassApartment()).thenReturn(UUID.randomUUID());
+        when(roomKindDTO.getRoomType()).thenReturn(UUID.randomUUID());
+        when(roomKindDTO.getId()).thenReturn(uuid);
         roomKindUpdateValidator.validate(roomKindDTO, errors);
 
         verify(errors, never())
@@ -84,10 +87,10 @@ class RoomKindUpdateValidatorTest {
     @Test
     void testValidateShouldRejectRoomKindExistName() {
         when(roomKindDTO.getRoomPrice()).thenReturn(testPriceValid);
-        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(2);
-        when(roomKindDTO.getClassApartment()).thenReturn(1);
-        when(roomKindDTO.getRoomType()).thenReturn(1);
-        when(roomKindDTO.getId()).thenReturn(1);
+        when(roomKindService.getRoomKindIdByRoomTypeIdAndClassApartmentId(any(), any())).thenReturn(UUID.randomUUID());
+        when(roomKindDTO.getClassApartment()).thenReturn(UUID.randomUUID());
+        when(roomKindDTO.getRoomType()).thenReturn(UUID.randomUUID());
+        when(roomKindDTO.getId()).thenReturn(UUID.randomUUID());
         roomKindUpdateValidator.validate(roomKindDTO, errors);
 
         verify(errors, times(1))

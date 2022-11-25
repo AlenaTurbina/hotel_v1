@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -31,8 +32,8 @@ class OrderStatusServiceImplTest {
     @BeforeEach
     public void setUp() {
         orderStatus = OrderStatus.builder()
-                .id(1)
-                .name("OS1")
+                .id(UUID.randomUUID())
+                .name("OS")
                 .build();
     }
 
@@ -40,7 +41,7 @@ class OrderStatusServiceImplTest {
     @Test
     void test_WhenGetAll_ThenReturnOrderStatusList() {
         OrderStatus orderStatus1 = OrderStatus.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("OS1")
                 .build();
         given(orderStatusRepository.findAll()).willReturn(List.of(orderStatus, orderStatus1));
@@ -53,10 +54,6 @@ class OrderStatusServiceImplTest {
     @DisplayName("JUnit test for getAllOrderStatuses method (empty list)")
     @Test
     void test_WhenGetAll_ThenReturnEmptyOrderStatusList() {
-        OrderStatus orderStatus1 = OrderStatus.builder()
-                .id(1)
-                .name("OS1")
-                .build();
         given(orderStatusRepository.findAll()).willReturn(Collections.emptyList());
         List<OrderStatus> orderStatusList = orderStatusService.getAllOrderStatuses();
 

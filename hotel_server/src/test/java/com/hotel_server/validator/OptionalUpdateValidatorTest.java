@@ -1,14 +1,16 @@
 package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.Optional;
-import com.hotel_server.service.OptionalService;
 import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_server.service.OptionalService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.Errors;
+
+import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -70,9 +72,10 @@ class OptionalUpdateValidatorTest {
 
     @Test
     void testValidateShouldRejectOptionalSameName() {
+        UUID uuid = UUID.randomUUID();
         when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
-        when(optionalDTO.getId()).thenReturn(1);
-        when(optionalExist.getId()).thenReturn(1);
+        when(optionalDTO.getId()).thenReturn(uuid);
+        when(optionalExist.getId()).thenReturn(uuid);
         optionalUpdateValidator.validate(optionalDTO, errors);
 
         verify(errors, never())
@@ -81,9 +84,11 @@ class OptionalUpdateValidatorTest {
 
     @Test
     void testValidateShouldRejectOptionalSameExistName() {
+        UUID uuid = UUID.randomUUID();
+        UUID uuidExist = UUID.randomUUID();
         when(optionalService.getOptionalByName(any())).thenReturn(optionalExist);
-        when(optionalDTO.getId()).thenReturn(1);
-        when(optionalExist.getId()).thenReturn(2);
+        when(optionalDTO.getId()).thenReturn(uuid);
+        when(optionalExist.getId()).thenReturn(uuidExist);
         optionalUpdateValidator.validate(optionalDTO, errors);
 
         verify(errors, times(1))

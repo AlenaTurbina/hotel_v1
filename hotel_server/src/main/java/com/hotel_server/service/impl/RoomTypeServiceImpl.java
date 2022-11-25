@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -25,7 +26,7 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     }
 
     @Override
-    public RoomType getRoomTypeById(Integer id) {
+    public RoomType getRoomTypeById(UUID id) {
         log.info("Get roomType by id " + id);
         return roomTypeRepository.findById(id).orElseThrow(() -> new ServerEntityNotFoundException(id));
     }

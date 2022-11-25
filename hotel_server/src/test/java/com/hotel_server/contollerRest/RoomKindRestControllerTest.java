@@ -1,10 +1,11 @@
 package com.hotel_server.contollerRest;
 
+import com.hotel_dto.dto.RoomKindDTO;
 import com.hotel_dto.mapper.RoomKindMapper;
 import com.hotel_server.service.RoomKindService;
 import com.hotel_server.validator.RoomKindValidator;
-import com.hotel_dto.dto.RoomKindDTO;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.hotel_server.util.Utils.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
@@ -34,18 +36,22 @@ class RoomKindRestControllerTest {
     @MockBean
     private RoomKindValidator roomKindValidator;
 
-    @Test
-    void testGetAllRoomKinds() throws Exception {
-        RoomKindDTO roomKindDTO = new RoomKindDTO();
-        roomKindDTO.setId(1);
+    RoomKindDTO roomKindDTO = new RoomKindDTO();
+    UUID uuid = UUID.randomUUID();
+
+    @BeforeEach
+    public void setUp() {
+        roomKindDTO.setId(uuid);
         roomKindDTO.setRoomTypeName("A");
         roomKindDTO.setClassApartmentName("B");
+    }
 
+    @Test
+    void testGetAllRoomKinds() throws Exception {
         List<RoomKindDTO> roomKindDTOList = new ArrayList<>(List.of(roomKindDTO));
         Mockito.when(roomKindMapper.toListRoomKindDTO(any())).thenReturn(roomKindDTOList);
-
         mockMvc.perform(get("/api/admin/roomKinds")
-                        .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
                 .andExpect(jsonPath("$[0].roomTypeName", Matchers.equalTo(roomKindDTO.getRoomTypeName())))
@@ -55,16 +61,12 @@ class RoomKindRestControllerTest {
 
     @Test
     void testCreateRoomKind() throws Exception {
-        RoomKindDTO roomKindDTO = new RoomKindDTO();
-        roomKindDTO.setRoomTypeName("A");
-        roomKindDTO.setClassApartmentName("B");
-
         Mockito.when(roomKindMapper.toRoomKindDTO(any())).thenReturn(roomKindDTO);
         Mockito.when(roomKindValidator.supports(any())).thenReturn(true);
         mockMvc.perform(post("/api/admin/roomKinds")
-                        .content(asJsonString(roomKindDTO))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+                .content(asJsonString(roomKindDTO))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andExpect(content().json(asJsonString(roomKindDTO)))
                 .andDo(print());
@@ -72,16 +74,10 @@ class RoomKindRestControllerTest {
 
     @Test
     void testPriceList() throws Exception {
-        RoomKindDTO roomKindDTO = new RoomKindDTO();
-        roomKindDTO.setId(1);
-        roomKindDTO.setRoomTypeName("A");
-        roomKindDTO.setClassApartmentName("B");
-
         List<RoomKindDTO> roomKindDTOList = new ArrayList<>(List.of(roomKindDTO));
         Mockito.when(roomKindMapper.toListRoomKindDTO(any())).thenReturn(roomKindDTOList);
-
         mockMvc.perform(get("/api/uniqueRoomKindsFromRooms")
-                        .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
                 .andExpect(content().json(asJsonString(roomKindDTOList)))

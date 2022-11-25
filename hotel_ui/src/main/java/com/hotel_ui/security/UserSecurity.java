@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Data
@@ -19,7 +20,7 @@ public class UserSecurity implements UserDetails {
     private final List<SimpleGrantedAuthority> authorities;
     private final boolean isActive;
 
-    public static final Integer ID_DEFAULT_USER_STATUS_ACTIVE = 1;      //default value for new user: status = "ACTIVE"
+    public static final UUID ID_DEFAULT_USER_STATUS_ACTIVE = UUID.fromString("ddcc5bf7-f7ca-460d-9d23-a950415ef1f4");      //default value for new user: status = "ACTIVE"
 
     @Override
     public String getUsername() {

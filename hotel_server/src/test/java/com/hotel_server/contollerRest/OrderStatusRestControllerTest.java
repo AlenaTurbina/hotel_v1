@@ -1,9 +1,10 @@
 package com.hotel_server.contollerRest;
 
+import com.hotel_dto.dto.OrderStatusDTO;
 import com.hotel_dto.mapper.OrderStatusMapper;
 import com.hotel_server.service.OrderStatusService;
-import com.hotel_dto.dto.OrderStatusDTO;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.hotel_server.util.Utils.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
@@ -30,20 +32,23 @@ class OrderStatusRestControllerTest {
     @MockBean
     private OrderStatusMapper orderStatusMapper;
 
+    OrderStatusDTO orderStatusDTO = new OrderStatusDTO();
+    UUID uuid = UUID.randomUUID();
+
+    @BeforeEach
+    public void setUp() {
+        orderStatusDTO.setId(uuid);
+    }
+
     @Test
     void testGetAllOrderStatuses() throws Exception {
-        Integer id = 1;
-        OrderStatusDTO orderStatusDTO = new OrderStatusDTO();
-        orderStatusDTO.setId(id);
-
         List<OrderStatusDTO> orderStatusDTOList = new ArrayList<>(List.of(orderStatusDTO));
         Mockito.when(orderStatusMapper.toListOrderStatusDTO(any())).thenReturn(orderStatusDTOList);
-
         mockMvc.perform(get("/api/admin/orderStatuses")
-                        .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(jsonPath("$[0].id", Matchers.equalTo(orderStatusDTO.getId())))
+                .andExpect(jsonPath("$[0].id", Matchers.equalTo(orderStatusDTO.getId().toString())))
                 .andExpect(content().json(asJsonString(orderStatusDTOList)))
                 .andDo(print());
     }

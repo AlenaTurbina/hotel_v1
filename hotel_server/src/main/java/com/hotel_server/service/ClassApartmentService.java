@@ -5,11 +5,12 @@ import com.hotel_dto.dto.ClassApartmentDTO;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface ClassApartmentService {
     List<ClassApartment> getAllClassApartments();
 
-    ClassApartment getClassApartmentById(Integer id);
+    ClassApartment getClassApartmentById(UUID id);
 
     ClassApartment getClassApartmentByName(String name);
 

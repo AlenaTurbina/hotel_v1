@@ -10,6 +10,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.Errors;
 
+import java.util.UUID;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -29,7 +31,6 @@ class RoomTypeUpdateValidatorTest {
     private static final Integer quantityPlacesValid = 5;
     private static final Integer quantityPlacesOneValid = 1;
     private static final Integer quantityPlacesInvalidZero = 0;
-
 
     @Test
     void testValidateShouldAcceptRoomTypeQuantityPlacesValid() {
@@ -69,9 +70,10 @@ class RoomTypeUpdateValidatorTest {
 
     @Test
     void testValidateShouldRejectRoomTypeSameName() {
+        UUID uuid = UUID.randomUUID();
         when(roomTypeService.getRoomTypeByName(any())).thenReturn(roomTypeExist);
-        when(roomTypeDTO.getId()).thenReturn(1);
-        when(roomTypeExist.getId()).thenReturn(1);
+        when(roomTypeDTO.getId()).thenReturn(uuid);
+        when(roomTypeExist.getId()).thenReturn(uuid);
         roomTypeUpdateValidator.validate(roomTypeDTO, errors);
 
         verify(errors, never())
@@ -80,9 +82,11 @@ class RoomTypeUpdateValidatorTest {
 
     @Test
     void testValidateShouldRejectRoomTypeSameExistName() {
+        UUID uuid = UUID.randomUUID();
+        UUID uuidExist = UUID.randomUUID();
         when(roomTypeService.getRoomTypeByName(any())).thenReturn(roomTypeExist);
-        when(roomTypeDTO.getId()).thenReturn(1);
-        when(roomTypeExist.getId()).thenReturn(2);
+        when(roomTypeDTO.getId()).thenReturn(uuid);
+        when(roomTypeExist.getId()).thenReturn(uuidExist);
         roomTypeUpdateValidator.validate(roomTypeDTO, errors);
 
         verify(errors, times(1))

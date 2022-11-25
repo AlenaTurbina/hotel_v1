@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -27,22 +28,23 @@ class UserStatusServiceImplTest {
     private UserStatusServiceImpl userStatusService;
 
     private UserStatus userStatus;
+    private UserStatus userStatus1;
 
     @BeforeEach
     public void setUp() {
         userStatus = UserStatus.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("US1")
+                .build();
+        userStatus1 = UserStatus.builder()
+                .id(UUID.randomUUID())
+                .name("US2")
                 .build();
     }
 
     @DisplayName("JUnit test for getAllUserStatuses method")
     @Test
     void test_WhenGetAll_ThenReturnUserStatusList() {
-        UserStatus userStatus1 = UserStatus.builder()
-                .id(2)
-                .name("US2")
-                .build();
         given(userStatusRepository.findAll()).willReturn(List.of(userStatus, userStatus1));
         List<UserStatus> userStatusList = userStatusService.getAllUserStatuses();
 
@@ -53,11 +55,6 @@ class UserStatusServiceImplTest {
     @DisplayName("JUnit test for getAllUserStatuses method (empty list)")
     @Test
     void test_WhenGetAll_ThenReturnEmptyUserStatusList() {
-        UserStatus userStatus1 = UserStatus.builder()
-                .id(2)
-                .name("US2")
-                .build();
-
         given(userStatusRepository.findAll()).willReturn(Collections.emptyList());
         List<UserStatus> userStatusList = userStatusService.getAllUserStatuses();
 
@@ -84,5 +81,4 @@ class UserStatusServiceImplTest {
         Assertions.assertThrows(ServerEntityNotFoundException.class,
                 () -> userStatusService.getUserStatusById(userStatus.getId()));
     }
-
 }

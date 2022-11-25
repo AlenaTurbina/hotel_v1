@@ -1,8 +1,8 @@
 package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.User;
-import com.hotel_server.service.UserService;
 import com.hotel_dto.dto.UserDTO;
+import com.hotel_server.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

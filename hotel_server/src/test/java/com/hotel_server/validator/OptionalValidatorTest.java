@@ -1,8 +1,8 @@
 package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.Optional;
-import com.hotel_server.service.OptionalService;
 import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_server.service.OptionalService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -30,7 +30,6 @@ class OptionalValidatorTest {
     private static final Double testPriceValid = 10.0;
     private static final Double testPriceInvalid = -5.0;
     private static final Double testPriceInvalidZero = 0.0;
-
 
     @Test
     void testValidateShouldAcceptOptionalDTOPositiveOptionalPrice() {

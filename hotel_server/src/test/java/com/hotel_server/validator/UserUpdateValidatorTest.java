@@ -1,14 +1,16 @@
 package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.User;
-import com.hotel_server.service.UserService;
 import com.hotel_dto.dto.UserDTO;
+import com.hotel_server.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.Errors;
+
+import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -114,9 +116,10 @@ class UserUpdateValidatorTest {
 
     @Test
     void testValidateShouldAcceptUserEmailSame() {
+        UUID uuid = UUID.randomUUID();
         when(userService.getUserByEmail(any())).thenReturn(userExist);
-        when(userExist.getId()).thenReturn(1);
-        when(userDTO.getId()).thenReturn(1);
+        when(userExist.getId()).thenReturn(uuid);
+        when(userDTO.getId()).thenReturn(uuid);
 
         when(userDTO.getFirstName()).thenReturn(firstNameValid);
         when(userDTO.getLastName()).thenReturn(lastNameValid);
@@ -146,9 +149,11 @@ class UserUpdateValidatorTest {
 
     @Test
     void testValidateShouldRejectUserEmailExist() {
+        UUID uuid = UUID.randomUUID();
+        UUID uuidExist = UUID.randomUUID();
         when(userService.getUserByEmail(any())).thenReturn(userExist);
-        when(userExist.getId()).thenReturn(2);
-        when(userDTO.getId()).thenReturn(1);
+        when(userExist.getId()).thenReturn(uuidExist);
+        when(userDTO.getId()).thenReturn(uuid);
 
         when(userDTO.getFirstName()).thenReturn(firstNameValid);
         when(userDTO.getLastName()).thenReturn(lastNameValid);
@@ -160,5 +165,4 @@ class UserUpdateValidatorTest {
         verify(errors, times(1))
                 .rejectValue("email", "validation.duplicate.registration.email");
     }
-
 }

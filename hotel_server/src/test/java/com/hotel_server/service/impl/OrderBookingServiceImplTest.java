@@ -1,6 +1,7 @@
 package com.hotel_server.service.impl;
 
 import com.hotel_database.model.repository.RoomRepository;
+import com.hotel_domain.model.entity.Optional;
 import com.hotel_server.exceptionHandler.exception.ServerEntityNotFoundException;
 import com.hotel_server.message.Messages;
 import com.hotel_domain.model.entity.*;
@@ -19,10 +20,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -51,35 +49,40 @@ class OrderBookingServiceImplTest {
     private OrderStatus orderStatusPaid;
     private OrderStatus orderStatusCancel;
 
-    private static final Integer ID_DEFAULT_ORDER_STATUS_PAID = Messages.getIntegerMessage("server.booking.idDefaultOrderStatusPaid");
-    private static final Integer ID_DEFAULT_ORDER_STATUS_CANCEL = Messages.getIntegerMessage("server.booking.idDefaultOrderStatusCancel");
+    private static final UUID ID_DEFAULT_ORDER_STATUS_WAIT =
+            Messages.getUUIDMessage("server.booking.idDefaultOrderStatusWait");
+    private static final UUID ID_DEFAULT_ORDER_STATUS_CANCEL =
+            Messages.getUUIDMessage("server.booking.idDefaultOrderStatusCancel");
+    private static final UUID ID_DEFAULT_ORDER_STATUS_PAID =
+            Messages.getUUIDMessage("server.booking.idDefaultOrderStatusPaid");
 
     @BeforeEach
     public void setUp() {
         classApartment = ClassApartment.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("CA1")
                 .placePrice(10.0)
                 .build();
 
         roomType = RoomType.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("RT1")
                 .quantityPlaces(1)
                 .build();
 
         roomKind = RoomKind.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .roomType(roomType)
                 .classApartment(classApartment)
                 .roomPrice(10.0)
                 .build();
 
         room = Room.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("Room1")
                 .roomKind(roomKind)
                 .build();
+
         orderStatusPaid = OrderStatus.builder()
                 .id(ID_DEFAULT_ORDER_STATUS_PAID)
                 .name("OS1")
@@ -91,7 +94,7 @@ class OrderBookingServiceImplTest {
                 .build();
 
         orderBooking = OrderBooking.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .dateArrival(LocalDate.of(2022, 01, 05))
                 .dateDeparture(LocalDate.of(2022, 01, 10))
                 .room(room)
@@ -104,7 +107,7 @@ class OrderBookingServiceImplTest {
     @Test
     void test_WhenGetAllOrderBooking_ThenReturnOrderBookingList() {
         OrderBooking orderBooking1 = OrderBooking.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .dateArrival(LocalDate.of(2022, 01, 05))
                 .dateDeparture(LocalDate.of(2022, 01, 10))
                 .build();
@@ -120,7 +123,7 @@ class OrderBookingServiceImplTest {
     @Test
     void test_WhenGetAllOrderBooking_ThenReturnEmptyOrderBookingList() {
         OrderBooking orderBooking1 = OrderBooking.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .build();
         given(orderBookingRepository.findAll()).willReturn(Collections.emptyList());
         List<OrderBooking> orderBookingList = orderBookingService.getAllOrderBooking();
@@ -151,10 +154,10 @@ class OrderBookingServiceImplTest {
 
     @Test
     void testCalculationSumTotalWithOptionalsNotNull() {
-        Optional optional1 = new Optional(1, null, 5.0);
-        Optional optional2 = new Optional(2, null, 10.0);
+        Optional optional1 = new Optional(UUID.randomUUID(), null, 5.0);
+        Optional optional2 = new Optional(UUID.randomUUID(), null, 10.0);
         List<Optional> optionals = new ArrayList<>(List.of(optional1, optional2));
-        List<Integer> optionalsID = new ArrayList<>(List.of(optional1.getId(), optional2.getId()));
+        List<UUID> optionalsID = new ArrayList<>(List.of(optional1.getId(), optional2.getId()));
         Mockito.when(optionalService.getListOptionalById(any())).thenReturn(optionals);
 
         OrderBookingDTO orderBookingDTO1 = new OrderBookingDTO();
@@ -201,7 +204,7 @@ class OrderBookingServiceImplTest {
     @Test
     void test_GivenOrderBookingDTO_WhenGetFirstRelevantFreeRoom_ThenReturnRoom() {
         Room room1 = Room.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .name("R2")
                 .roomKind(roomKind)
                 .build();
@@ -224,7 +227,7 @@ class OrderBookingServiceImplTest {
     @Test
     void test_GivenOrderBookingDTO_WhenGetFirstRelevantFreeRoom_ThenReturnNull() {
         Room room1 = Room.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .name("R2")
                 .roomKind(roomKind)
                 .build();
@@ -246,20 +249,20 @@ class OrderBookingServiceImplTest {
     @Test
     void test_GivenOrderBooking_WhenGetListFreeRoomsOnOrderBookingDates_ThenReturnListRoom() {
         Room room1 = Room.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .name("R2")
                 .roomKind(roomKind)
                 .build();
         Room room2 = Room.builder()
-                .id(3)
+                .id(UUID.randomUUID())
                 .name("R3")
                 .roomKind(roomKind)
                 .build();
         orderBooking.setOrderStatus(orderStatusCancel);
+        System.out.println(orderBooking.getOrderStatus().getId());
         List<Room> rooms = new ArrayList<>(List.of(room1, room2));
         given(roomRepository.findFreeRoomsOnSelectedDates(ID_DEFAULT_ORDER_STATUS_CANCEL,
                 orderBooking.getDateArrival(), orderBooking.getDateDeparture())).willReturn(rooms);
-
         List<Room> roomListExpected = orderBookingService.getListFreeRoomsOnOrderBookingDates(orderBooking);
 
         assertThat(roomListExpected).isNotEmpty();
@@ -270,12 +273,12 @@ class OrderBookingServiceImplTest {
     @Test
     void test_GivenOrderBooking_WhenGetListFreeRoomsOnOrderBookingDates_ThenReturnListRoomWithOrderRoom() {
         Room room1 = Room.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .name("R2")
                 .roomKind(roomKind)
                 .build();
         Room room2 = Room.builder()
-                .id(3)
+                .id(UUID.randomUUID())
                 .name("R3")
                 .roomKind(roomKind)
                 .build();

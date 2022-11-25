@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface ClassApartmentRepository extends JpaRepository<ClassApartment, Integer> {
+public interface ClassApartmentRepository extends JpaRepository<ClassApartment, UUID> {
     ClassApartment findClassApartmentByName(String name);
 
     @Query(value = "SELECT distinct class_apartment.id as id, class_apartment.name as name, class_apartment.place_price as place_price\n" +
@@ -19,4 +20,16 @@ public interface ClassApartmentRepository extends JpaRepository<ClassApartment, 
             "JOIN\n" +
             "class_apartment ON room_kind.class_apartment_id = class_apartment.id", nativeQuery = true)
     List<ClassApartment> findListUniqueClassApartmentFromRooms();
+
+//    @Query("SELECT distinct class_apartment.id as id, class_apartment.name as name, class_apartment.place_price as place_price\n" +
+//            "FROM\n" +
+//            "room\n" +
+//            "JOIN\n" +
+//            "room_kind ON room.room_kind = room_kind.id\n" +
+//            "JOIN\n" +
+//            "class_apartment ON room_kind.class_apartment_id = class_apartment.id")
+//    List<ClassApartment> findListUniqueClassApartmentFromRooms();
+
+
+
 }

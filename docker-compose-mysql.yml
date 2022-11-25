@@ -1,0 +1,32 @@
+version: '2.7'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: hotel-sql
+    ports:
+      - "3307:3306"
+    restart: always
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", '-u$MYSQL_USER', '-p$MYSQL_PASSWORD'  ]
+      timeout: 10s
+      retries: 10
+#    environment:
+#      - MYSQL_DATABASE=hotel
+#      - MYSQL_USER=user_1
+#      - MYSQL_PASSWORD=12345
+#      - MYSQL_ROOT_PASSWORD=12345
+    environment:
+      - MYSQL_DATABASE=hotel
+      - MYSQL_USER=user_1
+      - MYSQL_PASSWORD=123456789
+      - MYSQL_ROOT_PASSWORD=123456789
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  db:
+
+
+
+

@@ -1,6 +1,7 @@
 package com.hotel_server.message;
 
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 /**
  * Class for message receiving configuration from properties-file source
@@ -32,5 +33,10 @@ public class Messages {
 
     public static Integer getIntegerMessage(String key) {
         return Integer.parseInt(MESSAGES.getString(key));
+    }
+
+
+    public static UUID getUUIDMessage(String key) {
+        return UUID.fromString(MESSAGES.getString(key));
     }
 }

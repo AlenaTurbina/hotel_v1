@@ -30,7 +30,6 @@ class RoomTypeValidatorTest {
     private static final Integer quantityPlacesOneValid = 1;
     private static final Integer quantityPlacesInvalidZero = 0;
 
-
     @Test
     void testValidateShouldAcceptRoomTypeQuantityPlacesValid() {
         when(roomTypeDTO.getQuantityPlaces()).thenReturn(quantityPlacesValid);
@@ -58,7 +57,6 @@ class RoomTypeValidatorTest {
                 .rejectValue("quantityPlaces", "validation.field.positive");
     }
 
-
     @Test
     void testValidateShouldAcceptRoomTypeNewName() {
         when(roomTypeService.getRoomTypeByName(any())).thenReturn(null);
@@ -76,5 +74,4 @@ class RoomTypeValidatorTest {
         verify(errors, times(1))
                 .rejectValue("name", "validation.adminSide.duplicateName");
     }
-
 }

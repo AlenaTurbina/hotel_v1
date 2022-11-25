@@ -1,8 +1,7 @@
 package com.hotel_server.service.impl;
 
-import com.hotel_domain.model.entity.Role;
 import com.hotel_database.model.repository.RoleRepository;
-import com.hotel_domain.model.entity.RoomType;
+import com.hotel_domain.model.entity.Role;
 import com.hotel_server.exceptionHandler.exception.ServerEntityNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,17 +10,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
@@ -35,8 +31,8 @@ class RoleServiceImplTest {
 
     @BeforeEach
     public void setup() {
-       role = Role.builder()
-                .id(1)
+        role = Role.builder()
+                .id(UUID.randomUUID())
                 .name("R1")
                 .build();
     }
@@ -45,10 +41,9 @@ class RoleServiceImplTest {
     @Test
     void test_WhenGetAllRoles_ThenReturnRoleList() {
         Role role1 = Role.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .name("R2")
                 .build();
-
         given(roleRepository.findAll()).willReturn(List.of(role, role1));
         List<Role> roleList = roleService.getAllRoles();
 
@@ -59,11 +54,6 @@ class RoleServiceImplTest {
     @DisplayName("JUnit test for getAllRoles method (empty list)")
     @Test
     void test_WhenGetAllRoles_ThenReturnEmptyRoleList() {
-        Role role1 = Role.builder()
-                .id(2)
-                .name("R2")
-                .build();
-
         given(roleRepository.findAll()).willReturn(Collections.emptyList());
         List<Role> roleList = roleService.getAllRoles();
 

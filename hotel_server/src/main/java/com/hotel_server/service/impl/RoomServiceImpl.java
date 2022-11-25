@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -27,7 +28,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Room getRoomById(Integer id) {
+    public Room getRoomById(UUID id) {
         log.info("Get room by id " + id);
         return roomRepository.findById(id).orElseThrow(() -> new ServerEntityNotFoundException(id));
     }

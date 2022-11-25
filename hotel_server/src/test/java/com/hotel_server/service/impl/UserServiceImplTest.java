@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -26,19 +27,20 @@ class UserServiceImplTest {
     private UserServiceImpl userService;
 
     private User user;
+    private User user1;
 
     @BeforeEach
     public void setUp() {
         UserStatus userStatus = UserStatus.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("US1")
                 .build();
         Role role = Role.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .name("R1")
                 .build();
         user = User.builder()
-                .id(1)
+                .id(UUID.randomUUID())
                 .email("user@test.com")
                 .firstName("firstName")
                 .lastName("lastName")
@@ -49,21 +51,16 @@ class UserServiceImplTest {
                 .orderBookings(null)
                 .roles(List.of(role))
                 .build();
-    }
-
-    @DisplayName("JUnit test for getAllUsers method")
-    @Test
-    void test_WhenGetAllUsers_ThenReturnUserList() {
         UserStatus userStatus1 = UserStatus.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .name("US2")
                 .build();
         Role role1 = Role.builder()
-                .id(2)
+                .id(UUID.randomUUID())
                 .name("R2")
                 .build();
-        User user1 = User.builder()
-                .id(2)
+        user1 = User.builder()
+                .id(UUID.randomUUID())
                 .email("user1@test.com")
                 .firstName("firstName1")
                 .lastName("lastName1")
@@ -74,7 +71,11 @@ class UserServiceImplTest {
                 .orderBookings(null)
                 .roles(List.of(role1))
                 .build();
+    }
 
+    @DisplayName("JUnit test for getAllUsers method")
+    @Test
+    void test_WhenGetAllUsers_ThenReturnUserList() {
         given(userRepository.findAll()).willReturn(List.of(user, user1));
         List<User> userList = userService.getAllUsers();
 
@@ -85,26 +86,6 @@ class UserServiceImplTest {
     @DisplayName("JUnit test for getAllUsers method (empty list)")
     @Test
     void WhenGetAllUsers_ThenReturnEmptyUserList() {
-        UserStatus userStatus1 = UserStatus.builder()
-                .id(2)
-                .name("US2")
-                .build();
-        Role role1 = Role.builder()
-                .id(2)
-                .name("R2")
-                .build();
-        User user1 = User.builder()
-                .id(2)
-                .email("user1@test.com")
-                .firstName("firstName1")
-                .lastName("lastName1")
-                .document("AA1")
-                .phoneNumber("+123456789")
-                .password("222")
-                .userStatus(userStatus1)
-                .orderBookings(null)
-                .roles(List.of(role1))
-                .build();
         given(userRepository.findAll()).willReturn(Collections.emptyList());
         List<User> userList = userService.getAllUsers();
 

@@ -1,9 +1,10 @@
 package com.hotel_server.contollerRest;
 
+import com.hotel_dto.dto.UserStatusDTO;
 import com.hotel_dto.mapper.UserStatusMapper;
 import com.hotel_server.service.UserStatusService;
-import com.hotel_dto.dto.UserStatusDTO;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.hotel_server.util.Utils.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
@@ -31,21 +33,22 @@ class UserStatusRestControllerTest {
     @MockBean
     private UserStatusMapper userStatusMapper;
 
+    UserStatusDTO userStatusDTO = new UserStatusDTO();
+
+    @BeforeEach
+    public void setUp() {
+        userStatusDTO.setId(UUID.randomUUID());
+    }
 
     @Test
     void testGetAllUserStatuses() throws Exception {
-        Integer id = 1;
-        UserStatusDTO userStatusDTO = new UserStatusDTO();
-        userStatusDTO.setId(id);
-
         List<UserStatusDTO> userStatusDTOList = new ArrayList<>(List.of(userStatusDTO));
         Mockito.when(userStatusMapper.toListUserStatusDTO(any())).thenReturn(userStatusDTOList);
-
         mockMvc.perform(get("/api/admin/userStatuses")
-                        .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(jsonPath("$[0].id", Matchers.equalTo(userStatusDTO.getId())))
+                .andExpect(jsonPath("$[0].id", Matchers.equalTo(userStatusDTO.getId().toString())))
                 .andExpect(content().json(asJsonString(userStatusDTOList)))
                 .andDo(print());
     }

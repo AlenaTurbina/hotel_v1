@@ -1,0 +1,12 @@
+"id","email","password","first_name","last_name","phone_number","document","user_status"
+"c99c27c2-7a40-461e-a45c-9f06d7261503","kot@gmail.com","$2a$12$733CvT7B7/gNUk1g5ssAVeWaD..kuq.5LYad5y2yg6tSbXv7ZZoFi","Ivan","Kot","+375772222222","AB777777755","ddcc5bf7-f7ca-460d-9d23-a950415ef1f4"
+"2f837de3-6410-4725-a0df-181200c62e60","Los@gmail.ru","$2a$12$iVXAHUEw2sAYEdPSxyuuGelRlBgo7QX0ehqLx57Q19P1.xb.UguZS","Anton","Los","+375772222222","AB222222","bf32d3b2-37e0-4423-bcb7-bdc22dac2fbb"
+"e263c5f9-499d-4311-93e5-9c839ad297d5","Drozd@gmail.com","$2a$12$iVXAHUEw2sAYEdPSxyuuGelRlBgo7QX0ehqLx57Q19P1.xb.UguZS","Hanna","Drozd","+375773333333","MC3333333","ddcc5bf7-f7ca-460d-9d23-a950415ef1f4"
+"79d5aaab-e7a3-42e5-90d5-37b9f996735c","Lis@gmail.com","$2a$12$pezk5mTyaAo44Zyt9jFaO.VOkLJ1HyV3S9ZFBIKq8b0hoSDICiVRi","Lanna","Lis","+125775555555","DD1233333","ddcc5bf7-f7ca-460d-9d23-a950415ef1f4"
+"16e56973-d783-413a-952d-32f5c9da6f2a","Volk@gmail.com","$2a$12$iVXAHUEw2sAYEdPSxyuuGelRlBgo7QX0ehqLx57Q19P1.xb.UguZS","Liza","Volk","+375775555555","MC5555555","bf32d3b2-37e0-4423-bcb7-bdc22dac2fbb"
+"f76f60ec-be5b-49ca-be16-f52c8090f45f","slon@gmail.com","$2a$12$Z8ZJghA.EcBXpcMzfxU//eYZIBN/6/sgIDAHo0e9QVRuJ7GD20Czy","Ivan","Slon","+375771212121","DE123456789","bf32d3b2-37e0-4423-bcb7-bdc22dac2fbb"
+"af037075-4b03-479a-ab26-824cdbadf877","Sid@gmail.com","$2a$12$UI2tjOItdBdrnLNt4iq8zeu2uzN3ReABQOTdumNTUotss3JT83FbC","Ivan","Sid","+125775555555","EE1111111111","ddcc5bf7-f7ca-460d-9d23-a950415ef1f4"
+"8909ba36-3fd0-494f-8065-3a4bb94538ec","first1@gmail.com","$2a$12$Ll6VdgWvwdxNaUvq3gJ3meopZJXe332bjRT7j0FUo.CSwXrF6qtJC","Hanna","First","+12577777777777","GG123124","ddcc5bf7-f7ca-460d-9d23-a950415ef1f4"
+"aef2636d-35b4-4f74-87b9-d38bfa1b16c6","zubr@gmail.com","$2a$12$rWoHe/vHQfTg5oEAi7PPhe/Vkt0ksATwoRn9BsoGWhCI6oLbeYyKS","Petr","Zubrov","+125335555555554","DF45555555","ddcc5bf7-f7ca-460d-9d23-a950415ef1f4"
+"f2d7d5d5-3553-4381-8fab-bf75a77d8137","Medved@gmail.com","$2a$12$INU64OB/DxyEpgupvnd6wesV0Z9TL66qe1rsDgmGznSq6EFbRRKHe","Sergey","Medved","+125775555555","FF22222222222","bf32d3b2-37e0-4423-bcb7-bdc22dac2fbb"
+

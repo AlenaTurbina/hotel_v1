@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -23,7 +24,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role getRoleById(Integer id) {
+    public Role getRoleById(UUID id) {
         log.info("Get role by id " + id);
         return roleRepository.findById(id).orElseThrow(() -> new ServerEntityNotFoundException(id));
     }

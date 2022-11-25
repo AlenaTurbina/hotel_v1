@@ -11,10 +11,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 public class OrderBookingDTO {
-    private Integer id;
+    private UUID id;
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
@@ -31,11 +32,11 @@ public class OrderBookingDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateDeparture;
     private Integer quantityPersons;
-    private Integer roomType;
-    private Integer classApartment;
-    private List<Integer> optionals;
-    private Integer user;
-    private Integer roomKind;
+    private UUID roomType;
+    private UUID classApartment;
+    private List<UUID> optionals;
+    private UUID user;
+    private UUID roomKind;
 
     private String roomTypeName;
     private String classApartmentName;
