@@ -32,21 +32,24 @@
 - Gradle 6.X или 7.X для совместимости с версией Java (или использовать встроенные возможности среды разработки JIdea)
 - Docker
 - Свободный порт 5432 для соединения с базой данных
+
 ## Сборка и тестирование проекта
-Для сборки и тестирования проекта нужно последовательно выполнить команды в корне проекта
-1) развернуть базу данных Postgres в контейнере Docker
-   $ docker-compose -f docker-compose-postgres.yml up
-2) собрать проект и выполнить тесты с использованием Gradle
+Для сборки и тестирования проекта необходимо: 
+1) развернуть базу данных Postgres в контейнере Docker, выполнив команду из пакета проекта «docker» проекта
+   $ docker-compose -f docker-compose-db-postgres.yml up
+2) собрать проект и выполнить тесты с использованием Gradle, выполнив команду в корне проекта
    $ gradle build
-3) закрыть docker-compose
-   $ docker-compose -f docker-compose-postgres.yml down -v
 ## Запуск проекта
-1) Для запуска проекта нужно запустить файл docker-compose-postgre.yml из пакета проекта «docker» следующей командой:
-   $ docker-compose -f docker-compose-postgre.yml up
-2) проект доступен url  http://localhost:8086/hotel/
+1) Для запуска проекта нужно запустить файл из пакета проекта «docker» следующей командой:
+   $ docker-compose -f docker-compose-withoutdb-postgres.yml up
+2) Проект доступен url  http://localhost:8086/hotel/
 ## Тестирование проекта
-Для тестирования проекта при необходимости аутентификации и авторизации использовать данные
+Для тестирования работы приложения при необходимости аутентификации и авторизации использовать данные
 - username  «kot»,
 - password «123»
 ## Закрытие приложения
-docker-compose -f docker-compose-postgre.yml down -v
+Для закрытия приложения необходимо выпонить из пакета проекта «docker» следующие команды:
+1) дла закрытия контейнеров (кроме базы данных)
+docker-compose -f docker-compose-withoutdb-postgres.yml down -v
+2) для акрытия контейнера базы данных
+docker-compose -f docker-compose-db-postgres.yml down -v
