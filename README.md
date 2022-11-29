@@ -17,7 +17,7 @@
 Для реализации поставленной задачи применялись технологии: 
 ­ Framework SpringBoot /модульная структура, ­ RestAPI, 
 ­ BuildSystem Gradle, 
-­ Database MySQL, 
+­ Database PostgreSQL, 
 ­ Database migration tool Liquibase, 
 ­ Apache ActiveMQ, 
 ­ Docker, 
@@ -26,3 +26,30 @@
 ­ TemplateEngine Thymeleaf, 
 ­ UI BootStrap, HTML, CSS, JS, 
 ­ Testing JUnit5, Mockito
+
+## Системные требования
+- JDK 11
+- Gradle 6.X или 7.X для совместимости с версией Java (или использовать встроенные возможности среды разработки JIdea)
+- Docker
+- Свободный порт 5432 для соединения с базой данных
+
+## Сборка и тестирование проекта
+Для сборки и тестирования проекта необходимо: 
+1) развернуть базу данных Postgres в контейнере Docker, выполнив команду из пакета проекта «docker» проекта
+   $ docker-compose -f docker-compose-db-postgres.yml up
+2) собрать проект и выполнить тесты с использованием Gradle, выполнив команду в корне проекта
+   $ gradle build
+## Запуск проекта
+1) Для запуска проекта нужно запустить файл из пакета проекта «docker» следующей командой:
+   $ docker-compose -f docker-compose-withoutdb-postgres.yml up
+2) Проект доступен url  http://localhost:8086/hotel/
+## Тестирование проекта
+Для тестирования работы приложения при необходимости аутентификации и авторизации использовать данные
+- username  «kot»,
+- password «123»
+## Закрытие приложения
+Для закрытия приложения необходимо выпонить из пакета проекта «docker» следующие команды:
+1) дла закрытия контейнеров (кроме базы данных)
+docker-compose -f docker-compose-withoutdb-postgres.yml down -v
+2) для акрытия контейнера базы данных
+docker-compose -f docker-compose-db-postgres.yml down -v
