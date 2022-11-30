@@ -1,7 +1,7 @@
 package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.Optional;
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import com.hotel_server.service.OptionalService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class OptionalUpdateValidatorTest {
     @Mock
-    OptionalDTO optionalDTO;
+    OptionalDto optionalDTO;
     @Mock
     Optional optionalExist;
     @Mock

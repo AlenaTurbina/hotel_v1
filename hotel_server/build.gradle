@@ -47,6 +47,10 @@ dependencies {
 
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.0'
 
+
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
     implementation project(':hotel_activemq')
     implementation project(':hotel_commons')
     implementation project(':hotel_database')

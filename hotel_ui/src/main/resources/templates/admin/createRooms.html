@@ -29,7 +29,7 @@
                 <h2>Room form create</h2>
             </div>
 
-            <form action="#" th:action="@{/admin/rooms/create}" th:object="${roomDTO}" method="post"
+            <form action="#" th:action="@{/admin/rooms/create}" th:object="${roomDto}" method="post"
                   class="adminForm">
 
                 <label for="name">Name</label>
@@ -39,7 +39,7 @@
 
                 <br>
                 <label for="roomKind">Room kind</label>
-                <select id="roomKind" th:field="*{roomKind}">
+                <select id="roomKind" th:field="*{roomKindId}">
                     <option class="roomKind" value="">Select room kind</option>
                     <option th:each="roomKind : ${roomKinds}"
                             th:value="${roomKind.id}"
@@ -47,8 +47,8 @@
                     </option>
                 </select>
 
-                <div class="alert alert-danger" th:if="${#fields.hasErrors('roomKind')}"
-                     th:errors="*{roomKind}"></div>
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('roomKindId')}"
+                     th:errors="*{RoomKindId}"></div>
 
                 <br>
                 <br>

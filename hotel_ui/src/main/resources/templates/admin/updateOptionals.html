@@ -27,13 +27,13 @@
 
             <!-- Form -->
             <div class="allPageWithoutMargin">
-                <h2>Class apartment form update</h2>
+                <h2>Optional form update</h2>
             </div>
 
             <form action="#" th:action="@{/admin/optionals/update}" th:object="${optionalDTO}" method="post"
                   class="adminForm" th:if="${optionalDTO != null}">
                 <label for="id">ID</label>
-                <input readonly type="number" th:value="*{id}" th:field="*{id}" id="id" placeholder="ID" class="inp hid">
+                <input readonly type="text" th:value="*{id}" th:field="*{id}" id="id" placeholder="ID" class="inp hid">
                 <br>
                 <label for="name">name</label>
                 <input type="text" th:value="*{name}" th:field="*{name}" id="name" placeholder="name" required="required" class="inp ord">

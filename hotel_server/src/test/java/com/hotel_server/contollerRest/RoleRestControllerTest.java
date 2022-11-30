@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoleDTO;
+import com.hotel_dto.dto.RoleDto;
 import com.hotel_dto.mapper.RoleMapper;
 import com.hotel_server.service.RoleService;
 import org.hamcrest.Matchers;
@@ -32,7 +32,7 @@ class RoleRestControllerTest {
     @MockBean
     private RoleMapper roleMapper;
 
-    RoleDTO roleDTO = new RoleDTO();
+    RoleDto roleDTO = new RoleDto();
     UUID uuid = UUID.randomUUID();
 
     @BeforeEach
@@ -42,14 +42,14 @@ class RoleRestControllerTest {
 
     @Test
     void testGetAllRoles() throws Exception {
-        List<RoleDTO> roleDTOList = new ArrayList<>(List.of(roleDTO));
-        Mockito.when(roleMapper.toListRoleDTO(any())).thenReturn(roleDTOList);
+        List<RoleDto> roleDtoList = new ArrayList<>(List.of(roleDTO));
+        Mockito.when(roleMapper.toListRoleDTO(any())).thenReturn(roleDtoList);
         mockMvc.perform(get("/api/admin/roles")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
                 .andExpect(jsonPath("$[0].id", Matchers.equalTo(roleDTO.getId().toString())))
-                .andExpect(content().json(asJsonString((roleDTOList))))
+                .andExpect(content().json(asJsonString((roleDtoList))))
                 .andDo(print());
     }
 }

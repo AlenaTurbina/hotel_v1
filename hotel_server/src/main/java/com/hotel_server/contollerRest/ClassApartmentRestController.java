@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.ClassApartmentDTO;
+import com.hotel_dto.dto.ClassApartmentDto;
 import com.hotel_dto.mapper.ClassApartmentMapper;
 import com.hotel_server.service.ClassApartmentService;
 import com.hotel_server.validator.ClassApartmentValidator;
@@ -21,8 +21,8 @@ import java.util.List;
 @Tag(name="ClassApartment", description = "Management of Class apartment - getting lists and creating")
 public class ClassApartmentRestController {
     private ClassApartmentService classApartmentService;
-    private ClassApartmentMapper classApartmentMapper;
     private ClassApartmentValidator classApartmentValidator;
+    private ClassApartmentMapper classApartmentMapper;
 
     @InitBinder(value = "classApartmentDTO")
     void initClassApartmentValidator(WebDataBinder binder) {
@@ -31,20 +31,24 @@ public class ClassApartmentRestController {
 
     @Operation(summary = "Getting list of Class apartments")
     @GetMapping("/admin/classApartments")
-    List<ClassApartmentDTO> getAllClassApartments() {
-        return classApartmentMapper.toListClassApartmentDTO(classApartmentService.getAllClassApartments());
+    List<ClassApartmentDto> getAllClassApartments() {
+        return classApartmentMapper.toListClassApartmentDto(classApartmentService.getAllClassApartments());
     }
 
     @Operation(summary = "Creating a new Class apartment")
     @PostMapping("/admin/classApartments")
-    ResponseEntity createClassApartment(@RequestBody @Valid ClassApartmentDTO classApartmentDTO) {
+    ResponseEntity createClassApartment(@RequestBody @Valid ClassApartmentDto classApartmentDto) {
         return new ResponseEntity<>(classApartmentMapper
-                .toClassApartmentDTO(classApartmentService.saveClassApartment(classApartmentDTO)), HttpStatus.CREATED);
+                .toClassApartmentDto(classApartmentService.saveClassApartment(classApartmentDto)), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Getting list of Class apartments, if room with such Class apartment is exist")
     @GetMapping("/uniqueClassApartmentsFromRooms")
-    List<ClassApartmentDTO> showUniqueClassApartmentsFromRooms() {
-        return classApartmentMapper.toListClassApartmentDTO(classApartmentService.getListUniqueClassApartmentsFromRooms());
+    List<ClassApartmentDto> showUniqueClassApartmentsFromRooms() {
+        return classApartmentMapper.toListClassApartmentDto(classApartmentService.getListUniqueClassApartmentsFromRooms());
     }
+
+
+
+
 }

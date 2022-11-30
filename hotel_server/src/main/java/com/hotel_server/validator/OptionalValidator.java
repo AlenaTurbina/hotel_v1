@@ -1,7 +1,7 @@
 package com.hotel_server.validator;
 
 import com.hotel_server.service.OptionalService;
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -17,12 +17,12 @@ public class OptionalValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {
 
-        return OptionalDTO.class.equals(clazz);
+        return OptionalDto.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        OptionalDTO optionalDTO = (OptionalDTO) target;
+        OptionalDto optionalDTO = (OptionalDto) target;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "validation.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "optionalPrice", "validation.required");

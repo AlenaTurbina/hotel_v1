@@ -2,7 +2,7 @@ package com.hotel_server.service;
 
 
 import com.hotel_domain.model.entity.Room;
-import com.hotel_dto.dto.RoomDTO;
+import com.hotel_dto.dto.RoomDto;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,8 +14,8 @@ public interface RoomService {
 
     Room getRoomByName(String name);
 
-    Room saveRoom(RoomDTO roomDTO);
+    Room saveRoom(RoomDto roomDTO);
 
-    Room updateRoom(RoomDTO roomDTO);
+    Room updateRoom(RoomDto roomDTO);
 
 }

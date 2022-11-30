@@ -113,13 +113,13 @@
                     <td>
                         <table class="embeddedTableAdmin">
                             <tr>
-                                <td th:each="userRole : ${user.rolesString}"
+                                <td th:each="userRole : ${user.rolesName}"
                                     th:text="${userRole}">
                                 </td>
                             </tr>
                         </table>
                     </td>
-                    <td th:utext="${user.userStatusString}"></td>
+                    <td th:utext="${user.userStatusName}"></td>
 <!--                    <td>-->
 <!--                        <a style="color:#ffffff" th:href="@{/admin/users/update/{id}(id=${user.id})}"-->
 <!--                           class="btnAdminTable">Edit</a>-->

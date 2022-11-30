@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.ClassApartmentDTO;
+import com.hotel_dto.dto.ClassApartmentDto;
 import com.hotel_ui.configuration.TestConfigurationUserDetails;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -37,12 +37,12 @@ class ClassApartmentControllerUITest {
     @MockBean
     private RestTemplate restTemplate;
     @MockBean
-    private ClassApartmentDTO classApartmentDTO;
+    private ClassApartmentDto classApartmentDto;
 
     @Test
     @WithUserDetails("admin@test.com")
     void testClassApartments() throws Exception {
-        List<ClassApartmentDTO> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDTO));
+        List<ClassApartmentDto> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDto));
         Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(classApartmentDTOList);
 
         mockMvc.perform(get("/admin/classApartments")
@@ -68,7 +68,7 @@ class ClassApartmentControllerUITest {
         Map<String, String> mapErrors = new HashMap();
         mapErrors.put("A", "B");
 
-        Mockito.when(restTemplate.postForEntity(anyString(), any(ClassApartmentDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(ClassApartmentDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(mapErrors, HttpStatus.OK));
         mockMvc.perform(post("/admin/classApartments/create")
                         .accept(MediaType.APPLICATION_JSON))
@@ -80,7 +80,7 @@ class ClassApartmentControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testCreateClassApartmentsWithoutErrors() throws Exception {
-        Mockito.when(restTemplate.postForEntity(anyString(), any(ClassApartmentDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(ClassApartmentDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(HttpStatus.CREATED));
         mockMvc.perform(post("/admin/classApartments/create")
                         .accept(MediaType.APPLICATION_JSON))
@@ -92,8 +92,8 @@ class ClassApartmentControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testUpdateClassApartmentForm() throws Exception {
-        Mockito.when(restTemplate.getForObject(any(), eq(ClassApartmentDTO.class))).thenReturn(classApartmentDTO);
-        mockMvc.perform(get("/admin/classApartments/update/{id}", 1)
+        Mockito.when(restTemplate.getForObject(any(), eq(ClassApartmentDto.class))).thenReturn(classApartmentDto);
+        mockMvc.perform(get("/admin/classApartments/update/{id}", "1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(view().name("admin/updateClassApartments"))

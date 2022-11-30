@@ -3,7 +3,7 @@ package com.hotel_server.integrate;
 import com.hotel_server.message.Messages;
 import com.hotel_database.model.repository.*;
 import com.hotel_domain.model.entity.*;
-import com.hotel_dto.dto.OrderBookingDTO;
+import com.hotel_dto.dto.OrderBookingDto;
 import com.hotel_dto.mapper.OrderBookingMapper;
 import com.hotel_server.service.impl.*;
 import com.hotel_server.validator.OrderBookingValidator;
@@ -125,13 +125,13 @@ class OrderBookingCreateIntegrTest {
     @Test
     void testRegisterOrderBookingSuccessfulAndExpectStatusCreated() throws Exception {
         //OrderBookingDTO from BookingForm
-        OrderBookingDTO orderBookingDTO1 = new OrderBookingDTO();
-        orderBookingDTO1.setDateArrival(LocalDate.of(2022, 05, 05));
-        orderBookingDTO1.setDateDeparture(LocalDate.of(2022, 05, 10));
-        orderBookingDTO1.setQuantityPersons(1);
-        orderBookingDTO1.setUser(user.getId());
-        orderBookingDTO1.setRoomType(uuidRoomType);
-        orderBookingDTO1.setClassApartment(uuidClassApartment);
+        OrderBookingDto orderBookingDto1 = new OrderBookingDto();
+        orderBookingDto1.setDateArrival(LocalDate.of(2022, 05, 05));
+        orderBookingDto1.setDateDeparture(LocalDate.of(2022, 05, 10));
+        orderBookingDto1.setQuantityPersons(1);
+        orderBookingDto1.setUserId(user.getId());
+        orderBookingDto1.setRoomTypeId(uuidRoomType);
+        orderBookingDto1.setClassApartmentId(uuidClassApartment);
 
         List<Room> rooms = new ArrayList<>(List.of(room1, room2));
         Mockito.when(roomRepository.findListFreeRoomsForBooking(any(), any(), any(), any(), any())).thenReturn(rooms);
@@ -145,7 +145,7 @@ class OrderBookingCreateIntegrTest {
 
         int daysRent = 10 - 5; //Booking period: 2022-05-05 - 2022-05-10
         double sumTotal = daysRent * room1.getRoomKind().getRoomPrice()
-                + daysRent * room1.getRoomKind().getClassApartment().getPlacePrice() * orderBookingDTO1.getQuantityPersons()
+                + daysRent * room1.getRoomKind().getClassApartment().getPlacePrice() * orderBookingDto1.getQuantityPersons()
                 + daysRent * optional1.getOptionalPrice();
 
         OrderBooking orderBookingBuild = OrderBooking.builder()
@@ -163,22 +163,22 @@ class OrderBookingCreateIntegrTest {
         mockMvc.perform(post("/api/orderBooking/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(orderBookingDTO1)))
+                        .content(asJsonString(orderBookingDto1)))
                 .andExpect(status().isCreated())
-                .andExpect(content().json(asJsonString(orderBookingMapper.toOrderBookingDTO(orderBookingBuild))))
+                .andExpect(content().json(asJsonString(orderBookingMapper.toOrderBookingDto(orderBookingBuild))))
                 .andDo(print());
     }
 
     @Test
     void testRegisterOrderBookingSuccessfulAndExpectStatusRefusal() throws Exception {
         //OrderBookingDTO from BookingForm
-        OrderBookingDTO orderBookingDTO1 = new OrderBookingDTO();
-        orderBookingDTO1.setDateArrival(LocalDate.of(2022, 05, 05));
-        orderBookingDTO1.setDateDeparture(LocalDate.of(2022, 05, 10));
-        orderBookingDTO1.setQuantityPersons(1);
-        orderBookingDTO1.setUser(user.getId());
-        orderBookingDTO1.setRoomType(uuidRoomType);
-        orderBookingDTO1.setClassApartment(uuidClassApartment);
+        OrderBookingDto orderBookingDto1 = new OrderBookingDto();
+        orderBookingDto1.setDateArrival(LocalDate.of(2022, 05, 05));
+        orderBookingDto1.setDateDeparture(LocalDate.of(2022, 05, 10));
+        orderBookingDto1.setQuantityPersons(1);
+        orderBookingDto1.setUserId(user.getId());
+        orderBookingDto1.setRoomTypeId(uuidRoomType);
+        orderBookingDto1.setClassApartmentId(uuidClassApartment);
 
         List<Room> rooms = new ArrayList<>(List.of(room1, room2));
         Mockito.when(roomRepository.findListFreeRoomsForBooking(any(), any(), any(), any(), any()))
@@ -194,7 +194,7 @@ class OrderBookingCreateIntegrTest {
         mockMvc.perform(post("/api/orderBooking/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(orderBookingDTO1)))
+                        .content(asJsonString(orderBookingDto1)))
                 .andExpect(status().isResetContent())
                 .andDo(print());
     }

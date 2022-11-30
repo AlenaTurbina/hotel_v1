@@ -2,7 +2,7 @@ package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.Room;
 import com.hotel_server.service.RoomService;
-import com.hotel_dto.dto.RoomDTO;
+import com.hotel_dto.dto.RoomDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,7 +18,7 @@ class RoomValidatorTest {
     @Mock
     private RoomService roomService;
     @Mock
-    private RoomDTO roomDTO;
+    private RoomDto roomDTO;
     @Mock
     private Room roomExist;
     @Mock

@@ -1,7 +1,7 @@
 package com.hotel_ui.security;
 
 
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_ui.message.Messages;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +20,7 @@ public class UserSecurityServiceImpl implements UserSecurityService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserDTO user = restTemplate.postForObject(URL_AUTH, email, UserDTO.class);
+        UserDto user = restTemplate.postForObject(URL_AUTH, email, UserDto.class);
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password");
         }

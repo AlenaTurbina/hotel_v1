@@ -3,7 +3,7 @@ package com.hotel_server.validator;
 import com.hotel_server.message.Messages;
 import com.hotel_domain.model.entity.RoomType;
 import com.hotel_server.service.RoomTypeService;
-import com.hotel_dto.dto.OrderBookingDTO;
+import com.hotel_dto.dto.OrderBookingDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class OrderBookingValidatorTest {
     @Mock
-    private OrderBookingDTO orderBookingDTO;
+    private OrderBookingDto orderBookingDTO;
     @Mock
     private RoomType roomType;
     @Mock

@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoomDTO;
+import com.hotel_dto.dto.RoomDto;
 import com.hotel_dto.mapper.RoomMapper;
 import com.hotel_server.service.RoomService;
 import com.hotel_server.validator.RoomUpdateValidator;
@@ -34,14 +34,14 @@ class RoomUpdateRestControllerTest {
     @MockBean
     private RoomUpdateValidator roomUpdateValidator;
 
-    RoomDTO roomDTO = new RoomDTO();
+    RoomDto roomDTO = new RoomDto();
     UUID uuid = UUID.randomUUID();
 
     @BeforeEach
     public void setUp() {
         roomDTO.setId(uuid);
         roomDTO.setName("1A");
-        roomDTO.setRoomKind(UUID.randomUUID());
+        roomDTO.setRoomKindId(UUID.randomUUID());
     }
 
     @Test

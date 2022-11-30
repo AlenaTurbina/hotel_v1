@@ -1,7 +1,7 @@
 package com.hotel_server.contollerRest;
 
 import com.hotel_activemq.produser.ProducerSend;
-import com.hotel_dto.dto.RoomDTO;
+import com.hotel_dto.dto.RoomDto;
 import com.hotel_server.validator.RoomValidator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,7 +32,7 @@ public class RoomManagerRestController {
 
     @Operation(summary = "Creating new Room")
     @PostMapping("/admin/rooms")
-    ResponseEntity createRoom(@RequestBody @Valid RoomDTO roomDTO) {
+    ResponseEntity createRoom(@RequestBody @Valid RoomDto roomDTO) {
         producerSend.sendToQueue(roomDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

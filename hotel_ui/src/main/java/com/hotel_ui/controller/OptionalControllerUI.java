@@ -1,7 +1,7 @@
 package com.hotel_ui.controller;
 
 import com.hotel_ui.message.Messages;
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -38,16 +38,16 @@ public class OptionalControllerUI {
     //Create optional /GET, POST/
     @GetMapping("/create")
     private String createOptionalForm(Model model) {
-        model.addAttribute("optionalDTO", new OptionalDTO());
+        model.addAttribute("optionalDto", new OptionalDto());
         return "admin/createOptionals";
     }
 
     @PostMapping("/create")
-    private String createOptional(@ModelAttribute OptionalDTO optionalDTO, BindingResult bindingResult) {
-        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_OPTIONALS, optionalDTO, Map.class);
+    private String createOptional(@ModelAttribute OptionalDto optionalDto, BindingResult bindingResult) {
+        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_OPTIONALS, optionalDto, Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "optionalDTO");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "optionalDto");
             return "admin/createOptionals";
         }
         return "redirect:/admin/optionals";
@@ -55,17 +55,17 @@ public class OptionalControllerUI {
 
     //Update optional /GET, POST/
     @GetMapping("/update/{id}")
-    public String updateOptionalsForm(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("optionalDTO", restTemplate.getForObject((URL_OPTIONALS + "/" + id), OptionalDTO.class));
+    public String updateOptionalsForm(@PathVariable("id") String id, Model model) {
+        model.addAttribute("optionalDTO", restTemplate.getForObject((URL_OPTIONALS + "/" + id), OptionalDto.class));
         return "admin/updateOptionals";
     }
 
     @PostMapping("/update")
-    public String updateOptionals(@ModelAttribute OptionalDTO optionalDTO, BindingResult bindingResult, Model model) {
-        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_OPTIONALS, HttpMethod.PUT, new HttpEntity<>(optionalDTO), Map.class);
+    public String updateOptionals(@ModelAttribute OptionalDto optionalDto, BindingResult bindingResult, Model model) {
+        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_OPTIONALS, HttpMethod.PUT, new HttpEntity<>(optionalDto), Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            model.addAttribute("optionalDTO", optionalDTO);
+            model.addAttribute("optionalDto", optionalDto);
             getBindingResultFromMapErrors(mapErrors, bindingResult, "optional");
             return "admin/updateOptionals";
         }

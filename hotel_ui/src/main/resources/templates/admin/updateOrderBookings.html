@@ -30,8 +30,8 @@
                 <h2>Order Bookings form update</h2>
             </div>
 
-            <form action="#" th:action="@{/admin/orderBookings/update}" th:object="${orderBookingDTO}" method="post"
-                  class="adminForm" th:if="${orderBookingDTO != null}">
+            <form action="#" th:action="@{/admin/orderBookings/update}" th:object="${orderBookingDto}" method="post"
+                  class="adminForm" th:if="${orderBookingDto != null}">
 
                 <p>
                     <label for="rooms">Room</label>

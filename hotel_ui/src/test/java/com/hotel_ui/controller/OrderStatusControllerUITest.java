@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.OrderStatusDTO;
+import com.hotel_dto.dto.OrderStatusDto;
 import com.hotel_ui.configuration.TestConfigurationUserDetails;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -30,14 +30,14 @@ class OrderStatusControllerUITest {
     @MockBean
     private RestTemplate restTemplate;
     @MockBean
-    private OrderStatusDTO orderStatusDTO;
+    private OrderStatusDto orderStatusDTO;
 
 
     @Test
     @WithUserDetails("admin@test.com")
     void testGetAllOrderStatuses() throws Exception {
-        List<OrderStatusDTO> orderStatusDTOList = new ArrayList<>(List.of(orderStatusDTO));
-        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(orderStatusDTOList);
+        List<OrderStatusDto> orderStatusDtoList = new ArrayList<>(List.of(orderStatusDTO));
+        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(orderStatusDtoList);
 
         mockMvc.perform(get("/admin/orderStatuses")
                         .accept(MediaType.APPLICATION_JSON))

@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.RoomTypeDTO;
+import com.hotel_dto.dto.RoomTypeDto;
 import com.hotel_ui.configuration.TestConfigurationUserDetails;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -36,12 +36,12 @@ class RoomTypeControllerUITest {
     @MockBean
     private RestTemplate restTemplate;
     @MockBean
-    private RoomTypeDTO roomTypeDTO;
+    private RoomTypeDto roomTypeDto;
 
     @Test
     @WithUserDetails("admin@test.com")
     void testRoomTypes() throws Exception {
-        List<RoomTypeDTO> roomTypeDTOList = new ArrayList<>(List.of(roomTypeDTO));
+        List<RoomTypeDto> roomTypeDTOList = new ArrayList<>(List.of(roomTypeDto));
         Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(roomTypeDTOList);
 
         mockMvc.perform(get("/admin/roomTypes")
@@ -67,7 +67,7 @@ class RoomTypeControllerUITest {
         Map<String, String> mapErrors = new HashMap();
         mapErrors.put("A", "B");
 
-        Mockito.when(restTemplate.postForEntity(anyString(), any(RoomTypeDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(RoomTypeDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(mapErrors, HttpStatus.OK));
         mockMvc.perform(post("/admin/roomTypes/create")
                         .accept(MediaType.APPLICATION_JSON))
@@ -79,7 +79,7 @@ class RoomTypeControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testCreateRoomTypeWithoutErrors() throws Exception {
-        Mockito.when(restTemplate.postForEntity(anyString(), any(RoomTypeDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(RoomTypeDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(HttpStatus.CREATED));
         mockMvc.perform(post("/admin/roomTypes/create")
                         .accept(MediaType.APPLICATION_JSON))
@@ -91,7 +91,7 @@ class RoomTypeControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testUpdateRoomTypeForm() throws Exception {
-        Mockito.when(restTemplate.getForObject(any(), eq(RoomTypeDTO.class))).thenReturn(roomTypeDTO);
+        Mockito.when(restTemplate.getForObject(any(), eq(RoomTypeDto.class))).thenReturn(roomTypeDto);
         mockMvc.perform(get("/admin/roomTypes/update/{id}", 1)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

@@ -1,8 +1,8 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.OrderBookingDTO;
-import com.hotel_dto.dto.OrderStatusDTO;
-import com.hotel_dto.dto.RoomDTO;
+import com.hotel_dto.dto.OrderBookingDto;
+import com.hotel_dto.dto.OrderStatusDto;
+import com.hotel_dto.dto.RoomDto;
 import com.hotel_ui.configuration.TestConfigurationUserDetails;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -38,11 +38,11 @@ class OrderBookingControllerUITest {
     @MockBean
     private RestTemplate restTemplate;
     @MockBean
-    private OrderBookingDTO orderBookingDTO;
+    private OrderBookingDto orderBookingDto;
     @MockBean
-    private RoomDTO roomDTO;
+    private RoomDto roomDto;
     @MockBean
-    private OrderStatusDTO orderStatusDTO;
+    private OrderStatusDto orderStatusDto;
     @MockBean
     private ResponseEntity<Map<String, String>> responseEntity;
     @MockBean
@@ -52,8 +52,8 @@ class OrderBookingControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testGetAllOrderBookings() throws Exception {
-        List<OrderBookingDTO> orderBookingDTOList = new ArrayList<>(List.of(orderBookingDTO));
-        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(orderBookingDTOList);
+        List<OrderBookingDto> orderBookingDtoList = new ArrayList<>(List.of(orderBookingDto));
+        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(orderBookingDtoList);
 
         mockMvc.perform(get("/admin/orderBookings")
                         .accept(MediaType.APPLICATION_JSON))
@@ -86,7 +86,7 @@ class OrderBookingControllerUITest {
         Map<String, String> mapErrors = new HashMap();
         mapErrors.put("A", "B");
 
-        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(mapErrors, HttpStatus.OK));
         mockMvc.perform(post("/home/freeRoomForms")
                         .accept(MediaType.APPLICATION_JSON))
@@ -96,7 +96,7 @@ class OrderBookingControllerUITest {
 
     @Test
     void testFreeRoomsWithoutErrors() throws Exception {
-        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(HttpStatus.CREATED));
         mockMvc.perform(post("/home/freeRoomForms")
                         .accept(MediaType.APPLICATION_JSON))
@@ -111,7 +111,7 @@ class OrderBookingControllerUITest {
         Map<String, String> mapErrors = new HashMap();
         mapErrors.put("A", "B");
 
-        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(mapErrors, HttpStatus.OK));
         mockMvc.perform(post("/admin/freeRoomFormsAdmin")
                         .accept(MediaType.APPLICATION_JSON))
@@ -122,7 +122,7 @@ class OrderBookingControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testFreeRoomsAdminWithoutErrors() throws Exception {
-        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(HttpStatus.CREATED));
         mockMvc.perform(post("/admin/freeRoomFormsAdmin")
                         .accept(MediaType.APPLICATION_JSON))
@@ -147,7 +147,7 @@ class OrderBookingControllerUITest {
         Map<String, String> mapErrors = new HashMap();
         mapErrors.put("A", "B");
 
-        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(mapErrors, HttpStatus.OK));
         mockMvc.perform(post("/client/orderForms")
                         .accept(MediaType.APPLICATION_JSON))
@@ -158,8 +158,8 @@ class OrderBookingControllerUITest {
     @Test
     @WithUserDetails("client@test.com")
     void testCreateOrderBookingWithoutErrorsResultRefusal() throws Exception {
-        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDTO.class), eq(Map.class)))
-                .thenReturn(new ResponseEntity(orderBookingDTO, HttpStatus.RESET_CONTENT));
+        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDto.class), eq(Map.class)))
+                .thenReturn(new ResponseEntity(orderBookingDto, HttpStatus.RESET_CONTENT));
 
         mockMvc.perform(post("/client/orderForms")
                         .accept(MediaType.APPLICATION_JSON))
@@ -172,8 +172,8 @@ class OrderBookingControllerUITest {
     @WithUserDetails("client@test.com")
     void testCreateOrderBookingWithoutErrorsResultInvoice() throws Exception {
         Mockito.when(map.get(anyString())).thenReturn(1);
-        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDTO.class), eq(Map.class))).thenReturn(new ResponseEntity(map, HttpStatus.CREATED));
-        Mockito.when(restTemplate.getForObject(anyString(), eq(OrderBookingDTO.class))).thenReturn(orderBookingDTO);
+        Mockito.when(restTemplate.postForEntity(anyString(), any(OrderBookingDto.class), eq(Map.class))).thenReturn(new ResponseEntity(map, HttpStatus.CREATED));
+        Mockito.when(restTemplate.getForObject(anyString(), eq(OrderBookingDto.class))).thenReturn(orderBookingDto);
         mockMvc.perform(post("/client/orderForms")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -184,11 +184,11 @@ class OrderBookingControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testUpdateOrderBookingForm() throws Exception {
-        List<RoomDTO> roomDTOList = new ArrayList<>(List.of(roomDTO));
-        Mockito.when(restTemplate.getForObject(anyString(), eq(OrderBookingDTO.class))).thenReturn(orderBookingDTO);
-        Mockito.when(restTemplate.postForEntity(anyString(), anyInt(), eq(List.class))).thenReturn(new ResponseEntity<>(roomDTOList, HttpStatus.OK));
+        List<RoomDto> roomDTOList = new ArrayList<>(List.of(roomDto));
+        Mockito.when(restTemplate.getForObject(anyString(), eq(OrderBookingDto.class))).thenReturn(orderBookingDto);
+        Mockito.when(restTemplate.postForEntity(anyString(), anyString(), eq(List.class))).thenReturn(new ResponseEntity<>(roomDTOList, HttpStatus.OK));
 
-        mockMvc.perform(get("/admin/orderBookings/update/{id}", 1)
+        mockMvc.perform(get("/admin/orderBookings/update/{id}", "1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(view().name("admin/updateOrderBookings"))

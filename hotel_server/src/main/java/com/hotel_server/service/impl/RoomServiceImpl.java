@@ -2,7 +2,7 @@ package com.hotel_server.service.impl;
 
 import com.hotel_database.model.repository.RoomRepository;
 import com.hotel_domain.model.entity.Room;
-import com.hotel_dto.dto.RoomDTO;
+import com.hotel_dto.dto.RoomDto;
 import com.hotel_server.exceptionHandler.exception.ServerEntityNotFoundException;
 import com.hotel_server.service.RoomKindService;
 import com.hotel_server.service.RoomService;
@@ -47,21 +47,21 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     @Transactional
-    public Room saveRoom(RoomDTO roomDTO) {
+    public Room saveRoom(RoomDto roomDTO) {
         var room = Room.builder()
                 .name(roomDTO.getName())
-                .roomKind(roomKindService.getRoomKindById(roomDTO.getRoomKind()))
+                .roomKind(roomKindService.getRoomKindById(roomDTO.getRoomKindId()))
                 .build();
-        log.info("New Room build (name, roomKindID): " + roomDTO.getName() + ", " + roomDTO.getRoomKind());
+        log.info("New Room build (name, roomKindID): " + roomDTO.getName() + ", " + roomDTO.getRoomKindId());
         return roomRepository.saveAndFlush(room);
     }
 
     @Override
     @Transactional
-    public Room updateRoom(RoomDTO roomDTO) {
+    public Room updateRoom(RoomDto roomDTO) {
         var roomNew = roomRepository.findById(roomDTO.getId()).get();
         roomNew.setName(roomDTO.getName());
-        roomNew.setRoomKind(roomKindService.getRoomKindById(roomDTO.getRoomKind()));
+        roomNew.setRoomKind(roomKindService.getRoomKindById(roomDTO.getRoomKindId()));
         log.info("Room update (id): " + roomDTO.getId());
         return roomRepository.saveAndFlush(roomNew);
     }

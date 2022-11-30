@@ -2,7 +2,7 @@ package com.hotel_server.contollerRest;
 
 import com.hotel_dto.mapper.OrderStatusMapper;
 import com.hotel_server.service.OrderStatusService;
-import com.hotel_dto.dto.OrderStatusDTO;
+import com.hotel_dto.dto.OrderStatusDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ public class OrderStatusRestController {
 
     @Operation(summary = "Getting list of Order statuses")
     @GetMapping("/admin/orderStatuses")
-    List<OrderStatusDTO> getAllOrderStatuses() {
+    List<OrderStatusDto> getAllOrderStatuses() {
         return orderStatusMapper.toListOrderStatusDTO(orderStatusService.getAllOrderStatuses());
     }
 

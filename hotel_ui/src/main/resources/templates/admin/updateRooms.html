@@ -30,10 +30,10 @@
                 <h2>Room form update</h2>
             </div>
 
-            <form action="#" th:action="@{/admin/rooms/update}" th:object="${roomDTO}" method="post"
-                  class="adminForm" th:if="${roomDTO != null}">
+            <form action="#" th:action="@{/admin/rooms/update}" th:object="${roomDto}" method="post"
+                  class="adminForm" th:if="${roomDto != null}">
                 <label for="id">ID</label>
-                <input readonly type="number" th:value="*{id}" th:field="*{id}" id="id" placeholder="ID" class="inp hid">
+                <input readonly type="text" th:value="*{id}" th:field="*{id}" id="id" placeholder="ID" class="inp hid">
                 <br>
                 <label for="name">Name</label>
                 <input type="text" th:value="*{name}" th:field="*{name}" id="name" placeholder="name" required="required" class="inp ord">
@@ -41,15 +41,15 @@
                      th:errors="*{name}"></div>
                 <br>
                 <label for="roomKind">Room kind</label>
-                <select id="roomKind" th:field="*{roomKind}">
+                <select id="roomKind" th:field="*{RoomKindId}">
                     <option class="roomKind" value="">Select room kind</option>
                     <option th:each="roomKind : ${roomKinds}"
                             th:value="${roomKind.id}"
                             th:text="${roomKind.roomTypeName} + ', ' + ${roomKind.classApartmentName}">
                     </option>
                 </select>
-                <div class="alert alert-danger" th:if="${#fields.hasErrors('roomKind')}"
-                     th:errors="*{roomKind}"></div>
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('roomKindId')}"
+                     th:errors="*{RoomKindId}"></div>
                 <br>
                 <br>
                 <p>

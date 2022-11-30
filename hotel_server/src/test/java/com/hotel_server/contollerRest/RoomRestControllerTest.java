@@ -1,7 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoomDTO;
-import com.hotel_dto.mapper.ClassApartmentMapper;
+import com.hotel_dto.dto.RoomDto;
 import com.hotel_dto.mapper.RoomKindMapper;
 import com.hotel_dto.mapper.RoomMapper;
 import com.hotel_dto.mapper.RoomTypeMapper;
@@ -40,42 +39,27 @@ class RoomRestControllerTest {
     @MockBean
     private RoomTypeMapper roomTypeMapper;
     @MockBean
-    private ClassApartmentMapper classApartmentMapper;
-    @MockBean
     private RoomValidator roomValidator;
 
-    RoomDTO roomDTO = new RoomDTO();
+    RoomDto roomDTO = new RoomDto();
 
     @BeforeEach
     public void setUp() {
         roomDTO.setId(UUID.randomUUID());
         roomDTO.setName("1A");
-        roomDTO.setRoomKind(UUID.randomUUID());
+        roomDTO.setRoomKindId(UUID.randomUUID());
     }
 
     @Test
     void testGetAllRooms() throws Exception {
-        List<RoomDTO> roomDTOList = new ArrayList<>(List.of(roomDTO));
-        Mockito.when(roomMapper.toListRoomDTO(any())).thenReturn(roomDTOList);
+        List<RoomDto> roomDtoList = new ArrayList<>(List.of(roomDTO));
+        Mockito.when(roomMapper.toListRoomDTO(any())).thenReturn(roomDtoList);
         mockMvc.perform(get("/api/admin/rooms")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(content().json(asJsonString(roomDTOList)))
+                .andExpect(content().json(asJsonString(roomDtoList)))
                 .andDo(print());
     }
 
-    //This function was moved into another microservice
-//    @Test
-//    void testCreateRoom() throws Exception {
-//        Mockito.when(roomMapper.toRoomDTO(any())).thenReturn(roomDTO);
-//        Mockito.when(roomValidator.supports(any())).thenReturn(true);
-//        mockMvc.perform(post("/api/admin/rooms")
-//                        .content(asJsonString(roomDTO))
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isCreated())
-//                .andExpect(content().json(asJsonString(roomDTO)))
-//                .andDo(print());
-//    }
 }

@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import com.hotel_ui.configuration.TestConfigurationUserDetails;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -36,14 +36,14 @@ class OptionalControllerUITest {
     @MockBean
     private RestTemplate restTemplate;
     @MockBean
-    private OptionalDTO optionalDTO;
+    private OptionalDto optionalDto;
 
 
     @Test
     @WithUserDetails("admin@test.com")
     void testGetAllOptionals() throws Exception {
-        List<OptionalDTO> optionalDTOList = new ArrayList<>(List.of(optionalDTO));
-        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(optionalDTOList);
+        List<OptionalDto> optionalDtoList = new ArrayList<>(List.of(optionalDto));
+        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(optionalDtoList);
 
         mockMvc.perform(get("/admin/optionals")
                         .accept(MediaType.APPLICATION_JSON))
@@ -68,7 +68,7 @@ class OptionalControllerUITest {
         Map<String, String> mapErrors = new HashMap();
         mapErrors.put("A", "B");
 
-        Mockito.when(restTemplate.postForEntity(anyString(), any(OptionalDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(OptionalDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(mapErrors, HttpStatus.OK));
         mockMvc.perform(post("/admin/optionals/create")
                         .accept(MediaType.APPLICATION_JSON))
@@ -80,7 +80,7 @@ class OptionalControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testCreateOptionalWithoutErrors() throws Exception {
-        Mockito.when(restTemplate.postForEntity(anyString(), any(OptionalDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(OptionalDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(HttpStatus.CREATED));
 
         mockMvc.perform(post("/admin/optionals/create")
@@ -93,9 +93,9 @@ class OptionalControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testUpdateOptionalForm() throws Exception {
-        Mockito.when(restTemplate.getForObject(any(), eq(OptionalDTO.class))).thenReturn(optionalDTO);
+        Mockito.when(restTemplate.getForObject(any(), eq(OptionalDto.class))).thenReturn(optionalDto);
 
-        mockMvc.perform(get("/admin/optionals/update/{id}", 1)
+        mockMvc.perform(get("/admin/optionals/update/{id}", "1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(view().name("admin/updateOptionals"))

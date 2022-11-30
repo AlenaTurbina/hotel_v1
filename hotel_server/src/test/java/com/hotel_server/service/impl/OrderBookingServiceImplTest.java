@@ -8,7 +8,7 @@ import com.hotel_domain.model.entity.*;
 import com.hotel_database.model.repository.OrderBookingRepository;
 import com.hotel_server.service.OptionalService;
 import com.hotel_server.service.RoomService;
-import com.hotel_dto.dto.OrderBookingDTO;
+import com.hotel_dto.dto.OrderBookingDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -160,11 +160,11 @@ class OrderBookingServiceImplTest {
         List<UUID> optionalsID = new ArrayList<>(List.of(optional1.getId(), optional2.getId()));
         Mockito.when(optionalService.getListOptionalById(any())).thenReturn(optionals);
 
-        OrderBookingDTO orderBookingDTO1 = new OrderBookingDTO();
-        orderBookingDTO1.setDateArrival(LocalDate.of(2022, 01, 05));
-        orderBookingDTO1.setDateDeparture(LocalDate.of(2022, 01, 10));
-        orderBookingDTO1.setQuantityPersons(2);
-        orderBookingDTO1.setOptionals(optionalsID);
+        OrderBookingDto orderBookingDto1 = new OrderBookingDto();
+        orderBookingDto1.setDateArrival(LocalDate.of(2022, 01, 05));
+        orderBookingDto1.setDateDeparture(LocalDate.of(2022, 01, 10));
+        orderBookingDto1.setQuantityPersons(2);
+        orderBookingDto1.setOptionalsId(optionalsID);
 
         int daysRent = 10 - 5;
         int person = 2;
@@ -176,17 +176,17 @@ class OrderBookingServiceImplTest {
         Double sumClassApartments = daysRent * person * placePrice;
         Double sumOptionals = daysRent * optionalPrice1 + daysRent * optionalPrice2;
         Double sumTotalExpected = sumRoom + sumClassApartments + sumOptionals;
-        Double sumTotalActual = orderBookingService.calculationSumTotal(orderBookingDTO1, room);
+        Double sumTotalActual = orderBookingService.calculationSumTotal(orderBookingDto1, room);
 
         assertEquals(sumTotalExpected, sumTotalActual, 0.000001);
     }
 
     @Test
     void testCalculationSumTotalWithOptionalsNull() {
-        OrderBookingDTO orderBookingDTO1 = new OrderBookingDTO();
-        orderBookingDTO1.setDateArrival(LocalDate.of(2022, 01, 05));
-        orderBookingDTO1.setDateDeparture(LocalDate.of(2022, 01, 10));
-        orderBookingDTO1.setQuantityPersons(2);
+        OrderBookingDto orderBookingDto1 = new OrderBookingDto();
+        orderBookingDto1.setDateArrival(LocalDate.of(2022, 01, 05));
+        orderBookingDto1.setDateDeparture(LocalDate.of(2022, 01, 10));
+        orderBookingDto1.setQuantityPersons(2);
 
         int daysRent = 10 - 5;
         int person = 2;
@@ -195,7 +195,7 @@ class OrderBookingServiceImplTest {
         Double sumRoom = daysRent * roomPrice;
         Double sumClassApartments = daysRent * person * placePrice;
         Double sumTotalExpected = sumRoom + sumClassApartments;
-        Double sumTotalActual = orderBookingService.calculationSumTotal(orderBookingDTO1, room);
+        Double sumTotalActual = orderBookingService.calculationSumTotal(orderBookingDto1, room);
 
         assertEquals(sumTotalExpected, sumTotalActual, 0.000001);
     }
@@ -208,11 +208,11 @@ class OrderBookingServiceImplTest {
                 .name("R2")
                 .roomKind(roomKind)
                 .build();
-        OrderBookingDTO orderBookingDTO = new OrderBookingDTO();
+        OrderBookingDto orderBookingDTO = new OrderBookingDto();
         orderBookingDTO.setDateArrival(orderBooking.getDateArrival());
         orderBookingDTO.setDateDeparture(orderBooking.getDateDeparture());
-        orderBookingDTO.setClassApartment(classApartment.getId());
-        orderBookingDTO.setRoomType(roomType.getId());
+        orderBookingDTO.setClassApartmentId(classApartment.getId());
+        orderBookingDTO.setRoomTypeId(roomType.getId());
 
         given(roomRepository.findListFreeRoomsForBooking(ID_DEFAULT_ORDER_STATUS_CANCEL,
                 orderBooking.getDateArrival(), orderBooking.getDateDeparture(),
@@ -231,11 +231,11 @@ class OrderBookingServiceImplTest {
                 .name("R2")
                 .roomKind(roomKind)
                 .build();
-        OrderBookingDTO orderBookingDTO = new OrderBookingDTO();
+        OrderBookingDto orderBookingDTO = new OrderBookingDto();
         orderBookingDTO.setDateArrival(orderBooking.getDateArrival());
         orderBookingDTO.setDateDeparture(orderBooking.getDateDeparture());
-        orderBookingDTO.setClassApartment(classApartment.getId());
-        orderBookingDTO.setRoomType(roomType.getId());
+        orderBookingDTO.setClassApartmentId(classApartment.getId());
+        orderBookingDTO.setRoomTypeId(roomType.getId());
 
         given(roomRepository.findListFreeRoomsForBooking(ID_DEFAULT_ORDER_STATUS_CANCEL,
                 orderBooking.getDateArrival(), orderBooking.getDateDeparture(),

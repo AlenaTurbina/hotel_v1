@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.OrderBookingDTO;
+import com.hotel_dto.dto.OrderBookingDto;
 import com.hotel_server.service.OrderBookingService;
 import com.hotel_server.validator.DateBookingValidator;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,7 +30,7 @@ public class DateBookingRestController {
 
     @Operation(summary = "Getting list of RoomKinds with quantity of free rooms")
     @PostMapping("/home/freeRooms")
-    ResponseEntity getRoomKindsWithFreeRoomsQuantity(@RequestBody @Valid OrderBookingDTO orderBookingDTO) {
+    ResponseEntity getRoomKindsWithFreeRoomsQuantity(@RequestBody @Valid OrderBookingDto orderBookingDTO) {
         return new ResponseEntity<>(orderBookingService.getRoomKindsWithFreeRooms(orderBookingDTO), HttpStatus.CREATED);
     }
 

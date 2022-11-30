@@ -3,7 +3,7 @@ package com.hotel_server.contollerRest;
 import com.hotel_dto.mapper.OptionalMapper;
 import com.hotel_server.service.OptionalService;
 import com.hotel_server.validator.OptionalValidator;
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -32,14 +32,14 @@ public class OptionalRestController {
 
     @Operation(summary = "Getting list of Optionals")
     @GetMapping("/admin/optionals")
-    List<OptionalDTO> getAllOptionals() {
-        return optionalMapper.toListOptionalDTO(optionalService.getAllOptionals());
+    List<OptionalDto> getAllOptionals() {
+        return optionalMapper.toListOptionalDto(optionalService.getAllOptionals());
     }
 
     @Operation(summary = "Creating  new optional")
     @PostMapping("/admin/optionals")
-    ResponseEntity createOptional(@RequestBody @Valid OptionalDTO optionalDTO) {
-        return new ResponseEntity<>(optionalMapper.toOptionalDTO(optionalService.saveOptional(optionalDTO)), HttpStatus.CREATED);
+    ResponseEntity createOptional(@RequestBody @Valid OptionalDto optionalDTO) {
+        return new ResponseEntity<>(optionalMapper.toOptionalDto(optionalService.saveOptional(optionalDTO)), HttpStatus.CREATED);
     }
 
 }

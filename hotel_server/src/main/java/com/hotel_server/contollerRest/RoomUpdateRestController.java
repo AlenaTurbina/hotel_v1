@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoomDTO;
+import com.hotel_dto.dto.RoomDto;
 import com.hotel_dto.mapper.RoomMapper;
 import com.hotel_server.service.RoomService;
 import com.hotel_server.validator.RoomUpdateValidator;
@@ -32,13 +32,13 @@ public class RoomUpdateRestController {
 
     @Operation(summary = "Getting Room by id")
     @GetMapping(value = "/admin/rooms/{id}")
-    RoomDTO getRoom(@PathVariable UUID id) {
+    RoomDto getRoom(@PathVariable UUID id) {
         return roomMapper.toRoomDTO(roomService.getRoomById(id));
     }
 
     @Operation(summary = "Updating Room")
     @PutMapping("/admin/rooms")
-    ResponseEntity updateRoom(@RequestBody @Valid RoomDTO roomDTO) {
+    ResponseEntity updateRoom(@RequestBody @Valid RoomDto roomDTO) {
         return new ResponseEntity<>(roomMapper.toRoomDTO(roomService.updateRoom(roomDTO)), HttpStatus.CREATED);
     }
 

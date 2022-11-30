@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_ui.configuration.TestConfigurationUserDetails;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -36,13 +36,13 @@ class UserControllerUITest {
     @MockBean
     private RestTemplate restTemplate;
     @MockBean
-    private UserDTO userDTO;
+    private UserDto userDTO;
 
     @Test
     @WithUserDetails("admin@test.com")
     void testGetAllUsers() throws Exception {
-        List<UserDTO> userDTOList = new ArrayList<>(List.of(userDTO));
-        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(userDTOList);
+        List<UserDto> userDtoList = new ArrayList<>(List.of(userDTO));
+        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(userDtoList);
 
         mockMvc.perform(get("/admin/users")
                         .accept(MediaType.APPLICATION_JSON))
@@ -54,7 +54,7 @@ class UserControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testUserData() throws Exception {
-        Mockito.when(restTemplate.postForObject(anyString(), anyString(), eq(UserDTO.class)))
+        Mockito.when(restTemplate.postForObject(anyString(), anyString(), eq(UserDto.class)))
                 .thenReturn(userDTO);
         mockMvc.perform(get("/client/userData")
                         .accept(MediaType.APPLICATION_JSON))
@@ -66,7 +66,7 @@ class UserControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testUpdateUserForm() throws Exception {
-        Mockito.when(restTemplate.postForObject(anyString(), anyString(), eq(UserDTO.class)))
+        Mockito.when(restTemplate.postForObject(anyString(), anyString(), eq(UserDto.class)))
                 .thenReturn(userDTO);
         mockMvc.perform(get("/client/updateForm")
                         .accept(MediaType.APPLICATION_JSON))

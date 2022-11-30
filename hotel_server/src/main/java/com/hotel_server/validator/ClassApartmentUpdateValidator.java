@@ -2,7 +2,7 @@ package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.ClassApartment;
 import com.hotel_server.service.ClassApartmentService;
-import com.hotel_dto.dto.ClassApartmentDTO;
+import com.hotel_dto.dto.ClassApartmentDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -19,12 +19,12 @@ public class ClassApartmentUpdateValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return ClassApartmentDTO.class.equals(clazz);
+        return ClassApartmentDto.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-       ClassApartmentDTO classApartmentDTO = (ClassApartmentDTO) target;
+       ClassApartmentDto classApartmentDTO = (ClassApartmentDto) target;
 
 //        Integer checkID = checkClassApartment(classApartmentDTO);
         UUID checkID = checkClassApartment(classApartmentDTO);
@@ -42,7 +42,7 @@ public class ClassApartmentUpdateValidator implements Validator {
         }
     }
 
-    public UUID checkClassApartment(ClassApartmentDTO classApartmentDTO) {
+    public UUID checkClassApartment(ClassApartmentDto classApartmentDTO) {
         ClassApartment findClassApartment = classApartmentService.getClassApartmentByName(classApartmentDTO.getName());
         if (findClassApartment != null) {
             return findClassApartment.getId();

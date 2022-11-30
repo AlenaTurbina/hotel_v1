@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoomKindDTO;
+import com.hotel_dto.dto.RoomKindDto;
 import com.hotel_dto.mapper.RoomKindMapper;
 import com.hotel_server.service.RoomKindService;
 import com.hotel_server.validator.RoomKindUpdateValidator;
@@ -32,13 +32,13 @@ public class RoomKindUpdateRestController {
 
     @Operation(summary = "Getting Room kind by id")
     @GetMapping(value = "/admin/roomKinds/{id}")
-    RoomKindDTO getRoomKind(@PathVariable UUID id) {
+    RoomKindDto getRoomKind(@PathVariable UUID id) {
         return roomKindMapper.toRoomKindDTO(roomKindService.getRoomKindById(id));
     }
 
     @Operation(summary = "Updating Room kind")
     @PutMapping("/admin/roomKinds")
-    ResponseEntity updateRoomKind(@RequestBody @Valid RoomKindDTO roomKindDTO) {
+    ResponseEntity updateRoomKind(@RequestBody @Valid RoomKindDto roomKindDTO) {
         return new ResponseEntity<>(roomKindMapper.toRoomKindDTO(roomKindService.updateRoomKind(roomKindDTO)), HttpStatus.CREATED);
     }
 

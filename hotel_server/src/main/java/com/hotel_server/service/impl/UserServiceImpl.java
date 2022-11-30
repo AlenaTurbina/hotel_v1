@@ -4,7 +4,7 @@ import com.hotel_server.message.Messages;
 import com.hotel_database.model.repository.UserRepository;
 import com.hotel_domain.model.entity.Role;
 import com.hotel_domain.model.entity.User;
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_server.service.RoleService;
 import com.hotel_server.service.UserService;
 import com.hotel_server.service.UserStatusService;
@@ -45,14 +45,14 @@ public class UserServiceImpl implements UserService {
             log.info("User getByName is not null (name): " + email);
             return user;
         } else {
-            log.info("Class apartment getByName is null (name): " + email);
+            log.info("User getByName is null (name): " + email);
             return null;
         }
     }
 
     @Override
     @Transactional
-    public User saveUser(UserDTO userDTO) {
+    public User saveUser(UserDto userDTO) {
         List<Role> roles = new ArrayList<>(List.of(roleService.getRoleById(ID_DEFAULT_ROLE_CLIENT)));
         var user = User.builder()
                 .email(userDTO.getEmail())
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(UserDTO userDTO) {
+    public User updateUser(UserDto userDTO) {
         User userUpdate = userRepository.getById(userDTO.getId());
         userUpdate.setFirstName(userDTO.getFirstName());
         userUpdate.setLastName(userDTO.getLastName());

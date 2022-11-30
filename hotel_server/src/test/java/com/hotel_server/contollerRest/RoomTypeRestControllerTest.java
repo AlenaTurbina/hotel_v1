@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoomTypeDTO;
+import com.hotel_dto.dto.RoomTypeDto;
 import com.hotel_dto.mapper.RoomTypeMapper;
 import com.hotel_server.service.RoomTypeService;
 import com.hotel_server.validator.RoomTypeValidator;
@@ -36,7 +36,7 @@ class RoomTypeRestControllerTest {
     @MockBean
     private RoomTypeValidator roomTypeValidator;
 
-    RoomTypeDTO roomTypeDTO = new RoomTypeDTO();
+    RoomTypeDto roomTypeDTO = new RoomTypeDto();
 
     @BeforeEach
     public void setUp() {
@@ -47,8 +47,8 @@ class RoomTypeRestControllerTest {
 
     @Test
     void testGetAllRoomTypes() throws Exception {
-        List<RoomTypeDTO> roomTypeDTOList = new ArrayList<>(List.of(roomTypeDTO));
-        Mockito.when(roomTypeMapper.toListRoomTypeDTO(any())).thenReturn(roomTypeDTOList);
+        List<RoomTypeDto> roomTypeDTOList = new ArrayList<>(List.of(roomTypeDTO));
+        Mockito.when(roomTypeMapper.toListRoomTypeDto(any())).thenReturn(roomTypeDTOList);
         mockMvc.perform(get("/api/admin/roomTypes")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -60,7 +60,7 @@ class RoomTypeRestControllerTest {
 
     @Test
     void testCreateRoomType() throws Exception {
-        Mockito.when(roomTypeMapper.toRoomTypeDTO(any())).thenReturn(roomTypeDTO);
+        Mockito.when(roomTypeMapper.toRoomTypeDto(any())).thenReturn(roomTypeDTO);
         Mockito.when(roomTypeValidator.supports(any())).thenReturn(true);
         mockMvc.perform(post("/api/admin/roomTypes")
                 .content(asJsonString(roomTypeDTO))
@@ -73,8 +73,8 @@ class RoomTypeRestControllerTest {
 
     @Test
     void testShowUniqueRoomTypesFromRooms() throws Exception {
-        List<RoomTypeDTO> roomTypeDTOList = new ArrayList<>(List.of(roomTypeDTO));
-        Mockito.when(roomTypeMapper.toListRoomTypeDTO(any())).thenReturn(roomTypeDTOList);
+        List<RoomTypeDto> roomTypeDTOList = new ArrayList<>(List.of(roomTypeDTO));
+        Mockito.when(roomTypeMapper.toListRoomTypeDto(any())).thenReturn(roomTypeDTOList);
         mockMvc.perform(get("/api/uniqueRoomTypesFromRooms")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoleDTO;
+import com.hotel_dto.dto.RoleDto;
 import com.hotel_dto.mapper.RoleMapper;
 import com.hotel_server.service.RoleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,7 +23,7 @@ public class RoleRestController {
 
     @Operation(summary = "Getting list of Roles")
     @GetMapping("/admin/roles")
-    List<RoleDTO> getAllRoles() {
+    List<RoleDto> getAllRoles() {
         return roleMapper.toListRoleDTO(roleService.getAllRoles());
     }
 

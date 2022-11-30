@@ -1,13 +1,17 @@
 package com.hotel_dto.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Transient;
 import java.util.List;
 import java.util.UUID;
 
 @Data
-public class UserDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDto {
     private UUID id;
     private String email;
     private String password;
@@ -16,16 +20,10 @@ public class UserDTO {
     private String phoneNumber;
     private String document;
     private String secretPassword;
-
-    private List<String> rolesString;
-    private String userStatusString;
-    private UUID userStatusInteger;
+    private List<String> rolesName;
+    private String userStatusName;
+    private UUID userStatusId;
 
     @Transient
     private String confirmPassword;
-
-
-
-
-
 }

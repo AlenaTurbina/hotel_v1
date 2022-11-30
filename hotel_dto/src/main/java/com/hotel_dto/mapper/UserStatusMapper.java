@@ -1,13 +1,14 @@
 package com.hotel_dto.mapper;
 
 import com.hotel_domain.model.entity.UserStatus;
-import com.hotel_dto.dto.UserStatusDTO;
+import com.hotel_dto.dto.UserStatusDto;
+import org.mapstruct.Mapper;
 
 import java.util.List;
 
+@Mapper(componentModel = "spring")
 public interface UserStatusMapper {
-    UserStatusDTO toUserStatusDTO(UserStatus userStatus);
+    UserStatusDto toUserStatusDto(UserStatus userStatus);
 
-    List<UserStatusDTO> toListUserStatusDTO(List<UserStatus> userStatuses);
-
+    List<UserStatusDto> toListUserStatusDto(List<UserStatus> userStatuses);
 }

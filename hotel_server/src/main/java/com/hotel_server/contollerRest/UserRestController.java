@@ -1,7 +1,7 @@
 package com.hotel_server.contollerRest;
 
 import com.hotel_database.model.repository.UserRepository;
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_dto.mapper.UserMapper;
 import com.hotel_server.service.UserService;
 import com.hotel_server.validator.UserClientUpdateValidator;
@@ -19,12 +19,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
-@Tag(name="User", description = "Management of User - getting list and update")
+@Tag(name = "User", description = "Management of User - getting list and update")
 public class UserRestController {
     private UserService userService;
-    private UserMapper userMapper;
     private UserRepository userRepository;
     private UserClientUpdateValidator userClientUpdateValidator;
+    private UserMapper userMapper;
 
     @InitBinder(value = "userDTO")
     void initUserClientUpdateValidator(WebDataBinder binder) {
@@ -33,26 +33,26 @@ public class UserRestController {
 
     @Operation(summary = "Getting list of users")
     @GetMapping("/admin/users")
-    List<UserDTO> getAllUsers() {
-        return userMapper.toListUserDTO(userService.getAllUsers());
+    List<UserDto> getAllUsers() {
+        return userMapper.toListUserDto(userService.getAllUsers());
     }
 
     @Operation(summary = "Getting user by email")
     @PostMapping("/client/user")
-    UserDTO getUserOnEmail(@RequestBody String email) {
+    UserDto getUserOnEmail(@RequestBody String email) {
         return userMapper.toUserDTO(userService.getUserByEmail(email));
     }
 
     @Operation(summary = "Updating user")
     @PutMapping("/client/user/update")
-    ResponseEntity updateClientUser(@RequestBody @Valid UserDTO userDTO) {
+    ResponseEntity updateClientUser(@RequestBody @Valid UserDto userDTO) {
         return new ResponseEntity<>(userMapper.toUserDTO(userService.updateUser(userDTO)), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Checking user's authentication")
     @PostMapping("/auth")
-    UserDTO checkAuthentication(@RequestBody String email){
-        return userMapper.toUserDTOAuth(userRepository.findByEmail(email));
-   }
+    UserDto checkAuthentication(@RequestBody String email) {
+        return userMapper.toUserDtoAuth(userRepository.findByEmail(email));
+    }
 
 }

@@ -1,7 +1,7 @@
 package com.hotel_ui.security;
 
 
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -54,15 +54,15 @@ public class UserSecurity implements UserDetails {
 
 
     //Transformation UserDTO into UserDetails
-    public static UserDetails fromUser(UserDTO userDTO) {
+    public static UserDetails fromUser(UserDto userDTO) {
         return new org.springframework.security.core.userdetails.User(
                 userDTO.getEmail(),                                                         //username==email
                 userDTO.getPassword(),                                                      //password
-                userDTO.getUserStatusInteger().equals(ID_DEFAULT_USER_STATUS_ACTIVE),       //enabled
-                userDTO.getUserStatusInteger().equals(ID_DEFAULT_USER_STATUS_ACTIVE),       //accountNonExpired
-                userDTO.getUserStatusInteger().equals(ID_DEFAULT_USER_STATUS_ACTIVE),       //credentialsNonExpired
-                userDTO.getUserStatusInteger().equals(ID_DEFAULT_USER_STATUS_ACTIVE),       //accountNonLocked
-                mapRolesToAuthorities(userDTO.getRolesString()));                           //Collection authorities
+                userDTO.getUserStatusId().equals(ID_DEFAULT_USER_STATUS_ACTIVE),       //enabled
+                userDTO.getUserStatusId().equals(ID_DEFAULT_USER_STATUS_ACTIVE),       //accountNonExpired
+                userDTO.getUserStatusId().equals(ID_DEFAULT_USER_STATUS_ACTIVE),       //credentialsNonExpired
+                userDTO.getUserStatusId().equals(ID_DEFAULT_USER_STATUS_ACTIVE),       //accountNonLocked
+                mapRolesToAuthorities(userDTO.getRolesName()));                           //Collection authorities
     }
 
 

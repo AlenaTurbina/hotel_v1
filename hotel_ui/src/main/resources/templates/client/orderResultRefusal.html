@@ -31,22 +31,22 @@
         <table class="mainTable">
             <tr>
                 <td>Date arrival:</td>
-                <td th:text="${orderBookingDTO.dateArrival}"></td>
+                <td th:text="${orderBookingDto.dateArrival}"></td>
             </tr>
 
             <tr>
                 <td>Date departure:</td>
-                <td th:text="${orderBookingDTO.dateDeparture}"></td>
+                <td th:text="${orderBookingDto.dateDeparture}"></td>
             </tr>
             <tr>
                 <td>Room type:</td>
-                <td th:value="${orderBookingDTO.roomType}"></td>
-                <td th:text="${orderBookingDTO.roomType}"></td>
+                <td th:value="${orderBookingDto.getRoomTypeId}"></td>
+                <td th:text="${orderBookingDto.getRoomTypeId}"></td>
             </tr>
             <tr>
                 <td>Class of apartments:</td>
-                <td th:value="${orderBookingDTO.classApartment}"></td>
-                <td th:text="${orderBookingDTO.classApartment}"></td>
+                <td th:value="${orderBookingDto.getClassApartmentId}"></td>
+                <td th:text="${orderBookingDto.getClassApartmentId}"></td>
             </tr>
         </table>
         <br>

@@ -6,7 +6,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -14,7 +16,9 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
-public class OrderBookingDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class OrderBookingDto {
     private UUID id;
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -32,20 +36,17 @@ public class OrderBookingDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateDeparture;
     private Integer quantityPersons;
-    private UUID roomType;
-    private UUID classApartment;
-    private List<UUID> optionals;
-    private UUID user;
-    private UUID roomKind;
-
+    private UUID roomTypeId;
+    private UUID classApartmentId;
+    private List<UUID> optionalsId;
+    private UUID userId;
+    private UUID roomKindId;
     private String roomTypeName;
     private String classApartmentName;
     private String orderStatusName;
     private String roomName;
     private Double sumTotal;
-
     private String userFirstName;
     private String userLastName;
-
     private String userEmail;
 }

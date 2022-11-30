@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoomTypeDTO;
+import com.hotel_dto.dto.RoomTypeDto;
 import com.hotel_dto.mapper.RoomTypeMapper;
 import com.hotel_server.service.RoomTypeService;
 import com.hotel_server.validator.RoomTypeUpdateValidator;
@@ -34,7 +34,7 @@ class RoomTypeUpdateRestControllerTest {
     @MockBean
     private RoomTypeUpdateValidator roomTypeUpdateValidator;
 
-    RoomTypeDTO roomTypeDTO = new RoomTypeDTO();
+    RoomTypeDto roomTypeDTO = new RoomTypeDto();
     UUID uuid = UUID.randomUUID();
 
     @BeforeEach
@@ -46,7 +46,7 @@ class RoomTypeUpdateRestControllerTest {
 
     @Test
     void testGetRoomType() throws Exception {
-        Mockito.when(roomTypeMapper.toRoomTypeDTO(any())).thenReturn(roomTypeDTO);
+        Mockito.when(roomTypeMapper.toRoomTypeDto(any())).thenReturn(roomTypeDTO);
         mockMvc.perform(get("/api/admin/roomTypes/{id}", uuid))
                 .andExpect(status().isOk())
                 .andExpect(content().json(asJsonString(roomTypeDTO)))
@@ -55,7 +55,7 @@ class RoomTypeUpdateRestControllerTest {
 
     @Test
     void testUpdateRoomType() throws Exception {
-        Mockito.when(roomTypeMapper.toRoomTypeDTO(any())).thenReturn(roomTypeDTO);
+        Mockito.when(roomTypeMapper.toRoomTypeDto(any())).thenReturn(roomTypeDTO);
         Mockito.when(roomTypeUpdateValidator.supports(any())).thenReturn(true);
         mockMvc.perform(put("/api/admin/roomTypes/")
                 .content(asJsonString(roomTypeDTO))

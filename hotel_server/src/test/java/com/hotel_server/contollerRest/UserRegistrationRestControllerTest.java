@@ -1,7 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.UserDTO;
-import com.hotel_dto.mapper.UserMapper;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_server.service.UserService;
 import com.hotel_server.validator.UserValidator;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,11 +27,9 @@ class UserRegistrationRestControllerTest {
     @MockBean
     UserService userService;
     @MockBean
-    UserMapper userMapper;
-    @MockBean
     UserValidator userValidator;
 
-    UserDTO userDTO = new UserDTO();
+    UserDto userDTO = new UserDto();
 
     @BeforeEach
     public void setUp() {

@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import com.hotel_dto.mapper.OptionalMapper;
 import com.hotel_server.service.OptionalService;
 import com.hotel_server.validator.OptionalValidator;
@@ -36,7 +36,7 @@ class OptionalRestControllerTest {
     @MockBean
     private OptionalValidator optionalValidator;
 
-    OptionalDTO optionalDTO = new OptionalDTO();
+    OptionalDto optionalDTO = new OptionalDto();
 
     @BeforeEach
     public void setUp() {
@@ -47,21 +47,21 @@ class OptionalRestControllerTest {
 
     @Test
     void testGetAllOptionals() throws Exception {
-        List<OptionalDTO> optionalDTOList = new ArrayList<>(List.of(optionalDTO));
-        Mockito.when(optionalMapper.toListOptionalDTO(any())).thenReturn(optionalDTOList);
+        List<OptionalDto> optionalDtoList = new ArrayList<>(List.of(optionalDTO));
+        Mockito.when(optionalMapper.toListOptionalDto(any())).thenReturn(optionalDtoList);
 
         mockMvc.perform(get("/api/admin/optionals")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
                 .andExpect(jsonPath("$[0].name", Matchers.equalTo(optionalDTO.getName())))
-                .andExpect(content().json(asJsonString(optionalDTOList)))
+                .andExpect(content().json(asJsonString(optionalDtoList)))
                 .andDo(print());
     }
 
     @Test
     void testCreateOptional() throws Exception {
-        Mockito.when(optionalMapper.toOptionalDTO(any())).thenReturn(optionalDTO);
+        Mockito.when(optionalMapper.toOptionalDto(any())).thenReturn(optionalDTO);
         Mockito.when(optionalValidator.supports(any())).thenReturn(true);
 
         mockMvc.perform(post("/api/admin/optionals")

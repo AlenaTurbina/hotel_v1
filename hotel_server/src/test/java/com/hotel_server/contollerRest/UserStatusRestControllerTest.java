@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.UserStatusDTO;
+import com.hotel_dto.dto.UserStatusDto;
 import com.hotel_dto.mapper.UserStatusMapper;
 import com.hotel_server.service.UserStatusService;
 import org.hamcrest.Matchers;
@@ -33,7 +33,7 @@ class UserStatusRestControllerTest {
     @MockBean
     private UserStatusMapper userStatusMapper;
 
-    UserStatusDTO userStatusDTO = new UserStatusDTO();
+    UserStatusDto userStatusDTO = new UserStatusDto();
 
     @BeforeEach
     public void setUp() {
@@ -42,14 +42,14 @@ class UserStatusRestControllerTest {
 
     @Test
     void testGetAllUserStatuses() throws Exception {
-        List<UserStatusDTO> userStatusDTOList = new ArrayList<>(List.of(userStatusDTO));
-        Mockito.when(userStatusMapper.toListUserStatusDTO(any())).thenReturn(userStatusDTOList);
+        List<UserStatusDto> userStatusDtoList = new ArrayList<>(List.of(userStatusDTO));
+        Mockito.when(userStatusMapper.toListUserStatusDto(any())).thenReturn(userStatusDtoList);
         mockMvc.perform(get("/api/admin/userStatuses")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
                 .andExpect(jsonPath("$[0].id", Matchers.equalTo(userStatusDTO.getId().toString())))
-                .andExpect(content().json(asJsonString(userStatusDTOList)))
+                .andExpect(content().json(asJsonString(userStatusDtoList)))
                 .andDo(print());
     }
 }

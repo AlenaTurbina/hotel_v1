@@ -1,7 +1,7 @@
 package com.hotel_server.service;
 
 import com.hotel_domain.model.entity.RoomType;
-import com.hotel_dto.dto.RoomTypeDTO;
+import com.hotel_dto.dto.RoomTypeDto;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,7 +15,7 @@ public interface RoomTypeService {
 
     RoomType updateRoomType(RoomType roomType);
 
-    RoomType saveRoomType(RoomTypeDTO roomTypeDTO);
+    RoomType saveRoomType(RoomTypeDto roomTypeDTO);
 
     List<RoomType> getListUniqueRoomTypesFromRooms();
 }

@@ -1,7 +1,7 @@
 package com.hotel_server.contollerRest;
 
 
-import com.hotel_dto.dto.RoomKindDTO;
+import com.hotel_dto.dto.RoomKindDto;
 import com.hotel_dto.mapper.RoomKindMapper;
 import com.hotel_server.service.RoomKindService;
 import com.hotel_server.validator.RoomKindValidator;
@@ -27,7 +27,6 @@ public class RoomKindRestController {
     private RoomKindMapper roomKindMapper;
     private RoomKindValidator roomKindValidator;
 
-
     @InitBinder(value = "roomKindDTO")
     void initRoomKindValidator(WebDataBinder binder) {
         binder.setValidator(roomKindValidator);
@@ -35,20 +34,20 @@ public class RoomKindRestController {
 
     @Operation(summary = "Getting list of Room kinds")
     @GetMapping("/admin/roomKinds")
-    List<RoomKindDTO> getAllRoomKinds() {
-        return roomKindMapper.toListRoomKindDTO(roomKindService.getAllRoomKind());
+    List<RoomKindDto> getAllRoomKinds() {
+        return roomKindMapper.toListRoomKindDto(roomKindService.getAllRoomKind());
     }
 
     @Operation(summary = "Creating new Room kind")
     @PostMapping("/admin/roomKinds")
-    ResponseEntity createRoomKind(@RequestBody @Valid RoomKindDTO roomKindDTO) {
+    ResponseEntity createRoomKind(@RequestBody @Valid RoomKindDto roomKindDTO) {
         return new ResponseEntity<>(roomKindMapper.toRoomKindDTO(roomKindService.saveRoomKind(roomKindDTO)), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Getting list of Room kinds, if room with such Room kind is exist")
     @GetMapping("/uniqueRoomKindsFromRooms")
-    List<RoomKindDTO> priceList() {
-        return roomKindMapper.toListRoomKindDTO(roomKindService.getListUniqueRoomKindsFromRooms());
+    List<RoomKindDto> priceList() {
+        return roomKindMapper.toListRoomKindDto(roomKindService.getListUniqueRoomKindsFromRooms());
     }
 
     //TestExample
@@ -59,5 +58,12 @@ public class RoomKindRestController {
         return new ResponseEntity<>(roomKindService.testRK(id, uuidRT), HttpStatus.ACCEPTED);
     }
 
+    //TestExample
+    @PostMapping("/test2")
+    ResponseEntity list2(@RequestBody UUID ca){
+//        UUID id = UUID.fromString("f73bb269-9462-4064-9e1a-94e1ee16ffcc");
+//        UUID uuidRT = UUID.fromString("15715979-d0d6-4691-953f-e0c81f07a3ca");
+        return new ResponseEntity<>(roomKindService.testRK2(ca), HttpStatus.ACCEPTED);
+    }
 
 }

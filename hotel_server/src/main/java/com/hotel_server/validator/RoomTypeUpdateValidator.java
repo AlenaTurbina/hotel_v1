@@ -2,7 +2,7 @@ package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.RoomType;
 import com.hotel_server.service.RoomTypeService;
-import com.hotel_dto.dto.RoomTypeDTO;
+import com.hotel_dto.dto.RoomTypeDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -19,12 +19,12 @@ public class RoomTypeUpdateValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return RoomTypeDTO.class.equals(clazz);
+        return RoomTypeDto.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        RoomTypeDTO roomTypeDTO = (RoomTypeDTO) target;
+        RoomTypeDto roomTypeDTO = (RoomTypeDto) target;
 
         UUID checkID = checkID(roomTypeDTO);
 
@@ -42,7 +42,7 @@ public class RoomTypeUpdateValidator implements Validator {
 
     }
 
-    public UUID checkID(RoomTypeDTO roomTypeDTO) {
+    public UUID checkID(RoomTypeDto roomTypeDTO) {
         RoomType findRoomType = roomTypeService.getRoomTypeByName(roomTypeDTO.getName());
         if (findRoomType != null) {
             return findRoomType.getId();

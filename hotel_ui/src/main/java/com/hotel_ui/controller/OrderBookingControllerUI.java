@@ -1,8 +1,8 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.OrderBookingDTO;
-import com.hotel_dto.dto.RoomKindDTO;
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.OrderBookingDto;
+import com.hotel_dto.dto.RoomKindDto;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_ui.message.Messages;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -45,77 +45,77 @@ public class OrderBookingControllerUI {
     //List of roomKinds /GET/
     @GetMapping("/admin/orderBookings")
     public String getAllOrderBookings(Model model) {
-        List<OrderBookingDTO> orderBookingsDTO = restTemplate.getForObject(URL_ORDER_BOOKINGS, List.class);
-        model.addAttribute("orderBookings", orderBookingsDTO);
+        List<OrderBookingDto> orderBookingsDto = restTemplate.getForObject(URL_ORDER_BOOKINGS, List.class);
+        model.addAttribute("orderBookings", orderBookingsDto);
         return "admin/orderBookings";
     }
 
     //Getting list of free rooms on selected dates for clients /GET, POST/
     @GetMapping(value = "/home/freeRoomForms")
     public String freeRoomsForm(Model model) {
-        model.addAttribute("orderBookingDTO", new OrderBookingDTO());
+        model.addAttribute("orderBookingDto", new OrderBookingDto());
         return "home/freeRoomForms";
     }
 
     //Getting list of free rooms on selected dates for admins /GET, POST/
     @GetMapping(value = "/admin/freeRoomFormsAdmin")
     public String freeRoomsFormAdmin(Model model) {
-        model.addAttribute("orderBookingDTO", new OrderBookingDTO());
+        model.addAttribute("orderBookingDto", new OrderBookingDto());
         return "admin/freeRoomFormsAdmin";
     }
 
     @PostMapping("/home/freeRoomForms")
-    private String freeRooms(@ModelAttribute OrderBookingDTO orderBookingDTO, BindingResult bindingResult, Model model) {
-        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_FREE_ROOMS, orderBookingDTO, Map.class);
+    private String freeRooms(@ModelAttribute OrderBookingDto orderBookingDto, BindingResult bindingResult, Model model) {
+        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_FREE_ROOMS, orderBookingDto, Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "orderBookingDTO");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "orderBookingDto");
             return "home/freeRoomForms";
         }
         model.addAttribute("freeRooms", responseEntity.getBody());
         model.addAttribute("roomKinds", restTemplate.getForObject(URL_UNIQUE_ROOM_KINDS, List.class));
-        model.addAttribute("orderBookingDTO", orderBookingDTO);
+        model.addAttribute("orderBookingDto", orderBookingDto);
         return "home/freeRoomsClient";
     }
 
     @PostMapping("/admin/freeRoomFormsAdmin")
-    private String freeRoomsAdmin(@ModelAttribute OrderBookingDTO orderBookingDTO, BindingResult bindingResult, Model model) {
-        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_FREE_ROOMS, orderBookingDTO, Map.class);
+    private String freeRoomsAdmin(@ModelAttribute OrderBookingDto orderBookingDto, BindingResult bindingResult, Model model) {
+        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_FREE_ROOMS, orderBookingDto, Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "orderBookingDTO");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "orderBookingDto");
             return "admin/freeRoomFormsAdmin";
         }
-        Map<RoomKindDTO, Integer> freeRoomsMap = responseEntity.getBody();
+        Map<RoomKindDto, Integer> freeRoomsMap = responseEntity.getBody();
         model.addAttribute("freeRooms", freeRoomsMap);
         model.addAttribute("roomKinds", restTemplate.getForObject(URL_UNIQUE_ROOM_KINDS, List.class));
-        model.addAttribute("orderBookingDTO", orderBookingDTO);
+        model.addAttribute("orderBookingDto", orderBookingDto);
         return "admin/freeRoomsAdmin";
     }
 
     //BOOKING
     @GetMapping(value = "/client/orderForms")
     public String orderForm(Model model) {
-        model.addAttribute("orderBookingDTO", new OrderBookingDTO());
+        model.addAttribute("orderBookingDto", new OrderBookingDto());
         showAuthenticatedUserAndOrderForm(model);
         return "client/orderForms";
     }
 
     @PostMapping("/client/orderForms")
-    private String createOrderBooking(@ModelAttribute OrderBookingDTO orderBookingDTO, BindingResult bindingResult, Model model) {
-        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_ORDER_BOOKING_CREATE, orderBookingDTO, Map.class);
+    private String createOrderBooking(@ModelAttribute OrderBookingDto orderBookingDto, BindingResult bindingResult, Model model) {
+        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_ORDER_BOOKING_CREATE, orderBookingDto, Map.class);
         showAuthenticatedUserAndOrderForm(model);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "orderBookingDTO");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "orderBookingDto");
             return "client/orderForms";
         }
         if (responseEntity.getStatusCode() == HttpStatus.RESET_CONTENT) {
-            model.addAttribute("orderBookingDTO", orderBookingDTO);
+            model.addAttribute("orderBookingDto", orderBookingDto);
             return "client/orderResultRefusal";
         } else {
-            Integer id = (Integer) responseEntity.getBody().get("id");
-            OrderBookingDTO orderBookingDTObyId = restTemplate.getForObject((URL_ORDER_BOOKINGS + "/" + id), OrderBookingDTO.class);
+            String id = responseEntity.getBody().get("id").toString();
+            OrderBookingDto orderBookingDTObyId = restTemplate.getForObject((URL_ORDER_BOOKINGS + "/" + id), OrderBookingDto.class);
             model.addAttribute("orderBooking", orderBookingDTObyId);
             return "client/orderResultInvoice";
         }
@@ -124,20 +124,20 @@ public class OrderBookingControllerUI {
     @GetMapping("/client/orderBookings")
     public String orderBookingsForUser(Model model) {
         String userEmail = getPrincipal();
-        UserDTO userDTO = new UserDTO();
-        userDTO.setEmail(userEmail);
-        ResponseEntity<List> responseEntityForUser = restTemplate.postForEntity(URL_ORDER_BOOKING_USER, userDTO, List.class);
-        List<OrderBookingDTO> orderBookingsDTO = responseEntityForUser.getBody();
-        model.addAttribute("orderBookings", orderBookingsDTO);
+        UserDto userDto = new UserDto();
+        userDto.setEmail(userEmail);
+        ResponseEntity<List> responseEntityForUser = restTemplate.postForEntity(URL_ORDER_BOOKING_USER, userDto, List.class);
+        List<OrderBookingDto> orderBookingsDto = responseEntityForUser.getBody();
+        model.addAttribute("orderBookings", orderBookingsDto);
         showAuthenticatedUserAndOrderForm(model);
         return "client/orderUsers";
     }
 
     //Update orderBooking /GET, POST/
     @GetMapping("/admin/orderBookings/update/{id}")
-    public String updateOrderBookingForm(@PathVariable("id") Integer id, Model model) {
-        OrderBookingDTO orderBookingDTO = restTemplate.getForObject((URL_ORDER_BOOKINGS + "/" + id), OrderBookingDTO.class);
-        model.addAttribute("orderBookingDTO", orderBookingDTO);
+    public String updateOrderBookingForm(@PathVariable("id") String id, Model model) {
+        OrderBookingDto orderBookingDto = restTemplate.getForObject((URL_ORDER_BOOKINGS + "/" + id), OrderBookingDto.class);
+        model.addAttribute("orderBookingDto", orderBookingDto);
         ResponseEntity<List> responseEntityRooms = restTemplate.postForEntity(URL_ORDER_BOOKING_ROOMS, id, List.class);
         model.addAttribute("rooms", responseEntityRooms.getBody());
         model.addAttribute("orderStatuses", restTemplate.getForObject(URL_ORDER_STATUSES, List.class));
@@ -145,11 +145,11 @@ public class OrderBookingControllerUI {
     }
 
     @PostMapping("/admin/orderBookings/update")
-    public String updateOrderBooking(@ModelAttribute OrderBookingDTO orderBookingDTO, BindingResult bindingResult, Model model) {
-        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_ORDER_BOOKINGS, HttpMethod.PUT, new HttpEntity<>(orderBookingDTO), Map.class);
+    public String updateOrderBooking(@ModelAttribute OrderBookingDto orderBookingDto, BindingResult bindingResult, Model model) {
+        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_ORDER_BOOKINGS, HttpMethod.PUT, new HttpEntity<>(orderBookingDto), Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "orderBookingDTO");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "orderBookingDto");
             return "admin/updateOrderBookings";
         }
         return "redirect:/admin/orderBookings";

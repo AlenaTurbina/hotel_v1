@@ -1,7 +1,7 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.OrderBookingDTO;
-import com.hotel_dto.dto.RoomKindDTO;
+import com.hotel_dto.dto.OrderBookingDto;
+import com.hotel_dto.dto.RoomKindDto;
 import com.hotel_server.service.OrderBookingService;
 import com.hotel_server.validator.DateBookingValidator;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,8 +33,8 @@ class DateBookingRestControllerTest {
     @MockBean
     private DateBookingValidator dateBookingValidator;
 
-    RoomKindDTO roomKindDTO = new RoomKindDTO();
-    OrderBookingDTO orderBookingDTO = new OrderBookingDTO();
+    RoomKindDto roomKindDTO = new RoomKindDto();
+    OrderBookingDto orderBookingDTO = new OrderBookingDto();
 
     @BeforeEach
     public void setUp() {
@@ -42,12 +42,12 @@ class DateBookingRestControllerTest {
         roomKindDTO.setRoomTypeName("A");
         roomKindDTO.setClassApartmentName("B");
 
-        orderBookingDTO.setRoomKind(UUID.randomUUID());
+        orderBookingDTO.setRoomKindId(UUID.randomUUID());
     }
 
     @Test
     void testGetRoomKindsWithFreeRoomsQuantity() throws Exception {
-        Map<RoomKindDTO, Long> roomKindsMap = new HashMap<>();
+        Map<RoomKindDto, Long> roomKindsMap = new HashMap<>();
         roomKindsMap.put(roomKindDTO, 5L);
         Mockito.when(orderBookingService.getRoomKindsWithFreeRooms(any())).thenReturn(roomKindsMap);
         Mockito.when(dateBookingValidator.supports(any())).thenReturn(true);

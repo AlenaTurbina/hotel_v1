@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.UserStatusDTO;
+import com.hotel_dto.dto.UserStatusDto;
 import com.hotel_dto.mapper.UserStatusMapper;
 import com.hotel_server.service.UserStatusService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,8 +23,8 @@ public class UserStatusRestController {
 
     @Operation(summary = "Getting list of User statuses")
     @GetMapping("/admin/userStatuses")
-    List<UserStatusDTO> getAllUserStatuses() {
-        return userStatusMapper.toListUserStatusDTO(userStatusService.getAllUserStatuses());
+    List<UserStatusDto> getAllUserStatuses() {
+        return userStatusMapper.toListUserStatusDto(userStatusService.getAllUserStatuses());
     }
 
 }

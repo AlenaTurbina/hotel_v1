@@ -1,7 +1,7 @@
 package com.hotel_server.validator;
 
 import com.hotel_server.service.RoomKindService;
-import com.hotel_dto.dto.RoomKindDTO;
+import com.hotel_dto.dto.RoomKindDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class RoomKindUpdateValidatorTest {
     @Mock
-    private RoomKindDTO roomKindDTO;
+    private RoomKindDto roomKindDTO;
     @Mock
     private RoomKindService roomKindService;
     @Mock

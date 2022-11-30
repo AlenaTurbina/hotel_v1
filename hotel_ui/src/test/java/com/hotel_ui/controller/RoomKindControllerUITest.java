@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.RoomKindDTO;
+import com.hotel_dto.dto.RoomKindDto;
 import com.hotel_ui.configuration.TestConfigurationUserDetails;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -36,13 +36,13 @@ class RoomKindControllerUITest {
     @MockBean
     private RestTemplate restTemplate;
     @MockBean
-    private RoomKindDTO roomKindDTO;
+    private RoomKindDto roomKindDTO;
 
     @Test
     @WithUserDetails("admin@test.com")
     void testGetAllRoomKinds() throws Exception {
-        List<RoomKindDTO> roomKindDTOList = new ArrayList<>(List.of(roomKindDTO));
-        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(roomKindDTOList);
+        List<RoomKindDto> roomKindDtoList = new ArrayList<>(List.of(roomKindDTO));
+        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(roomKindDtoList);
 
         mockMvc.perform(get("/admin/roomKinds")
                         .accept(MediaType.APPLICATION_JSON))
@@ -67,7 +67,7 @@ class RoomKindControllerUITest {
         Map<String, String> mapErrors = new HashMap();
         mapErrors.put("A", "B");
 
-        Mockito.when(restTemplate.postForEntity(anyString(), any(RoomKindDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(RoomKindDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(mapErrors, HttpStatus.OK));
         mockMvc.perform(post("/admin/roomKinds/create")
                         .accept(MediaType.APPLICATION_JSON))
@@ -78,7 +78,7 @@ class RoomKindControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testCreateRoomKindWithoutErrors() throws Exception {
-        Mockito.when(restTemplate.postForEntity(anyString(), any(RoomKindDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(RoomKindDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(HttpStatus.CREATED));
         mockMvc.perform(post("/admin/roomKinds/create")
                         .accept(MediaType.APPLICATION_JSON))
@@ -90,7 +90,7 @@ class RoomKindControllerUITest {
     @Test
     @WithUserDetails("admin@test.com")
     void testUpdateRoomKindForm() throws Exception {
-        Mockito.when(restTemplate.getForObject(any(), eq(RoomKindDTO.class))).thenReturn(roomKindDTO);
+        Mockito.when(restTemplate.getForObject(any(), eq(RoomKindDto.class))).thenReturn(roomKindDTO);
         mockMvc.perform(get("/admin/roomKinds/update/{id}", 1)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

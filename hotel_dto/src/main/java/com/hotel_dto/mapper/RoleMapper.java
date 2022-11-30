@@ -1,13 +1,14 @@
 package com.hotel_dto.mapper;
 
 import com.hotel_domain.model.entity.Role;
-import com.hotel_dto.dto.RoleDTO;
+import com.hotel_dto.dto.RoleDto;
+import org.mapstruct.Mapper;
 
 import java.util.List;
 
+@Mapper(componentModel = "spring")
 public interface RoleMapper {
-    RoleDTO toRoleDTO(Role role);
+    RoleDto toRoleDTO(Role role);
 
-    List<RoleDTO> toListRoleDTO(List<Role> roles);
-
+    List<RoleDto> toListRoleDTO(List<Role> roles);
 }

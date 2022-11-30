@@ -2,8 +2,8 @@ package com.hotel_server.contollerRest;
 
 
 import com.hotel_domain.model.entity.OrderBooking;
-import com.hotel_dto.dto.OrderBookingDTO;
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.OrderBookingDto;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_dto.mapper.OrderBookingMapper;
 import com.hotel_dto.mapper.RoomMapper;
 import com.hotel_server.message.Messages;
@@ -47,13 +47,13 @@ public class OrderBookingRestController {
 
     @Operation(summary = "Getting list of Order bookings")
     @GetMapping("/admin/orderBookings")
-    List<OrderBookingDTO> getAllOrders() {
-        return orderBookingMapper.toListOrderBookingDTO(orderBookingService.getAllOrderBooking());
+    List<OrderBookingDto> getAllOrders() {
+        return orderBookingMapper.toListOrderBookingDto(orderBookingService.getAllOrderBooking());
     }
 
     @Operation(summary = "Creating new Order booking")
     @PostMapping("/orderBooking/create")
-    ResponseEntity registerOrderBooking(@RequestBody @Valid OrderBookingDTO orderBookingDTO) {
+    ResponseEntity registerOrderBooking(@RequestBody @Valid OrderBookingDto orderBookingDTO) {
         OrderBooking orderBooking = orderBookingService.saveOrderBooking(orderBookingDTO);
         if (orderBooking != null) {
             log.info("New invoice");
@@ -65,7 +65,7 @@ public class OrderBookingRestController {
             } catch (MessagingException e) {
                 log.error("Exception: ", e);
             }
-            return new ResponseEntity<>(orderBookingMapper.toOrderBookingDTO(orderBooking), HttpStatus.CREATED);
+            return new ResponseEntity<>(orderBookingMapper.toOrderBookingDto(orderBooking), HttpStatus.CREATED);
         } else {
             log.info("No suitable room for booking");
             return new ResponseEntity<>(HttpStatus.RESET_CONTENT);
@@ -74,21 +74,21 @@ public class OrderBookingRestController {
 
     @Operation(summary = "Getting List of Order bookings by user")
     @PostMapping("/orderBooking/user")
-    List<OrderBookingDTO> getOrderBookingForUser(@RequestBody UserDTO userDTO) {
-        return orderBookingMapper.toListOrderBookingDTO(orderBookingService.findAllOrderBookingsByUser(userDTO));
+    List<OrderBookingDto> getOrderBookingForUser(@RequestBody UserDto userDto) {
+        return orderBookingMapper.toListOrderBookingDto(orderBookingService.findAllOrderBookingsByUser(userDto));
     }
 
     @Operation(summary = "Getting Order booking by id")
     @GetMapping(value = "/admin/orderBookings/{id}")
-    OrderBookingDTO getOrderBooking(@PathVariable UUID id) {
-        return orderBookingMapper.toOrderBookingDTO(orderBookingService.getOrderBookingById(id));
+    OrderBookingDto getOrderBooking(@PathVariable UUID id) {
+        return orderBookingMapper.toOrderBookingDto(orderBookingService.getOrderBookingById(id));
     }
 
     @Operation(summary = "Updating Order booking")
     @PutMapping("/admin/orderBookings")
-    ResponseEntity updateOrderBooking(@RequestBody OrderBookingDTO orderBookingDTO) {
+    ResponseEntity updateOrderBooking(@RequestBody OrderBookingDto orderBookingDTO) {
         return new ResponseEntity<>(orderBookingMapper
-                .toOrderBookingDTO(orderBookingService.updateOrderBooking(orderBookingDTO)), HttpStatus.CREATED);
+                .toOrderBookingDto(orderBookingService.updateOrderBooking(orderBookingDTO)), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Getting list of free rooms to certain Order booking")

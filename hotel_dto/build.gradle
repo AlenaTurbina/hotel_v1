@@ -25,8 +25,28 @@ dependencies {
     annotationProcessor ("org.projectlombok:lombok:${lombokVersion}")
     testImplementation ("org.springframework.boot:spring-boot-starter-test:${sbTestVersion}")
     implementation project(':hotel_domain')
+
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
+    //  for writing tests and extensions in JUnit 5
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+
+    //  the Jupiter sub-project provides a TestEngine for running Jupiter based tests on the platform.
+    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.0'
+
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        exceptionFormat = 'full'
+    }
 }

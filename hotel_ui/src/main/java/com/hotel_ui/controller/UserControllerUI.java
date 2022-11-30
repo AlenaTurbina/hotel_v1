@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_ui.message.Messages;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -33,14 +33,14 @@ public class UserControllerUI {
 
     @GetMapping("/admin/users")
     public String getAllUsers(Model model) {
-        List<UserDTO> usersDTO = restTemplate.getForObject(URL_USERS, List.class);
-        model.addAttribute("users", usersDTO);
+        List<UserDto> usersDto = restTemplate.getForObject(URL_USERS, List.class);
+        model.addAttribute("users", usersDto);
         return "admin/users";
     }
 
     @GetMapping("/client/userData")
     public String userData(Model model) {
-        UserDTO user = restTemplate.postForObject(URL_CLIENT_USER, getPrincipal(), UserDTO.class);
+        UserDto user = restTemplate.postForObject(URL_CLIENT_USER, getPrincipal(), UserDto.class);
         model.addAttribute("user", user);
         return "client/userClient";
     }
@@ -48,13 +48,13 @@ public class UserControllerUI {
     //Update user on client side with validation /GET, POST/
     @GetMapping("/client/updateForm")
     public String updateUserForm(Model model) {
-        UserDTO user = restTemplate.postForObject(URL_CLIENT_USER, getPrincipal(), UserDTO.class);
+        UserDto user = restTemplate.postForObject(URL_CLIENT_USER, getPrincipal(), UserDto.class);
         model.addAttribute("user", user);
         return "client/updateUserClient";
     }
 
     @PostMapping("/client/updateForm")
-    public String updateUser(UserDTO userDTO, Model model, BindingResult bindingResult) {
+    public String updateUser(UserDto userDTO, Model model, BindingResult bindingResult) {
         ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_CLIENT_UPDATE, HttpMethod.PUT, new HttpEntity<>(userDTO), Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();

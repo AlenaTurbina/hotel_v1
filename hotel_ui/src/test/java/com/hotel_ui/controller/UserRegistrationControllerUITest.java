@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_ui.configuration.TestConfigurationUserDetails;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -47,7 +47,7 @@ class UserRegistrationControllerUITest {
         Map<String, String> mapErrors = new HashMap();
         mapErrors.put("A", "B");
 
-        Mockito.when(restTemplate.postForEntity(anyString(), any(UserDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(UserDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(mapErrors, HttpStatus.OK));
         mockMvc.perform(post("/registration")
                         .accept(MediaType.APPLICATION_JSON))
@@ -57,7 +57,7 @@ class UserRegistrationControllerUITest {
 
     @Test
     void testRegisterUserAccountWithoutErrors() throws Exception {
-        Mockito.when(restTemplate.postForEntity(anyString(), any(UserDTO.class), eq(Map.class)))
+        Mockito.when(restTemplate.postForEntity(anyString(), any(UserDto.class), eq(Map.class)))
                 .thenReturn(new ResponseEntity(HttpStatus.CREATED));
         mockMvc.perform(post("/registration")
                         .accept(MediaType.APPLICATION_JSON))

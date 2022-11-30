@@ -6,9 +6,9 @@ import com.hotel_database.model.repository.RoomRepository;
 import com.hotel_domain.model.entity.Optional;
 import com.hotel_domain.model.entity.OrderBooking;
 import com.hotel_domain.model.entity.Room;
-import com.hotel_dto.dto.OrderBookingDTO;
-import com.hotel_dto.dto.RoomKindDTO;
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.OrderBookingDto;
+import com.hotel_dto.dto.RoomKindDto;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_server.exceptionHandler.exception.ServerEntityNotFoundException;
 import com.hotel_server.message.Messages;
 import com.hotel_server.service.*;
@@ -51,12 +51,12 @@ public class OrderBookingServiceImpl implements OrderBookingService {
     }
 
     @Override
-    public OrderBooking saveOrderBooking(OrderBookingDTO orderBookingDTO) {
+    public OrderBooking saveOrderBooking(OrderBookingDto orderBookingDTO) {
         var room = getFirstRelevantFreeRoom(orderBookingDTO);
         if (room != null) {
             log.info("room != null");
             var sum = calculationSumTotal(orderBookingDTO, room);
-            var optionals = optionalService.getListOptionalById(orderBookingDTO.getOptionals());
+            var optionals = optionalService.getListOptionalById(orderBookingDTO.getOptionalsId());
             var client = userService.getUserByEmail(orderBookingDTO.getUserEmail());
             var orderBooking = OrderBooking.builder()
                     .date(LocalDate.now())
@@ -79,7 +79,7 @@ public class OrderBookingServiceImpl implements OrderBookingService {
     }
 
     @Override
-    public OrderBooking updateOrderBooking(OrderBookingDTO orderBookingDTO) {
+    public OrderBooking updateOrderBooking(OrderBookingDto orderBookingDTO) {
         OrderBooking orderBooking = orderBookingRepository.getById(orderBookingDTO.getId());
         orderBooking.setRoom(roomService.getRoomByName(orderBookingDTO.getRoomName()));
         orderBooking.setOrderStatus(orderStatusService.getOrderStatusByName(orderBookingDTO.getOrderStatusName()));
@@ -89,12 +89,12 @@ public class OrderBookingServiceImpl implements OrderBookingService {
     }
 
     @Override
-    public Double calculationSumTotal(OrderBookingDTO orderBookingDTO, Room room) {
+    public Double calculationSumTotal(OrderBookingDto orderBookingDTO, Room room) {
         double sumOptionals = 0;
         var daysRent = Period.between(orderBookingDTO.getDateArrival(), orderBookingDTO.getDateDeparture()).getDays();
         Double sumRoom = daysRent * room.getRoomKind().getRoomPrice();
         Double sumClassApartments = daysRent * room.getRoomKind().getClassApartment().getPlacePrice() * orderBookingDTO.getQuantityPersons();
-        var optionals = optionalService.getListOptionalById(orderBookingDTO.getOptionals());
+        var optionals = optionalService.getListOptionalById(orderBookingDTO.getOptionalsId());
         if (!optionals.isEmpty()) {
             for (Optional optional : optionals) {
                 sumOptionals += daysRent * optional.getOptionalPrice();
@@ -110,11 +110,11 @@ public class OrderBookingServiceImpl implements OrderBookingService {
 
     //Free room of a given type for the desired dates /for booking/
     @Override
-    public Room getFirstRelevantFreeRoom(OrderBookingDTO orderBookingDTO) {
+    public Room getFirstRelevantFreeRoom(OrderBookingDto orderBookingDTO) {
         LocalDate dateArrival = orderBookingDTO.getDateArrival();
         LocalDate dateDeparture = orderBookingDTO.getDateDeparture();
-        UUID roomTypeId = orderBookingDTO.getRoomType();
-        UUID classApartmentId = orderBookingDTO.getClassApartment();
+        UUID roomTypeId = orderBookingDTO.getRoomTypeId();
+        UUID classApartmentId = orderBookingDTO.getClassApartmentId();
 
         var resultRooms = roomRepository.findListFreeRoomsForBooking(ID_DEFAULT_ORDER_STATUS_CANCEL,
                 dateArrival, dateDeparture, roomTypeId, classApartmentId);
@@ -159,7 +159,7 @@ public class OrderBookingServiceImpl implements OrderBookingService {
 
     //Quantity of free rooms withDTO grouping by kind for the desired dates
     @Override
-    public Map<RoomKindDTO, Long> getRoomKindsWithFreeRooms(OrderBookingDTO orderBookingDTO) {
+    public Map<RoomKindDto, Long> getRoomKindsWithFreeRooms(OrderBookingDto orderBookingDTO) {
 //        LocalDate dateArrival = orderBookingDTO.getDateArrival();
 //        LocalDate dateDeparture = orderBookingDTO.getDateDeparture();
 //
@@ -180,7 +180,7 @@ public class OrderBookingServiceImpl implements OrderBookingService {
     }
 
     @Override
-    public List<OrderBooking> findAllOrderBookingsByUser(UserDTO userDTO) {
+    public List<OrderBooking> findAllOrderBookingsByUser(UserDto userDTO) {
         var user = userService.getUserByEmail(userDTO.getEmail());
         log.info("Order booking getAllByClient");
         var orderBookings = orderBookingRepository.findAllByClient(user);

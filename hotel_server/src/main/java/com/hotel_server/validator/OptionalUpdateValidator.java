@@ -2,7 +2,7 @@ package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.Optional;
 import com.hotel_server.service.OptionalService;
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -19,12 +19,12 @@ public class OptionalUpdateValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return OptionalDTO.class.equals(clazz);
+        return OptionalDto.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        OptionalDTO optionalDTO = (OptionalDTO) target;
+        OptionalDto optionalDTO = (OptionalDto) target;
 
         UUID checkID = checkOptional(optionalDTO);
 
@@ -41,7 +41,7 @@ public class OptionalUpdateValidator implements Validator {
 
     }
 
-    public UUID checkOptional(OptionalDTO optionalDTO) {
+    public UUID checkOptional(OptionalDto optionalDTO) {
         Optional findOptional = optionalService.getOptionalByName(optionalDTO.getName());
         if (findOptional != null) {
             return findOptional.getId();

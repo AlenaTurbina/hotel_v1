@@ -1,7 +1,7 @@
 package com.hotel_server.service;
 
 import com.hotel_domain.model.entity.User;
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public interface UserService {
 
     User getUserByEmail(String email);
 
-    User saveUser(UserDTO userDTO);
+    User saveUser(UserDto userDTO);
 
-    User updateUser(UserDTO userDTO);
+    User updateUser(UserDto userDTO);
 }

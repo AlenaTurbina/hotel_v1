@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.ClassApartmentDTO;
+import com.hotel_dto.dto.ClassApartmentDto;
 import com.hotel_dto.mapper.ClassApartmentMapper;
 import com.hotel_server.service.ClassApartmentService;
 import com.hotel_server.validator.ClassApartmentUpdateValidator;
@@ -34,7 +34,7 @@ class ClassApartmentUpdateRestControllerTest {
     @MockBean
     private ClassApartmentUpdateValidator classApartmentUpdateValidator;
 
-    ClassApartmentDTO classApartmentDTO = new ClassApartmentDTO();
+    ClassApartmentDto classApartmentDTO = new ClassApartmentDto();
     UUID uuid = UUID.randomUUID();
 
     @BeforeEach
@@ -46,7 +46,7 @@ class ClassApartmentUpdateRestControllerTest {
 
     @Test
     void testGetClassApartment() throws Exception {
-        Mockito.when(classApartmentMapper.toClassApartmentDTO(any())).thenReturn(classApartmentDTO);
+        Mockito.when(classApartmentMapper.toClassApartmentDto(any())).thenReturn(classApartmentDTO);
         mockMvc.perform(get("/api/admin/classApartments/{id}", uuid))
                 .andExpect(status().isOk())
                 .andExpect(content().json(asJsonString(classApartmentDTO)))
@@ -55,7 +55,7 @@ class ClassApartmentUpdateRestControllerTest {
 
     @Test
     void testUpdateClassApartment() throws Exception {
-        Mockito.when(classApartmentMapper.toClassApartmentDTO(any())).thenReturn(classApartmentDTO);
+        Mockito.when(classApartmentMapper.toClassApartmentDto(any())).thenReturn(classApartmentDTO);
         Mockito.when(classApartmentUpdateValidator.supports(any())).thenReturn(true);
         mockMvc.perform(put("/api/admin/classApartments/")
                 .content(asJsonString(classApartmentDTO))

@@ -1,14 +1,16 @@
 package com.hotel_dto.mapper;
 
 import com.hotel_domain.model.entity.Optional;
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
+import org.mapstruct.Mapper;
 
 import java.util.List;
 
+@Mapper(componentModel = "spring")
 public interface OptionalMapper {
-    OptionalDTO toOptionalDTO(Optional optional);
+    Optional toOptional(OptionalDto optionalDto);
 
-    List<OptionalDTO> toListOptionalDTO(List<Optional> optionals);
+    OptionalDto toOptionalDto(Optional optional);
 
-    Optional toOptional(OptionalDTO optionalDTO);
+    List<OptionalDto> toListOptionalDto(List<Optional> optionals);
 }

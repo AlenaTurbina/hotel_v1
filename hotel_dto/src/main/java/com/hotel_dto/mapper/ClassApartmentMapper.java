@@ -1,14 +1,16 @@
 package com.hotel_dto.mapper;
 
 import com.hotel_domain.model.entity.ClassApartment;
-import com.hotel_dto.dto.ClassApartmentDTO;
+import com.hotel_dto.dto.ClassApartmentDto;
+import org.mapstruct.Mapper;
 
 import java.util.List;
 
+@Mapper(componentModel = "spring")
 public interface ClassApartmentMapper {
-    ClassApartmentDTO toClassApartmentDTO(ClassApartment classApartment);
+    ClassApartment toClassApartment(ClassApartmentDto classApartmentDto);
 
-    List<ClassApartmentDTO> toListClassApartmentDTO(List<ClassApartment> classApartments);
+    ClassApartmentDto toClassApartmentDto(ClassApartment classApartment);
 
-    ClassApartment toClassApartment(ClassApartmentDTO classApartmentDTO);
+    List<ClassApartmentDto> toListClassApartmentDto(List<ClassApartment> classApartments);
 }

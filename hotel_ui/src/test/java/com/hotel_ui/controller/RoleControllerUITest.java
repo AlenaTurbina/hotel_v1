@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.RoleDTO;
+import com.hotel_dto.dto.RoleDto;
 import com.hotel_ui.configuration.TestConfigurationUserDetails;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -30,14 +30,14 @@ class RoleControllerUITest {
     @MockBean
     private RestTemplate restTemplate;
     @MockBean
-    private RoleDTO roleDTO;
+    private RoleDto roleDTO;
 
 
     @Test
     @WithUserDetails("admin@test.com")
     void testGetAllRoles() throws Exception {
-        List<RoleDTO> roleDTOList = new ArrayList<>(List.of(roleDTO));
-        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(roleDTOList);
+        List<RoleDto> roleDtoList = new ArrayList<>(List.of(roleDTO));
+        Mockito.when(restTemplate.getForObject(any(), any())).thenReturn(roleDtoList);
 
         mockMvc.perform(get("/admin/roles")
                         .accept(MediaType.APPLICATION_JSON))

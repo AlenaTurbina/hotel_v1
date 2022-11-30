@@ -1,12 +1,10 @@
 package com.hotel_server.service.impl;
 
-import com.fasterxml.jackson.databind.deser.std.UUIDDeserializer;
-import com.fasterxml.jackson.databind.ser.std.UUIDSerializer;
 import com.hotel_database.model.repository.ClassApartmentRepository;
 import com.hotel_database.model.repository.RoomKindRepository;
 import com.hotel_database.model.repository.RoomTypeRepository;
 import com.hotel_domain.model.entity.RoomKind;
-import com.hotel_dto.dto.RoomKindDTO;
+import com.hotel_dto.dto.RoomKindDto;
 import com.hotel_server.exceptionHandler.exception.ServerEntityNotFoundException;
 import com.hotel_server.service.ClassApartmentService;
 import com.hotel_server.service.RoomKindService;
@@ -55,7 +53,7 @@ public class RoomKindServiceImpl implements RoomKindService {
 
     @Override
     @Transactional
-    public RoomKind saveRoomKind(RoomKindDTO roomKindDTO) {
+    public RoomKind saveRoomKind(RoomKindDto roomKindDTO) {
         var roomKind = new RoomKind();
         roomKind.setRoomType(roomTypeService.getRoomTypeById(roomKindDTO.getRoomType()));
         roomKind.setClassApartment(classApartmentService.getClassApartmentById(roomKindDTO.getClassApartment()));
@@ -67,7 +65,7 @@ public class RoomKindServiceImpl implements RoomKindService {
 
     @Override
     @Transactional
-    public RoomKind updateRoomKind(RoomKindDTO roomKindDTO) {
+    public RoomKind updateRoomKind(RoomKindDto roomKindDTO) {
         var roomKindNew = roomKindRepository.getById(roomKindDTO.getId());
         roomKindNew.setRoomType(roomTypeRepository.getById(roomKindDTO.getRoomType()));
         roomKindNew.setClassApartment(classApartmentRepository.getById(roomKindDTO.getClassApartment()));
@@ -81,5 +79,16 @@ public class RoomKindServiceImpl implements RoomKindService {
     public UUID testRK(UUID classApartment, UUID roomType) {
         System.out.println("from");
         return roomKindRepository.findRoomKindIDByRoomTypeAndClassApartmentID1(classApartment, roomType);
+    }
+
+    @Override
+    public UUID testRK2(UUID classApartment) {
+        System.out.println("from");
+        System.out.println(classApartment);
+   //     String ca = concat("'", classApartment, "'");
+    //    System.out.println(ca);
+       String ca = classApartment.toString();
+   //     return roomKindRepository.findRoomKindIDByRoomTypeAndClassApartmentID2(classApartment);
+        return UUID.randomUUID();
     }
 }

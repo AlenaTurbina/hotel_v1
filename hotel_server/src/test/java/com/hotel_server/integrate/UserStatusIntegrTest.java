@@ -29,21 +29,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class UserStatusIntegrTest {
     @Autowired
     MockMvc mockMvc;
-    @MockBean
-    private UserStatusService userStatusService;
     @Autowired
     private UserStatusMapper userStatusMapper;
+    @MockBean
+    private UserStatusService userStatusService;
 
     @Test
     void testGetAllUserStatuses() throws Exception {
-        UserStatus userStatus = new UserStatus(UUID.randomUUID(), null);
-        List<UserStatus> userStatusList = new ArrayList<>(List.of(userStatus));
+        UserStatus userStatus = new UserStatus(UUID.randomUUID(), "A");
+        UserStatus userStatus1 = new UserStatus(UUID.randomUUID(), "B");
+        List<UserStatus> userStatusList = new ArrayList<>(List.of(userStatus, userStatus1));
         Mockito.when(userStatusService.getAllUserStatuses()).thenReturn(userStatusList);
         mockMvc.perform(get("/api/admin/userStatuses")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(content().json(asJsonString(userStatusMapper.toListUserStatusDTO(userStatusList))))
+                .andExpect(jsonPath("$", Matchers.hasSize(2)))
+                .andExpect(content().json(asJsonString(userStatusMapper.toListUserStatusDto(userStatusList))))
                 .andDo(print());
     }
 }

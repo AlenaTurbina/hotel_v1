@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.ClassApartmentDTO;
+import com.hotel_dto.dto.ClassApartmentDto;
 import com.hotel_dto.mapper.ClassApartmentMapper;
 import com.hotel_server.service.ClassApartmentService;
 import com.hotel_server.validator.ClassApartmentValidator;
@@ -37,11 +37,11 @@ class ClassApartmentRestControllerTest {
     @MockBean
     private ClassApartmentMapper classApartmentMapper;
 
-    ClassApartmentDTO classApartmentDTO = new ClassApartmentDTO();
+    ClassApartmentDto classApartmentDTO = new ClassApartmentDto();
 
     @BeforeEach
     public void setUp() {
-        ClassApartmentDTO classApartmentDTO = new ClassApartmentDTO();
+        ClassApartmentDto classApartmentDTO = new ClassApartmentDto();
         classApartmentDTO.setId(UUID.randomUUID());
         classApartmentDTO.setName("A");
         classApartmentDTO.setPlacePrice(10.0);
@@ -50,8 +50,8 @@ class ClassApartmentRestControllerTest {
     @Test
     void testGetAllClassApartments() throws Exception {
         classApartmentDTO.setId(UUID.randomUUID());
-        List<ClassApartmentDTO> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDTO));
-        Mockito.when(classApartmentMapper.toListClassApartmentDTO(any())).thenReturn(classApartmentDTOList);
+        List<ClassApartmentDto> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDTO));
+        Mockito.when(classApartmentMapper.toListClassApartmentDto(any())).thenReturn(classApartmentDTOList);
 
         mockMvc.perform(get("/api/admin/classApartments")
                 .accept(MediaType.APPLICATION_JSON))
@@ -64,7 +64,7 @@ class ClassApartmentRestControllerTest {
 
     @Test
     void testCreateClassApartment() throws Exception {
-        Mockito.when(classApartmentMapper.toClassApartmentDTO(any())).thenReturn(classApartmentDTO);
+        Mockito.when(classApartmentMapper.toClassApartmentDto(any())).thenReturn(classApartmentDTO);
         Mockito.when(classApartmentValidator.supports(any())).thenReturn(true);
 
         mockMvc.perform(post("/api/admin/classApartments")
@@ -78,8 +78,8 @@ class ClassApartmentRestControllerTest {
 
     @Test
     void testShowUniqueClassApartmentsFromRooms() throws Exception {
-        List<ClassApartmentDTO> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDTO));
-        Mockito.when(classApartmentMapper.toListClassApartmentDTO(any())).thenReturn(classApartmentDTOList);
+        List<ClassApartmentDto> classApartmentDTOList = new ArrayList<>(List.of(classApartmentDTO));
+        Mockito.when(classApartmentMapper.toListClassApartmentDto(any())).thenReturn(classApartmentDTOList);
 
         mockMvc.perform(get("/api/uniqueClassApartmentsFromRooms")
                 .accept(MediaType.APPLICATION_JSON))

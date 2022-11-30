@@ -42,7 +42,7 @@
                 <h3>ORDER FORM</h3>
                 <h6>please, fill in the form fields</h6>
         </div>
-        <form action="#" name="order" th:action="@{/client/orderForms}" th:object="${orderBookingDTO}"
+        <form action="#" name="order" th:action="@{/client/orderForms}" th:object="${orderBookingDto}"
               method="post" class="orderForm">
             <p>
                 <input type="hidden" name="userEmail" th:value="${userEmail}">
@@ -73,7 +73,7 @@
             </p>
             <p>
                 <label for="roomType">Room type:</label>
-                <select id="roomType" th:field="*{roomType}" required="required">
+                <select id="roomType" th:field="*{roomTypeId}" required="required">
                     <option value="">Select type of room</option>
                     <option th:each="roomType : ${roomTypeDTOList}"
                             th:value="${roomType.id}"
@@ -81,12 +81,12 @@
 <!--                            th:text="#{'description_'+${roomType.name}}">-->
                     </option>
                 </select>
-            <div class="alert alert-danger" th:if="${#fields.hasErrors('roomType')}"
-                 th:errors="*{roomType}"></div>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('roomTypeId')}"
+                 th:errors="*{roomTypeId}"></div>
             </p>
             <p>
                 <label for="classApartments">Class apartment:</label>
-                <select id="classApartments" th:field="*{classApartment}" required="required">
+                <select id="classApartments" th:field="*{classApartmentId}" required="required">
                     <option class="option1" value="">Select class of apartments</option>
                     <option th:each="classApartment : ${classApartmentDTOList}"
                             th:value="${classApartment.id}"
@@ -98,7 +98,7 @@
                 <label for="optionals">Optionals:</label>
             <ul>
                 <li th:each="optional : ${optionals}">
-                    <input id="optionals" type="checkbox" th:field="*{optionals}"
+                    <input id="optionals" type="checkbox" th:field="*{getOptionalsId}"
                            th:value="${optional.id}"/>
                     <label th:text="${optional.name}"></label>
                 </li>

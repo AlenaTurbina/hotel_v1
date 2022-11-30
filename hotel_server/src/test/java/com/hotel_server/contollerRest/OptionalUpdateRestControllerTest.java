@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import com.hotel_dto.mapper.OptionalMapper;
 import com.hotel_server.service.OptionalService;
 import com.hotel_server.validator.OptionalUpdateValidator;
@@ -34,7 +34,7 @@ class OptionalUpdateRestControllerTest {
     @MockBean
     private OptionalUpdateValidator optionalUpdateValidator;
 
-    OptionalDTO optionalDTO = new OptionalDTO();
+    OptionalDto optionalDTO = new OptionalDto();
     UUID uuid = UUID.randomUUID();
 
     @BeforeEach
@@ -46,7 +46,7 @@ class OptionalUpdateRestControllerTest {
 
     @Test
     void getOptional() throws Exception {
-        Mockito.when(optionalMapper.toOptionalDTO(any())).thenReturn(optionalDTO);
+        Mockito.when(optionalMapper.toOptionalDto(any())).thenReturn(optionalDTO);
         mockMvc.perform(get("/api/admin/optionals/{id}", uuid))
                 .andExpect(status().isOk())
                 .andExpect(content().json(asJsonString(optionalDTO)))
@@ -55,7 +55,7 @@ class OptionalUpdateRestControllerTest {
 
     @Test
     void updateOptional() throws Exception {
-        Mockito.when(optionalMapper.toOptionalDTO(any())).thenReturn(optionalDTO);
+        Mockito.when(optionalMapper.toOptionalDto(any())).thenReturn(optionalDTO);
         Mockito.when(optionalUpdateValidator.supports(any())).thenReturn(true);
         mockMvc.perform(put("/api/admin/optionals/")
                 .content(asJsonString(optionalDTO))

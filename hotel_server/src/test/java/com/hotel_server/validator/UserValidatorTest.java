@@ -1,7 +1,7 @@
 package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.User;
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_server.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,7 +18,7 @@ class UserValidatorTest {
     @Mock
     private UserService userService;
     @Mock
-    private UserDTO userDTO;
+    private UserDto userDTO;
     @Mock
     private User userExist;
     @Mock

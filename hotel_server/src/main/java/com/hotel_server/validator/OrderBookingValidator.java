@@ -2,7 +2,7 @@ package com.hotel_server.validator;
 
 import com.hotel_server.message.Messages;
 import com.hotel_server.service.RoomTypeService;
-import com.hotel_dto.dto.OrderBookingDTO;
+import com.hotel_dto.dto.OrderBookingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -27,12 +27,12 @@ public class OrderBookingValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return OrderBookingDTO.class.equals(clazz);
+        return OrderBookingDto.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-    OrderBookingDTO orderBookingDTO = (OrderBookingDTO) target;
+    OrderBookingDto orderBookingDTO = (OrderBookingDto) target;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dateArrival", "validation.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dateDeparture", "validation.required");
@@ -56,7 +56,7 @@ public class OrderBookingValidator implements Validator {
             errors.rejectValue("dateDeparture", "validation.booking.dateDeparture.max");
         }
 
-       if(orderBookingDTO.getQuantityPersons()>roomTypeService.getRoomTypeById(orderBookingDTO.getRoomType()).getQuantityPlaces()){
+       if(orderBookingDTO.getQuantityPersons()>roomTypeService.getRoomTypeById(orderBookingDTO.getRoomTypeId()).getQuantityPlaces()){
             errors.rejectValue("roomType", "validation.booking.quantityPersons.max");
        }
 

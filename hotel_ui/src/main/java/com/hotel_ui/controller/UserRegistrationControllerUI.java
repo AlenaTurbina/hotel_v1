@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_ui.message.Messages;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,16 +30,16 @@ public class UserRegistrationControllerUI {
 
     @GetMapping
     public String showRegistrationForm(Model model) {
-        model.addAttribute("userDTO", new UserDTO());
+        model.addAttribute("userDto", new UserDto());
         return "account/registration";
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute UserDTO userDTO, BindingResult bindingResult) {
-        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_REGISTRATION, userDTO, Map.class);
+    public String registerUserAccount(@ModelAttribute UserDto userDto, BindingResult bindingResult) {
+        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_REGISTRATION, userDto, Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "userDTO");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "userDto");
             return "account/registration";
         }
         return "redirect:/registration?success";

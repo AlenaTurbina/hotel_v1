@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.RoomDTO;
+import com.hotel_dto.dto.RoomDto;
 import com.hotel_ui.message.Messages;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -38,25 +38,25 @@ public class RoomControllerUI {
     //List of roomKinds /GET/
     @GetMapping("/admin/rooms")
     public String getAllRooms(Model model) {
-        List<RoomDTO> roomDTO = restTemplate.getForObject(URL_ROOM, List.class);
-        model.addAttribute("rooms", roomDTO);
+        List<RoomDto> roomDto = restTemplate.getForObject(URL_ROOM, List.class);
+        model.addAttribute("rooms", roomDto);
         return "admin/rooms";
     }
 
     //Create optional /GET, POST/
     @GetMapping("/admin/rooms/create")
     private String createRoomForm(Model model) {
-        model.addAttribute("roomDTO", new RoomDTO());
+        model.addAttribute("roomDto", new RoomDto());
         showRoomTypeAndClassApartmentModelAndRoomKind(model);
         return "admin/createRooms";
     }
 
     @PostMapping("/admin/rooms/create")
-    private String createRoom(@ModelAttribute RoomDTO roomDTO, BindingResult bindingResult, Model model) {
+    private String createRoom(@ModelAttribute RoomDto roomDTO, BindingResult bindingResult, Model model) {
         ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_ROOM, roomDTO, Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "roomDTO");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "roomDto");
             showRoomTypeAndClassApartmentModelAndRoomKind(model);
             return "admin/createRooms";
         }
@@ -65,21 +65,21 @@ public class RoomControllerUI {
 
     //Update optional /GET, POST/
     @GetMapping("/admin/rooms/update/{id}")
-    public String updateRoomForm(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("roomDTO", restTemplate.getForObject((URL_ROOM + "/" + id), RoomDTO.class));
+    public String updateRoomForm(@PathVariable("id") String id, Model model) {
+        model.addAttribute("roomDto", restTemplate.getForObject((URL_ROOM + "/" + id), RoomDto.class));
         showRoomTypeAndClassApartmentModelAndRoomKind(model);
         return "admin/updateRooms";
     }
 
 
     @PostMapping("/admin/rooms/update")
-    public String updateRoom(@ModelAttribute RoomDTO roomDTO, BindingResult bindingResult, Model model) {
-        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_ROOM, HttpMethod.PUT, new HttpEntity<>(roomDTO), Map.class);
+    public String updateRoom(@ModelAttribute RoomDto roomDto, BindingResult bindingResult, Model model) {
+        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_ROOM, HttpMethod.PUT, new HttpEntity<>(roomDto), Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "room");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "roomDto");
             showRoomTypeAndClassApartmentModelAndRoomKind(model);
-            model.addAttribute("roomDTO", roomDTO);
+            model.addAttribute("roomDto", roomDto);
             return "admin/updateRooms";
         }
         return "redirect:/admin/rooms";

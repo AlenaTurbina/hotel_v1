@@ -1,10 +1,7 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoomDTO;
-import com.hotel_dto.mapper.ClassApartmentMapper;
-import com.hotel_dto.mapper.RoomKindMapper;
+import com.hotel_dto.dto.RoomDto;
 import com.hotel_dto.mapper.RoomMapper;
-import com.hotel_dto.mapper.RoomTypeMapper;
 import com.hotel_server.service.RoomService;
 import com.hotel_server.validator.RoomValidator;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,14 +19,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
-@Tag(name="Room", description = "Management of Room - getting lists")
+@Tag(name = "Room", description = "Management of Room - getting lists")
 public class RoomRestController {
     private RoomService roomService;
-    private RoomMapper roomMapper;
-    private RoomKindMapper roomKindMapper;
-    private RoomTypeMapper roomTypeMapper;
-    private ClassApartmentMapper classApartmentMapper;
     private RoomValidator roomValidator;
+    private RoomMapper roomMapper;
 
     @InitBinder(value = "roomDTO")
     void initRoomValidator(WebDataBinder binder) {
@@ -38,7 +32,7 @@ public class RoomRestController {
 
     @Operation(summary = "Getting list of Rooms")
     @GetMapping("/admin/rooms")
-    List<RoomDTO> getAllRooms() {
+    List<RoomDto> getAllRooms() {
         return roomMapper.toListRoomDTO(roomService.getAllRooms());
     }
 

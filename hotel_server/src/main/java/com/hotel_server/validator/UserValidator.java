@@ -1,7 +1,7 @@
 package com.hotel_server.validator;
 
 import com.hotel_server.service.UserService;
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,12 +22,12 @@ public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return UserDTO.class.equals(clazz);
+        return UserDto.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        UserDTO userDTO = (UserDTO) target;
+        UserDto userDTO = (UserDto) target;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "validation.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "validation.required");

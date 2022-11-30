@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hotel_activemq.produser.ProducerSend;
 import com.hotel_domain.model.entity.Room;
-import com.hotel_dto.dto.RoomDTO;
+import com.hotel_dto.dto.RoomDto;
 import com.hotel_server.service.RoomService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,11 +25,11 @@ public class RoomManagerSave {
 
     @JmsListener(destination = "${hotel.activemq.queueName}", subscription = "RoomManager")
     public void receiveMessageFromQueue(final javax.jms.Message jsonMessage) throws JMSException, JsonProcessingException {
-        RoomDTO roomDTO = null;
+        RoomDto roomDTO = null;
         if(jsonMessage instanceof TextMessage) {
             String messageString = ((TextMessage) jsonMessage).getText();
             ObjectMapper mapper = new ObjectMapper();
-            roomDTO = mapper.readValue(messageString, RoomDTO.class);
+            roomDTO = mapper.readValue(messageString, RoomDto.class);
         }
         Room room = roomService.saveRoom(roomDTO);
 

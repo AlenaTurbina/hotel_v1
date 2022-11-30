@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.RoomKindDTO;
+import com.hotel_dto.dto.RoomKindDto;
 import com.hotel_ui.message.Messages;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -38,17 +38,17 @@ public class RoomKindControllerUI {
 
     @GetMapping("/create")
     private String createRoomKindForm(Model model) {
-        model.addAttribute("roomKindDTO", new RoomKindDTO());
+        model.addAttribute("roomKindDto", new RoomKindDto());
         showRoomTypeAndClassApartmentModel(model);
         return "admin/createRoomKinds";
     }
 
     @PostMapping("/create")
-    private String createRoomKind(@ModelAttribute RoomKindDTO roomKindDTO, BindingResult bindingResult, Model model) {
-        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_ROOM_KINDS, roomKindDTO, Map.class);
+    private String createRoomKind(@ModelAttribute RoomKindDto roomKindDto, BindingResult bindingResult, Model model) {
+        ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_ROOM_KINDS, roomKindDto, Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "roomKindDTO");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "roomKindDto");
             showRoomTypeAndClassApartmentModel(model);
             return "admin/createRoomKinds";
         }
@@ -56,20 +56,20 @@ public class RoomKindControllerUI {
     }
 
     @GetMapping("/update/{id}")
-    public String updateRoomKindForm(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("roomKindDTO", restTemplate.getForObject((URL_ROOM_KINDS + "/" + id), RoomKindDTO.class));
+    public String updateRoomKindForm(@PathVariable("id") String id, Model model) {
+        model.addAttribute("roomKindDto", restTemplate.getForObject((URL_ROOM_KINDS + "/" + id), RoomKindDto.class));
         showRoomTypeAndClassApartmentModel(model);
         return "admin/updateRoomKinds";
     }
 
     @PostMapping("/update")
-    public String updateRoomKind(@ModelAttribute RoomKindDTO roomKindDTO, BindingResult bindingResult, Model model) {
-        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_ROOM_KINDS, HttpMethod.PUT, new HttpEntity<>(roomKindDTO), Map.class);
+    public String updateRoomKind(@ModelAttribute RoomKindDto roomKindDto, BindingResult bindingResult, Model model) {
+        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_ROOM_KINDS, HttpMethod.PUT, new HttpEntity<>(roomKindDto), Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
             getBindingResultFromMapErrors(mapErrors, bindingResult, "roomKind");
             showRoomTypeAndClassApartmentModel(model);
-            model.addAttribute("roomKindDTO", roomKindDTO);
+            model.addAttribute("roomKindDto", roomKindDto);
             return "admin/updateRoomKinds";
         }
         return "redirect:/admin/roomKinds";

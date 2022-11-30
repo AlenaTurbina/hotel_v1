@@ -1,7 +1,7 @@
 package com.hotel_server.validator;
 
 import com.hotel_domain.model.entity.ClassApartment;
-import com.hotel_dto.dto.ClassApartmentDTO;
+import com.hotel_dto.dto.ClassApartmentDto;
 import com.hotel_server.service.ClassApartmentService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class ClassApartmentValidatorTest {
     @Mock
-    private ClassApartmentDTO classApartmentDTO;
+    private ClassApartmentDto classApartmentDTO;
     @Mock
     private ClassApartmentService classApartmentService;
     @Mock

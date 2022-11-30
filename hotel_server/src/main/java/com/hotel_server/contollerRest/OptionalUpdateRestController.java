@@ -1,7 +1,7 @@
 package com.hotel_server.contollerRest;
 
 import com.hotel_domain.model.entity.Optional;
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import com.hotel_dto.mapper.OptionalMapper;
 import com.hotel_server.service.OptionalService;
 import com.hotel_server.validator.OptionalUpdateValidator;
@@ -33,15 +33,15 @@ public class OptionalUpdateRestController {
 
     @Operation(summary = "Getting Optional by id")
     @GetMapping(value = "/admin/optionals/{id}")
-    OptionalDTO getOptional(@PathVariable UUID id) {
-        return optionalMapper.toOptionalDTO(optionalService.getOptionalById(id));
+    OptionalDto getOptional(@PathVariable UUID id) {
+        return optionalMapper.toOptionalDto(optionalService.getOptionalById(id));
     }
 
     @Operation(summary = "Updating Optional")
     @PutMapping("/admin/optionals")
-    ResponseEntity updateOptional(@RequestBody @Valid OptionalDTO optionalDTO) {
+    ResponseEntity updateOptional(@RequestBody @Valid OptionalDto optionalDTO) {
         Optional optional = optionalMapper.toOptional(optionalDTO);
-        return new ResponseEntity<>(optionalMapper.toOptionalDTO(optionalService.updateOptional(optional)), HttpStatus.CREATED);
+        return new ResponseEntity<>(optionalMapper.toOptionalDto(optionalService.updateOptional(optional)), HttpStatus.CREATED);
     }
 
 }

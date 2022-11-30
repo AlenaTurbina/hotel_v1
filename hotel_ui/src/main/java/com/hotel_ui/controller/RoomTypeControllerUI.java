@@ -1,6 +1,6 @@
 package com.hotel_ui.controller;
 
-import com.hotel_dto.dto.RoomTypeDTO;
+import com.hotel_dto.dto.RoomTypeDto;
 import com.hotel_ui.message.Messages;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -40,16 +40,16 @@ public class RoomTypeControllerUI {
     //Create optional /GET, POST/
     @GetMapping("/create")
     private String createRoomTypesForm(Model model) {
-        model.addAttribute("roomTypeDTO", new RoomTypeDTO());
+        model.addAttribute("roomTypeDto", new RoomTypeDto());
         return "admin/createRoomTypes";
     }
 
     @PostMapping("/create")
-    private String createRoomType(@ModelAttribute RoomTypeDTO roomTypeDTO, BindingResult bindingResult) {
+    private String createRoomType(@ModelAttribute RoomTypeDto roomTypeDTO, BindingResult bindingResult) {
         ResponseEntity<Map> responseEntity = restTemplate.postForEntity(URL_ROOM_TYPES, roomTypeDTO, Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
-            getBindingResultFromMapErrors(mapErrors, bindingResult, "roomTypeDTO");
+            getBindingResultFromMapErrors(mapErrors, bindingResult, "roomTypeDto");
             return "admin/createRoomTypes";
         }
         return "redirect:/admin/roomTypes";
@@ -57,18 +57,18 @@ public class RoomTypeControllerUI {
 
     //Update optional /GET, POST/
     @GetMapping("/update/{id}")
-    public String updateRoomTypesForm(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("roomTypeDTO", restTemplate.getForObject((URL_ROOM_TYPES + "/" + id), RoomTypeDTO.class));
+    public String updateRoomTypesForm(@PathVariable("id") String id, Model model) {
+        model.addAttribute("roomTypeDto", restTemplate.getForObject((URL_ROOM_TYPES + "/" + id), RoomTypeDto.class));
         return "admin/updateRoomTypes";
     }
 
     @PostMapping("/update")
-    public String updateRoomTypes(@ModelAttribute RoomTypeDTO roomTypeDTO, BindingResult bindingResult, Model model) {
-        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_ROOM_TYPES, HttpMethod.PUT, new HttpEntity<>(roomTypeDTO), Map.class);
+    public String updateRoomTypes(@ModelAttribute RoomTypeDto roomTypeDto, BindingResult bindingResult, Model model) {
+        ResponseEntity<Map> responseEntity = restTemplate.exchange(URL_ROOM_TYPES, HttpMethod.PUT, new HttpEntity<>(roomTypeDto), Map.class);
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             var mapErrors = responseEntity.getBody();
             getBindingResultFromMapErrors(mapErrors, bindingResult, "optional");
-            model.addAttribute("roomTypeDTO", roomTypeDTO);
+            model.addAttribute("roomTypeDto", roomTypeDto);
             return "admin/updateRoomTypes";
         }
         return "redirect:/admin/roomTypes";

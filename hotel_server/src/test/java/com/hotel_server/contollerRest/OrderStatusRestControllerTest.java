@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.OrderStatusDTO;
+import com.hotel_dto.dto.OrderStatusDto;
 import com.hotel_dto.mapper.OrderStatusMapper;
 import com.hotel_server.service.OrderStatusService;
 import org.hamcrest.Matchers;
@@ -32,7 +32,7 @@ class OrderStatusRestControllerTest {
     @MockBean
     private OrderStatusMapper orderStatusMapper;
 
-    OrderStatusDTO orderStatusDTO = new OrderStatusDTO();
+    OrderStatusDto orderStatusDTO = new OrderStatusDto();
     UUID uuid = UUID.randomUUID();
 
     @BeforeEach
@@ -42,14 +42,14 @@ class OrderStatusRestControllerTest {
 
     @Test
     void testGetAllOrderStatuses() throws Exception {
-        List<OrderStatusDTO> orderStatusDTOList = new ArrayList<>(List.of(orderStatusDTO));
-        Mockito.when(orderStatusMapper.toListOrderStatusDTO(any())).thenReturn(orderStatusDTOList);
+        List<OrderStatusDto> orderStatusDtoList = new ArrayList<>(List.of(orderStatusDTO));
+        Mockito.when(orderStatusMapper.toListOrderStatusDTO(any())).thenReturn(orderStatusDtoList);
         mockMvc.perform(get("/api/admin/orderStatuses")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
                 .andExpect(jsonPath("$[0].id", Matchers.equalTo(orderStatusDTO.getId().toString())))
-                .andExpect(content().json(asJsonString(orderStatusDTOList)))
+                .andExpect(content().json(asJsonString(orderStatusDtoList)))
                 .andDo(print());
     }
 }

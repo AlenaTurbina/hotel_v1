@@ -30,10 +30,10 @@
                 <h2>Room type form update</h2>
             </div>
 
-            <form action="#" th:action="@{/admin/roomTypes/update}" th:object="${roomTypeDTO}" method="post"
-                  class="adminForm" th:if="${roomTypeDTO != null}">
+            <form action="#" th:action="@{/admin/roomTypes/update}" th:object="${roomTypeDto}" method="post"
+                  class="adminForm" th:if="${roomTypeDto != null}">
                 <label for="id">ID</label>
-                <input readonly type="number" th:value="*{id}" th:field="*{id}" id="id" placeholder="ID" class="inp hid">
+                <input readonly type="text" th:value="*{id}" th:field="*{id}" id="id" placeholder="ID" class="inp hid">
                 <br>
                 <label for="name">name</label>
                 <input type="text" th:value="*{name}" th:field="*{name}" id="name" placeholder="name" class="inp ord">

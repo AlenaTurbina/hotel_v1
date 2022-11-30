@@ -1,6 +1,6 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_dto.dto.RoomKindDTO;
+import com.hotel_dto.dto.RoomKindDto;
 import com.hotel_dto.mapper.RoomKindMapper;
 import com.hotel_server.service.RoomKindService;
 import com.hotel_server.validator.RoomKindUpdateValidator;
@@ -34,7 +34,7 @@ class RoomKindUpdateRestControllerTest {
     @MockBean
     private RoomKindUpdateValidator roomKindUpdateValidator;
 
-    RoomKindDTO roomKindDTO = new RoomKindDTO();
+    RoomKindDto roomKindDTO = new RoomKindDto();
     UUID uuid = UUID.randomUUID();
 
     @BeforeEach

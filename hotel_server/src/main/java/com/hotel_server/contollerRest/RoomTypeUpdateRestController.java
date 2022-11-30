@@ -1,7 +1,7 @@
 package com.hotel_server.contollerRest;
 
 import com.hotel_domain.model.entity.RoomType;
-import com.hotel_dto.dto.RoomTypeDTO;
+import com.hotel_dto.dto.RoomTypeDto;
 import com.hotel_dto.mapper.RoomTypeMapper;
 import com.hotel_server.service.RoomTypeService;
 import com.hotel_server.validator.RoomTypeUpdateValidator;
@@ -33,15 +33,15 @@ public class RoomTypeUpdateRestController {
 
     @Operation(summary = "Getting Room type by id")
     @GetMapping(value = "/admin/roomTypes/{id}")
-    RoomTypeDTO getRoomType(@PathVariable UUID id) {
-        return roomTypeMapper.toRoomTypeDTO(roomTypeService.getRoomTypeById(id));
+    RoomTypeDto getRoomType(@PathVariable UUID id) {
+        return roomTypeMapper.toRoomTypeDto(roomTypeService.getRoomTypeById(id));
     }
 
     @Operation(summary = "Updating Room type")
     @PutMapping("/admin/roomTypes")
-    ResponseEntity updateRoomType(@RequestBody @Valid RoomTypeDTO roomTypeDTO) {
+    ResponseEntity updateRoomType(@RequestBody @Valid RoomTypeDto roomTypeDTO) {
         RoomType roomType = roomTypeMapper.toRoomType(roomTypeDTO);
-        return new ResponseEntity<>(roomTypeMapper.toRoomTypeDTO(roomTypeService.updateRoomType(roomType)), HttpStatus.CREATED);
+        return new ResponseEntity<>(roomTypeMapper.toRoomTypeDto(roomTypeService.updateRoomType(roomType)), HttpStatus.CREATED);
     }
 
 }

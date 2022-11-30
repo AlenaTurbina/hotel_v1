@@ -1,7 +1,7 @@
 package com.hotel_server.contollerRest;
 
 import com.hotel_database.model.repository.UserRepository;
-import com.hotel_dto.dto.UserDTO;
+import com.hotel_dto.dto.UserDto;
 import com.hotel_dto.mapper.UserMapper;
 import com.hotel_server.service.UserService;
 import com.hotel_server.validator.UserClientUpdateValidator;
@@ -32,13 +32,14 @@ class UserRestControllerTest {
     @MockBean
     private UserService userService;
     @MockBean
-    private UserMapper userMapper;
-    @MockBean
     private UserRepository userRepository;
     @MockBean
     private UserClientUpdateValidator userClientUpdateValidator;
+    @MockBean
+    private UserMapper userMapper;
 
-    UserDTO userDTO = new UserDTO();
+
+    UserDto userDTO = new UserDto();
     String email;
 
     @BeforeEach
@@ -52,14 +53,14 @@ class UserRestControllerTest {
 
     @Test
     void testGetAllUsers() throws Exception {
-        List<UserDTO> userDTOList = new ArrayList<>(List.of(userDTO));
-        Mockito.when(userMapper.toListUserDTO(any())).thenReturn(userDTOList);
+        List<UserDto> userDtoList = new ArrayList<>(List.of(userDTO));
+        Mockito.when(userMapper.toListUserDto(any())).thenReturn(userDtoList);
         mockMvc.perform(get("/api/admin/users")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
                 .andExpect(jsonPath("$[0].email", Matchers.equalTo(userDTO.getEmail())))
-                .andExpect(content().json(asJsonString(userDTOList)))
+                .andExpect(content().json(asJsonString(userDtoList)))
                 .andDo(print());
     }
 
@@ -90,7 +91,7 @@ class UserRestControllerTest {
 
     @Test
     void testCheckAuthentication() throws Exception {
-        Mockito.when(userMapper.toUserDTOAuth(any())).thenReturn(userDTO);
+        Mockito.when(userMapper.toUserDtoAuth(any())).thenReturn(userDTO);
         mockMvc.perform(post("/api/auth")
                 .content(asJsonString(email))
                 .contentType(MediaType.APPLICATION_JSON)

@@ -2,7 +2,7 @@ package com.hotel_server.service.impl;
 
 import com.hotel_database.model.repository.OptionalRepository;
 import com.hotel_domain.model.entity.Optional;
-import com.hotel_dto.dto.OptionalDTO;
+import com.hotel_dto.dto.OptionalDto;
 import com.hotel_server.exceptionHandler.exception.ServerEntityNotFoundException;
 import com.hotel_server.service.OptionalService;
 import lombok.AllArgsConstructor;
@@ -56,7 +56,7 @@ public class OptionalServiceImpl implements OptionalService {
 
     @Override
     @Transactional
-    public Optional saveOptional(OptionalDTO optionalDTO) {
+    public Optional saveOptional(OptionalDto optionalDTO) {
         var optional = Optional.builder()
                 .name(optionalDTO.getName())
                 .optionalPrice(optionalDTO.getOptionalPrice())

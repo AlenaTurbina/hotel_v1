@@ -2,7 +2,7 @@ package com.hotel_server.service.impl;
 
 import com.hotel_database.model.repository.RoomTypeRepository;
 import com.hotel_domain.model.entity.RoomType;
-import com.hotel_dto.dto.RoomTypeDTO;
+import com.hotel_dto.dto.RoomTypeDto;
 import com.hotel_server.exceptionHandler.exception.ServerEntityNotFoundException;
 import com.hotel_server.service.RoomTypeService;
 import lombok.AllArgsConstructor;
@@ -45,7 +45,7 @@ public class RoomTypeServiceImpl implements RoomTypeService {
 
     @Override
     @Transactional
-    public RoomType saveRoomType(RoomTypeDTO roomTypeDTO) {
+    public RoomType saveRoomType(RoomTypeDto roomTypeDTO) {
         var roomType = RoomType.builder()
                 .name(roomTypeDTO.getName())
                 .quantityPlaces(roomTypeDTO.getQuantityPlaces())

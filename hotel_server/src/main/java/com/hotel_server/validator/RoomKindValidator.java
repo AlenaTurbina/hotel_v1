@@ -1,7 +1,7 @@
 package com.hotel_server.validator;
 
 import com.hotel_server.service.RoomKindService;
-import com.hotel_dto.dto.RoomKindDTO;
+import com.hotel_dto.dto.RoomKindDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -17,12 +17,12 @@ public class RoomKindValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return RoomKindDTO.class.equals(clazz);
+        return RoomKindDto.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        RoomKindDTO roomKindDTO = (RoomKindDTO) target;
+        RoomKindDto roomKindDTO = (RoomKindDto) target;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "roomType", "validation.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "classApartment", "validation.required");

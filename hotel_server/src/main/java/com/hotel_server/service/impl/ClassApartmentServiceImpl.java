@@ -2,7 +2,7 @@ package com.hotel_server.service.impl;
 
 import com.hotel_database.model.repository.ClassApartmentRepository;
 import com.hotel_domain.model.entity.ClassApartment;
-import com.hotel_dto.dto.ClassApartmentDTO;
+import com.hotel_dto.dto.ClassApartmentDto;
 import com.hotel_server.exceptionHandler.exception.ServerEntityNotFoundException;
 import com.hotel_server.service.ClassApartmentService;
 import lombok.AllArgsConstructor;
@@ -51,7 +51,7 @@ public class ClassApartmentServiceImpl implements ClassApartmentService {
 
     @Override
     @Transactional
-    public ClassApartment saveClassApartment(ClassApartmentDTO classApartmentDTO) {
+    public ClassApartment saveClassApartment(ClassApartmentDto classApartmentDTO) {
         var classApartment = ClassApartment.builder()
                 .name(classApartmentDTO.getName())
                 .placePrice(classApartmentDTO.getPlacePrice())

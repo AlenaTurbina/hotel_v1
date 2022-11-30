@@ -16,7 +16,7 @@ services:
 #    networks:
 #      - net
 
-  # 3 - frontend
+  # 2 - frontend
   hotel-ui_service:
     build:
       context: ..
@@ -29,7 +29,7 @@ services:
 #      - net
 
 
-  # 4 - activeMQ
+  # 3 - activeMQ
   activemq-service:
     image: rmohr/activemq:5.15.9-alpine
     container_name: activemq
@@ -40,7 +40,7 @@ services:
 #    networks:
 #      - net
 
-  # 5 - activemq-configuration
+  # 4 - activemq-configuration
   hotel-acivemq_service:
     build:
       context: ..
@@ -52,7 +52,7 @@ services:
 #    networks:
 #      - net
 
-  # 6 - listener
+  # 5 - listener
   hotel-room_manager_service:
     build:
       context: ..
