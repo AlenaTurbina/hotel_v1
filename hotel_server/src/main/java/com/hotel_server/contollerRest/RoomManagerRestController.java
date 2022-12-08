@@ -1,7 +1,8 @@
 package com.hotel_server.contollerRest;
 
-import com.hotel_activemq.produser.ProducerSend;
 import com.hotel_dto.dto.RoomDto;
+import com.hotel_kafka.produser.ProducerSend;
+import com.hotel_kafka.produser.ProducerSendString;
 import com.hotel_server.validator.RoomValidator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,9 +18,9 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
-@ComponentScan(basePackages = {"com.hotel_activemq"})
+@ComponentScan(basePackages = {"com.hotel_kafka"})
 @AllArgsConstructor
-@Tag(name="Room creating", description = "Management of Room - creating")
+@Tag(name = "Room creating", description = "Management of Room - creating")
 public class RoomManagerRestController {
 
     @InitBinder(value = "roomDTO")
@@ -30,12 +31,25 @@ public class RoomManagerRestController {
     private RoomValidator roomValidator;
     private ProducerSend producerSend;
 
+//    //Test
+//    private ProducerSendString producerSendString;
+
     @Operation(summary = "Creating new Room")
     @PostMapping("/admin/rooms")
-    ResponseEntity createRoom(@RequestBody @Valid RoomDto roomDTO) {
-        producerSend.sendToQueue(roomDTO);
+    ResponseEntity createRoom(@RequestBody @Valid RoomDto roomDto) {
+        producerSend.sendMessage(roomDto);
+        System.out.println("Controller - message was sent");
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+//    //Test
+//    @PostMapping("/admin/String")
+//    ResponseEntity create(@RequestBody String s) {
+//        //    producerSend.sendToQueue(roomDto);
+//        producerSendString.sendMessage(s);
+//        System.out.println("Controller - message was sent");
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 
 }
 

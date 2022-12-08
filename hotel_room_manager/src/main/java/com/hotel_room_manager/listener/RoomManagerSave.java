@@ -1,39 +1,36 @@
 package com.hotel_room_manager.listener;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hotel_activemq.produser.ProducerSend;
 import com.hotel_domain.model.entity.Room;
 import com.hotel_dto.dto.RoomDto;
 import com.hotel_server.service.RoomService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.jms.annotation.JmsListener;
-import org.springframework.stereotype.Component;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
 
-import javax.jms.JMSException;
-import javax.jms.TextMessage;
 
-@Component
+@Service
 @AllArgsConstructor
-@ComponentScan(basePackages = {"com.hotel_server", "com.hotel_activemq", "com.hotel_commons", "com.hotel_dto"})
+@Slf4j
+@ComponentScan(basePackages = {"com.hotel_server", "com.hotel_kafka", "com.hotel_commons", "com.hotel_dto"})
 public class RoomManagerSave {
 
     private RoomService roomService;
-    private ProducerSend roomProducer;
 
-    @JmsListener(destination = "${hotel.activemq.queueName}", subscription = "RoomManager")
-    public void receiveMessageFromQueue(final javax.jms.Message jsonMessage) throws JMSException, JsonProcessingException {
-        RoomDto roomDTO = null;
-        if(jsonMessage instanceof TextMessage) {
-            String messageString = ((TextMessage) jsonMessage).getText();
-            ObjectMapper mapper = new ObjectMapper();
-            roomDTO = mapper.readValue(messageString, RoomDto.class);
-        }
-        Room room = roomService.saveRoom(roomDTO);
+//        @KafkaListener(topics = "${hotel.kafka.topicName}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "topic_hotel", groupId = "group1")
+    public void consumer(RoomDto roomDto) {
+        Room room = roomService.saveRoom(roomDto);
+        log.info(String.format("Room received " + roomDto.getName()));
+    }
 
-        String messageToTopic = "New room was created: " + room.getName();
-        roomProducer.sendToTopic(messageToTopic);
-        }
+//    Test for String messages (use with appropriate kind of serialization in properties)
+//    @KafkaListener(topics = "topic_hotel", groupId = "group1")
+//    public void consumer(String s) {
+//        log.info(String.format("Kafka Listener" + s));
+//        System.out.println("from listener Kafka Listener" + s);
+//    }
+
 }

@@ -19,6 +19,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.kafka:spring-kafka'
     implementation ("org.springframework.boot:spring-boot-starter-data-jpa:${sbDataJPAVersion}")
     implementation ("org.springframework.boot:spring-boot-starter-thymeleaf:${sbThymeleafVersion}")
     implementation ("org.springframework.boot:spring-boot-starter-web:${sbWebVersion}")
@@ -32,7 +33,6 @@ dependencies {
 
     compileOnly ("org.springframework.boot:spring-boot-starter-tomcat:${tomcatVersion}")
     implementation ("javax.xml.bind:jaxb-api:${javaxXmlBindVersion}")
-    implementation 'org.springframework.boot:spring-boot-starter-activemq'
 
     implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.2.0'
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.9'
@@ -51,7 +51,7 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
-    implementation project(':hotel_activemq')
+    implementation project(':hotel_kafka')
     implementation project(':hotel_commons')
     implementation project(':hotel_database')
     implementation project(':hotel_domain')

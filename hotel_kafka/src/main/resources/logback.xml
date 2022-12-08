@@ -7,13 +7,13 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <File>src/main/resources/applog_hotel_activemq.log</File>
+        <File>src/main/resources/applog_hotel_kafka.log</File>
         <encoder>
             <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
         </encoder>
     </appender>
 
-    <logger name="com.hotel_activemq" level="DEBUG">
+    <logger name="com.hotel_kafka" level="DEBUG">
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
     </logger>
