@@ -2,7 +2,7 @@
 version: '2.7'
 
 services:
-  # 1 - backend
+  # 4 - backend
   hotel-server_service:
     build:
       context: ..
@@ -16,7 +16,7 @@ services:
 #    networks:
 #      - net
 
-  # 2 - frontend
+  # 5 - frontend
   hotel-ui_service:
     build:
       context: ..
@@ -28,31 +28,23 @@ services:
 #    networks:
 #      - net
 
-
-  # 3 - activeMQ
-  activemq-service:
-    image: rmohr/activemq:5.15.9-alpine
-    container_name: activemq
-    ports:
-      - "61616:61616"
-      - "8161:8161"
-    restart: always
-#    networks:
-#      - net
-
-  # 4 - activemq-configuration
-  hotel-acivemq_service:
+  # 6 - kafka-configuration
+  hotel-kafka_service:
     build:
       context: ..
-      dockerfile: docker/Hotel_activemq.Dockerfile
-    container_name: hotel-acivemq
+      dockerfile: docker/Hotel_kafka.Dockerfile
+    container_name: hotel-kafka
     ports:
       - "9095:9095"
     restart: always
+    env_file:
+      - dc.env
+    environment:
+      BOOTSTRAP_SERVERS: kafka:9092
 #    networks:
 #      - net
 
-  # 5 - listener
+  # 7 - listener
   hotel-room_manager_service:
     build:
       context: ..

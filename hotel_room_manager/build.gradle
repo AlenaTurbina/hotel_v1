@@ -20,17 +20,15 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-activemq'
+    implementation 'org.springframework.kafka:spring-kafka'
     implementation ("org.springframework.boot:spring-boot-starter-web:${sbWebVersion}")
     implementation ("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatJasperVersion}")
     compileOnly ("org.projectlombok:lombok:${lombokVersion}")
     annotationProcessor ("org.projectlombok:lombok:${lombokVersion}")
     
     implementation ("org.springframework.boot:spring-boot-starter-data-jpa:${sbDataJPAVersion}")
-//    runtimeOnly ("mysql:mysql-connector-java:${mySQLConnectorJavaVersion}")
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.0'
     implementation ("org.liquibase:liquibase-core:${liquibaseCoreVersion}")
-
 
     testImplementation ("org.springframework.boot:spring-boot-starter-test:${sbTestVersion}")
 
@@ -40,7 +38,6 @@ dependencies {
 //  the Jupiter sub-project provides a TestEngine for running Jupiter based tests on the platform.
     runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
-    implementation project(':hotel_activemq')
     implementation project(':hotel_server')
     implementation project(':hotel_dto')
     implementation project(':hotel_commons')
